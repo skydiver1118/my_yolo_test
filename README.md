@@ -42,4 +42,16 @@ Open `http://127.0.0.1:8787/`.
 
 ## Static Hosting
 
-The dashboard is plain HTML, CSS, JavaScript, and a generated `data/dashboard-data.js` file, so it can be uploaded to a static host such as GitHub Pages, Cloudflare Pages, or Netlify.
+Live GitHub Pages dashboard:
+
+```text
+https://skydiver1118.github.io/my_yolo_test/
+```
+
+Refresh, publish to GitHub Pages, and send the completion email:
+
+```powershell
+python scripts\publish_tradingagents_dashboard.py --reports missing --email-to skydiver1118@gmail.com
+```
+
+The dashboard is plain HTML, CSS, JavaScript, and a generated `data/dashboard-data.js` file, so it can also be uploaded to a static host such as Cloudflare Pages or Netlify.
