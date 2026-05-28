@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>TradingAgents Stock Command Center</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">TradingAgents portfolio console</p>
+          <h1>Stock Command Center</h1>
+        </div>
+        <div class="topbar-actions" aria-label="Dashboard controls">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="stockSearch" type="search" placeholder="Ticker or action" />
+          </label>
+          <div class="segmented" role="group" aria-label="Filter stocks">
+            <button class="segmented-button active" data-filter="all" type="button">All</button>
+            <button class="segmented-button" data-filter="buy" type="button">Buy</button>
+            <button class="segmented-button" data-filter="hold" type="button">Hold</button>
+            <button class="segmented-button" data-filter="sell" type="button">Sell</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <aside class="watchlist-panel" aria-label="E*TRADE stock list">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">E*TRADE import</p>
+              <h2>Stock List</h2>
+            </div>
+            <span id="coverageBadge" class="coverage-badge"></span>
+          </div>
+          <div id="watchlist" class="watchlist" role="listbox" aria-label="Selectable stocks"></div>
+        </aside>
+
+        <section class="primary-panel" aria-live="polite">
+          <section class="report-panel">
+            <div class="report-topline">
+              <div>
+                <p class="eyebrow">Selected full report</p>
+                <div class="ticker-line">
+                  <h2 id="selectedTicker">--</h2>
+                  <span id="selectedFlag" class="flag-pill">HOLD</span>
+                </div>
+              </div>
+              <div class="source-stack">
+                <span id="sourceBadge" class="source-badge"></span>
+                <span id="reportPath" class="path-chip"></span>
+              </div>
+            </div>
+
+            <div class="metric-strip">
+              <div class="metric">
+                <span>Last</span>
+                <strong id="metricLast">--</strong>
+              </div>
+              <div class="metric">
+                <span>Day Chg</span>
+                <strong id="metricChange">--</strong>
+              </div>
+              <div class="metric">
+                <span>Trading</span>
+                <strong id="metricTrading">--</strong>
+              </div>
+              <div class="metric">
+                <span>Investment</span>
+                <strong id="metricInvestment">--</strong>
+              </div>
+              <div class="metric">
+                <span>Risk</span>
+                <strong id="metricRisk">--</strong>
+              </div>
+            </div>
+
+            <div class="report-layout">
+              <div>
+                <div class="decision-card">
+                  <p class="eyebrow">Decision snapshot</p>
+                  <p id="decisionText"></p>
+                </div>
+                <div class="score-canvas-wrap">
+                  <canvas id="scoreCanvas" width="720" height="180" aria-label="TradingAgents score bars"></canvas>
+                </div>
+              </div>
+              <article id="fullReport" class="markdown-body"></article>
+            </div>
+          </section>
+
+          <section class="module-panel">
+            <div class="panel-heading">
+              <div>
+                <p class="eyebrow">TradingAgents reports</p>
+                <h2>Module Reports</h2>
+              </div>
+              <span id="moduleStatus" class="path-chip"></span>
+            </div>
+            <div id="moduleTabs" class="module-tabs" role="tablist"></div>
+            <article id="moduleContent" class="markdown-body module-content"></article>
+          </section>
+        </section>
+
+        <aside class="insight-rail" aria-label="Portfolio intelligence">
+          <section class="rail-block">
+            <p class="eyebrow">Portfolio view</p>
+            <h2 id="portfolioRating">--</h2>
+            <p id="portfolioDecision" class="muted-copy"></p>
+          </section>
+          <section class="rail-block">
+            <p class="eyebrow">Coverage</p>
+            <div class="donut-row">
+              <div class="donut" id="coverageDonut"><span></span></div>
+              <p id="coverageText"></p>
+            </div>
+          </section>
+          <section class="rail-block">
+            <p class="eyebrow">Top near-term names</p>
+            <div id="topNames" class="top-names"></div>
+          </section>
+          <section class="rail-block">
+            <p class="eyebrow">Data note</p>
+            <p id="dataNote" class="muted-copy"></p>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="data/dashboard-data.js?v=local-watchlist-20260527"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
