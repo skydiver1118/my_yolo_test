@@ -526,6 +526,16 @@ input {
   overflow: hidden;
 }
 
+.inline-module-panel {
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-left: 0;
+  border-right: 0;
+  border-radius: 0;
+  box-shadow: none;
+  background: #fff;
+}
+
 .module-tabs {
   display: flex;
   gap: 6px;

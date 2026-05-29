@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TradingAgents Stock Command Center</title>
-    <link rel="stylesheet" href="styles.css?v=20260529092200" />
+    <link rel="stylesheet" href="styles.css?v=20260529092642" />
   </head>
   <body>
     <div class="app-shell">
@@ -96,20 +96,19 @@
                   <canvas id="scoreCanvas" width="720" height="180" aria-label="TradingAgents score bars"></canvas>
                 </div>
               </div>
+              <section class="module-panel inline-module-panel">
+                <div class="panel-heading">
+                  <div>
+                    <p class="eyebrow">TradingAgents reports</p>
+                    <h2>Module Reports</h2>
+                  </div>
+                  <span id="moduleStatus" class="path-chip"></span>
+                </div>
+                <div id="moduleTabs" class="module-tabs" role="tablist"></div>
+                <article id="moduleContent" class="markdown-body module-content"></article>
+              </section>
               <article id="fullReport" class="markdown-body"></article>
             </div>
-          </section>
-
-          <section class="module-panel">
-            <div class="panel-heading">
-              <div>
-                <p class="eyebrow">TradingAgents reports</p>
-                <h2>Module Reports</h2>
-              </div>
-              <span id="moduleStatus" class="path-chip"></span>
-            </div>
-            <div id="moduleTabs" class="module-tabs" role="tablist"></div>
-            <article id="moduleContent" class="markdown-body module-content"></article>
           </section>
         </section>
 
@@ -138,7 +137,7 @@
       </main>
     </div>
 
-    <script src="data/dashboard-data.js?v=20260529092200"></script>
-    <script src="app.js?v=20260529092200"></script>
+    <script src="data/dashboard-data.js?v=20260529092642"></script>
+    <script src="app.js?v=20260529092642"></script>
   </body>
 </html>
