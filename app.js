@@ -352,7 +352,7 @@ function renderPortfolioRail() {
   el.portfolioDecision.textContent = portfolio.decision || "No portfolio decision text was found.";
   el.dataNote.textContent = portfolio.dataNote || "No data note was provided.";
   el.coverageBadge.textContent = `${portfolio.coverageCount}/${portfolio.watchlistCount} full`;
-  el.coverageText.textContent = `${portfolio.coverageCount} full TradingAgents reports mapped to ${portfolio.watchlistCount} current watchlist tickers, including ${ownedCount} owned-watchlist names. ${portfolio.snapshotOverlap.length} tickers also have portfolio snapshot rows.`;
+  el.coverageText.textContent = `${portfolio.coverageCount} full TradingAgents reports mapped to ${portfolio.watchlistCount} current watchlist tickers, including ${ownedCount} owned-watchlist names. ${portfolio.snapshotOverlap.length} tickers have both watchlist coverage and portfolio snapshot data.`;
   el.coverageDonut.style.setProperty("--coverage-angle", `${pct * 3.6}deg`);
   el.coverageDonut.querySelector("span").textContent = `${pct}%`;
   el.topNames.innerHTML = (portfolio.top5Symbols || [])
