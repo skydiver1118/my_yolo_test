@@ -1,16 +1,17 @@
 window.TRADING_AGENTS_DASHBOARD_DATA = {
-  "generatedAt": "2026-05-29T10:02:35-04:00",
+  "generatedAt": "2026-05-29T14:13:17-04:00",
   "sources": {
     "etradeCsv": "C:\\Users\\skydiver1118\\Downloads\\etrade_26May2026_2040.csv",
     "localWatchlist": "C:\\Users\\skydiver1118\\Documents\\New project\\tradingagents_dashboard\\watchlist.local.json",
     "portfolioSnapshot": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\portfolio_decision_snapshots_2026-05-26",
     "fullReports": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\full_tradingagents_batch_2026-05-26\\2026-05-22_ollama_qwen3_1.7b",
-    "smaState": "C:\\Users\\skydiver1118\\Documents\\New project\\data\\owned_stocks_sma50_state.json"
+    "smaState": "C:\\Users\\skydiver1118\\Documents\\New project\\data\\owned_stocks_sma50_state.json",
+    "marketData": "alpaca-iex"
   },
   "portfolio": {
     "rating": "Selective Overweight / trade tactically",
     "decision": "The list remains semiconductor- and AI-cycle heavy. Keep core exposure selective, use the top-ranked names for short holding-period trades, and avoid chasing the weakest near-term setups.",
-    "dataNote": "TradingAgents yfinance-backed stock, indicator, and fundamentals tools. The run date is May 26, 2026; because May 25 was a U.S. market holiday and May 26 was not a completed daily bar at collection time, the latest completed daily rows are generally May 22, 2026.",
+    "dataNote": "Latest completed daily price bars come from Alpaca (alpaca-iex) through 2026-05-28. TradingAgents full reports, indicators, fundamentals, and news remain yfinance-backed, and the watchlist-level stance/ranking still comes from the portfolio snapshot generated on 2026-05-26.",
     "averageTradingScore": 52.8,
     "averageInvestmentScore": 72.5,
     "top5Symbols": [
@@ -31,14 +32,15 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "SNDK",
       "POWL",
       "AMD"
-    ]
+    ],
+    "latestMarketDate": "2026-05-28"
   },
   "stocks": [
     {
       "symbol": "AAPL",
-      "last": 308.7001,
+      "last": 312.45,
       "lastDisplay": "308.7001",
-      "chgPct": -0.04,
+      "chgPct": 0.49,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -61,6 +63,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 312.510009765625,
         "sma50": 273.86228759765623,
         "symbol": "AAPL"
+      },
+      "marketData": {
+        "close": 312.45,
+        "prevClose": 310.93,
+        "chgPct": 0.49,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -126,9 +134,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "APP",
-      "last": 512.5,
+      "last": 600.36,
       "lastDisplay": "512.5",
-      "chgPct": 6.4,
+      "chgPct": 5.69,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -151,6 +159,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 599.8900146484375,
         "sma50": 454.5102020263672,
         "symbol": "APP"
+      },
+      "marketData": {
+        "close": 600.36,
+        "prevClose": 568.05,
+        "chgPct": 5.69,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -216,9 +230,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "AVGO",
-      "last": 423.99,
+      "last": 426.55,
       "lastDisplay": "423.99",
-      "chgPct": 2.38,
+      "chgPct": 1.12,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -241,6 +255,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 426.5799865722656,
         "sma50": 383.0423834228516,
         "symbol": "AVGO"
+      },
+      "marketData": {
+        "close": 426.55,
+        "prevClose": 421.81,
+        "chgPct": 1.12,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -306,9 +326,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "CHAT",
-      "last": 94.21,
+      "last": 96.865,
       "lastDisplay": "94.21",
-      "chgPct": 4.86,
+      "chgPct": 3.33,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -331,6 +351,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 96.86000061035156,
         "sma50": 76.04719993591308,
         "symbol": "CHAT"
+      },
+      "marketData": {
+        "close": 96.865,
+        "prevClose": 93.74,
+        "chgPct": 3.33,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -396,9 +422,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "CRWD",
-      "last": 654.1419,
+      "last": 670.92,
       "lastDisplay": "654.1419",
-      "chgPct": -1.4,
+      "chgPct": 4.0,
       "color": "blue",
       "source": "etrade",
       "assetType": "",
@@ -421,6 +447,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 671.0,
         "sma50": 476.60919921875,
         "symbol": "CRWD"
+      },
+      "marketData": {
+        "close": 670.92,
+        "prevClose": 645.13,
+        "chgPct": 4.0,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -486,9 +518,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "CRWV",
-      "last": 106.4585,
+      "last": 106.87,
       "lastDisplay": "106.4585",
-      "chgPct": 0.92,
+      "chgPct": 2.51,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -511,6 +543,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 106.86000061035156,
         "sma50": 103.22629943847656,
         "symbol": "CRWV"
+      },
+      "marketData": {
+        "close": 106.87,
+        "prevClose": 104.25,
+        "chgPct": 2.51,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -576,9 +614,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "HOOD",
-      "last": 73.9216,
+      "last": 84.83,
       "lastDisplay": "73.9216",
-      "chgPct": 0.38,
+      "chgPct": 11.3,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -601,6 +639,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 84.83999633789062,
         "sma50": 76.39350006103516,
         "symbol": "HOOD"
+      },
+      "marketData": {
+        "close": 84.83,
+        "prevClose": 76.22,
+        "chgPct": 11.3,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -666,9 +710,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "LITE",
-      "last": 917.4285,
+      "last": 860.46,
       "lastDisplay": "917.4285",
-      "chgPct": -3.11,
+      "chgPct": -4.63,
       "color": "",
       "source": "etrade",
       "assetType": "Stock",
@@ -682,7 +726,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       },
       "decision": "Avoid near-term trade; No short-term entry; risk High. Trading score 31.1, investment score 78.0.",
       "risk": "High",
-      "horizon": "No short-term entry",
+      "horizon": "2026-05-28",
       "action": "Avoid near-term trade",
       "snapshot": {
         "Rank": "18",
@@ -705,6 +749,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 860.6199951171875,
         "sma50": 862.4111987304688,
         "symbol": "LITE"
+      },
+      "marketData": {
+        "close": 860.46,
+        "prevClose": 902.23,
+        "chgPct": -4.63,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -770,9 +820,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "MU",
-      "last": 914.75,
+      "last": 923.7,
       "lastDisplay": "914.75",
-      "chgPct": 21.8,
+      "chgPct": -0.5,
       "color": "",
       "source": "etrade",
       "assetType": "Stock",
@@ -786,7 +836,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       },
       "decision": "Avoid near-term trade; No short-term entry; risk High. Trading score 35.7, investment score 79.0.",
       "risk": "High",
-      "horizon": "No short-term entry",
+      "horizon": "2026-05-28",
       "action": "Avoid near-term trade",
       "snapshot": {
         "Rank": "17",
@@ -809,6 +859,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 923.52001953125,
         "sma50": 547.3463299560547,
         "symbol": "MU"
+      },
+      "marketData": {
+        "close": 923.7,
+        "prevClose": 928.3,
+        "chgPct": -0.5,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -874,9 +930,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "NVDA",
-      "last": 213.9508,
+      "last": 214.27,
       "lastDisplay": "213.9508",
-      "chgPct": -0.64,
+      "chgPct": 0.8,
       "color": "",
       "source": "etrade",
       "assetType": "Stock",
@@ -890,7 +946,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       },
       "decision": "Long-term buy, wait for better short-term setup; Watch for pullback; risk Medium. Trading score 73.0, investment score 94.0.",
       "risk": "Medium",
-      "horizon": "Watch for pullback",
+      "horizon": "2026-05-28",
       "action": "Long-term buy, wait for better short-term setup",
       "snapshot": {
         "Rank": "4",
@@ -913,6 +969,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 214.25,
         "sma50": 198.73400024414062,
         "symbol": "NVDA"
+      },
+      "marketData": {
+        "close": 214.27,
+        "prevClose": 212.575,
+        "chgPct": 0.8,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -978,9 +1040,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "OPEN",
-      "last": 4.4961,
+      "last": 5.06,
       "lastDisplay": "4.4961",
-      "chgPct": -0.66,
+      "chgPct": 6.75,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1003,6 +1065,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 5.070000171661377,
         "sma50": 4.907400026321411,
         "symbol": "OPEN"
+      },
+      "marketData": {
+        "close": 5.06,
+        "prevClose": 4.74,
+        "chgPct": 6.75,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1068,9 +1136,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "PLTR",
-      "last": 135.8639,
+      "last": 143.35,
       "lastDisplay": "135.8639",
-      "chgPct": -0.75,
+      "chgPct": 8.21,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1093,6 +1161,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 143.33999633789062,
         "sma50": 141.71789947509765,
         "symbol": "PLTR"
+      },
+      "marketData": {
+        "close": 143.35,
+        "prevClose": 132.47,
+        "chgPct": 8.21,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1158,9 +1232,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "QLD",
-      "last": 96.51,
+      "last": 97.74,
       "lastDisplay": "96.51",
-      "chgPct": 3.65,
+      "chgPct": 1.6,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1183,6 +1257,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 97.79000091552734,
         "sma50": 77.43508094787597,
         "symbol": "QLD"
+      },
+      "marketData": {
+        "close": 97.74,
+        "prevClose": 96.2,
+        "chgPct": 1.6,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1248,9 +1328,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "QTUM",
-      "last": 159.8717,
+      "last": 159.055,
       "lastDisplay": "159.8717",
-      "chgPct": 4.19,
+      "chgPct": 1.63,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1273,6 +1353,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 159.05999755859375,
         "sma50": 128.79826736450195,
         "symbol": "QTUM"
+      },
+      "marketData": {
+        "close": 159.055,
+        "prevClose": 156.51,
+        "chgPct": 1.63,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1338,9 +1424,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "RKLB",
-      "last": 144.2,
+      "last": 148.05,
       "lastDisplay": "144.2",
-      "chgPct": 6.22,
+      "chgPct": -1.49,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1363,6 +1449,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 148.02999877929688,
         "sma50": 89.77099983215332,
         "symbol": "RKLB"
+      },
+      "marketData": {
+        "close": 148.05,
+        "prevClose": 150.295,
+        "chgPct": -1.49,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1428,9 +1520,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "RKT",
-      "last": 14.09,
+      "last": 14.4,
       "lastDisplay": "14.09",
-      "chgPct": 2.1,
+      "chgPct": 0.84,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1453,6 +1545,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 14.399999618530273,
         "sma50": 14.60519998550415,
         "symbol": "RKT"
+      },
+      "marketData": {
+        "close": 14.4,
+        "prevClose": 14.28,
+        "chgPct": 0.84,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1518,9 +1616,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "SHLD",
-      "last": 66.1,
+      "last": 67.91,
       "lastDisplay": "66.1",
-      "chgPct": 1.49,
+      "chgPct": 3.66,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1543,6 +1641,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 67.91999816894531,
         "sma50": 69.52499946594239,
         "symbol": "SHLD"
+      },
+      "marketData": {
+        "close": 67.91,
+        "prevClose": 65.51,
+        "chgPct": 3.66,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1608,9 +1712,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "SMH",
-      "last": 604.91,
+      "last": 600.01,
       "lastDisplay": "604.91",
-      "chgPct": 4.96,
+      "chgPct": 0.75,
       "color": "",
       "source": "etrade",
       "assetType": "ETF",
@@ -1624,7 +1728,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       },
       "decision": "Long-term buy, wait for better short-term setup; Watch for pullback; risk Medium. Trading score 57.8, investment score 84.0.",
       "risk": "Medium",
-      "horizon": "Watch for pullback",
+      "horizon": "2026-05-28",
       "action": "Long-term buy, wait for better short-term setup",
       "snapshot": {
         "Rank": "8",
@@ -1647,6 +1751,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 599.8300170898438,
         "sma50": 480.62520080566406,
         "symbol": "SMH"
+      },
+      "marketData": {
+        "close": 600.01,
+        "prevClose": 595.555,
+        "chgPct": 0.75,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1712,9 +1822,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "SNDK",
-      "last": 1617.5494,
+      "last": 1643.07,
       "lastDisplay": "1617.5494",
-      "chgPct": 9.39,
+      "chgPct": 3.35,
       "color": "",
       "source": "etrade",
       "assetType": "Stock",
@@ -1728,7 +1838,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       },
       "decision": "Avoid near-term trade; No short-term entry; risk High. Trading score 23.7, investment score 70.0.",
       "risk": "High",
-      "horizon": "No short-term entry",
+      "horizon": "2026-05-28",
       "action": "Avoid near-term trade",
       "snapshot": {
         "Rank": "20",
@@ -1751,6 +1861,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 1641.6400146484375,
         "sma50": 1059.7797973632812,
         "symbol": "SNDK"
+      },
+      "marketData": {
+        "close": 1643.07,
+        "prevClose": 1589.8,
+        "chgPct": 3.35,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1816,9 +1932,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "SOFI",
-      "last": 16.02,
+      "last": 16.98,
       "lastDisplay": "16.02",
-      "chgPct": 2.56,
+      "chgPct": 5.01,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1841,6 +1957,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 16.969999313354492,
         "sma50": 16.68930000305176,
         "symbol": "SOFI"
+      },
+      "marketData": {
+        "close": 16.98,
+        "prevClose": 16.17,
+        "chgPct": 5.01,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1906,9 +2028,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "TSLA",
-      "last": 435.35,
+      "last": 442.04,
       "lastDisplay": "435.35",
-      "chgPct": 2.19,
+      "chgPct": 0.36,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -1931,6 +2053,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 442.1000061035156,
         "sma50": 390.93480041503904,
         "symbol": "TSLA"
+      },
+      "marketData": {
+        "close": 442.04,
+        "prevClose": 440.435,
+        "chgPct": 0.36,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -1996,9 +2124,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "URA",
-      "last": 51.0,
+      "last": 50.72,
       "lastDisplay": "51",
-      "chgPct": 4.21,
+      "chgPct": 1.12,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -2021,6 +2149,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 50.75,
         "sma50": 51.80000015258789,
         "symbol": "URA"
+      },
+      "marketData": {
+        "close": 50.72,
+        "prevClose": 50.16,
+        "chgPct": 1.12,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -2086,9 +2220,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "VRSN",
-      "last": 306.86,
+      "last": 295.99,
       "lastDisplay": "306.86",
-      "chgPct": -1.01,
+      "chgPct": 0.13,
       "color": "",
       "source": "etrade",
       "assetType": "",
@@ -2111,6 +2245,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "price": 296.1400146484375,
         "sma50": 272.63057098388674,
         "symbol": "VRSN"
+      },
+      "marketData": {
+        "close": 295.99,
+        "prevClose": 295.62,
+        "chgPct": 0.13,
+        "barDate": "2026-05-28"
       },
       "fullReport": {
         "available": true,
@@ -2176,9 +2316,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "POWL",
-      "last": 279.22,
+      "last": 289.12,
       "lastDisplay": "",
-      "chgPct": null,
+      "chgPct": -2.41,
       "color": "",
       "source": "local",
       "assetType": "Stock",
@@ -2192,7 +2332,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       },
       "decision": "Selective trade / watch entry; 3-10 trading days; risk High. Trading score 68.7, investment score 79.0.",
       "risk": "High",
-      "horizon": "3-10 trading days",
+      "horizon": "2026-05-28",
       "action": "Selective trade / watch entry",
       "snapshot": {
         "Rank": "22",
@@ -2210,6 +2350,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "Decision Snapshot": "Selective trade / watch entry; 3-10 trading days; risk High. Trading score 68.7, investment score 79.0."
       },
       "sma": null,
+      "marketData": {
+        "close": 289.12,
+        "prevClose": 296.27,
+        "chgPct": -2.41,
+        "barDate": "2026-05-28"
+      },
       "fullReport": {
         "available": true,
         "path": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\full_tradingagents_batch_2026-05-26\\2026-05-22_ollama_qwen3_1.7b\\POWL\\full_tradingagents_output.md",
@@ -2274,9 +2420,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "EUV",
-      "last": 27.27,
+      "last": 27.31,
       "lastDisplay": "",
-      "chgPct": -2.54,
+      "chgPct": -2.27,
       "color": "",
       "source": "local",
       "assetType": "ETF",
@@ -2294,6 +2440,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": null,
+      "marketData": {
+        "close": 27.31,
+        "prevClose": 27.945,
+        "chgPct": -2.27,
+        "barDate": "2026-05-28"
+      },
       "fullReport": {
         "available": true,
         "path": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\EUV_2026-05-29_grounded_full_report\\EUV_TradingAgents_Full_Report_2026-05-29.md",
@@ -2358,9 +2510,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "MSFT",
-      "last": 426.99,
+      "last": 426.97,
       "lastDisplay": "",
-      "chgPct": 3.47,
+      "chgPct": 3.46,
       "color": "",
       "source": "local",
       "assetType": "",
@@ -2378,6 +2530,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": null,
+      "marketData": {
+        "close": 426.97,
+        "prevClose": 412.71,
+        "chgPct": 3.46,
+        "barDate": "2026-05-28"
+      },
       "fullReport": {
         "available": true,
         "path": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\MSFT_2026-05-29_grounded_full_report\\MSFT_TradingAgents_Full_Report_2026-05-29.md",
@@ -2442,9 +2600,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "MRVL",
-      "last": 204.83,
+      "last": 204.62,
       "lastDisplay": "",
-      "chgPct": 3.09,
+      "chgPct": 2.98,
       "color": "",
       "source": "local",
       "assetType": "",
@@ -2462,6 +2620,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": null,
+      "marketData": {
+        "close": 204.62,
+        "prevClose": 198.69,
+        "chgPct": 2.98,
+        "barDate": "2026-05-28"
+      },
       "fullReport": {
         "available": true,
         "path": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\MRVL_2026-05-29_grounded_full_report\\MRVL_TradingAgents_Full_Report_2026-05-29.md",
@@ -2526,9 +2690,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "AMD",
-      "last": 467.51,
+      "last": 518.065,
       "lastDisplay": "",
-      "chgPct": null,
+      "chgPct": 4.54,
       "color": "",
       "source": "local",
       "assetType": "Stock",
@@ -2542,7 +2706,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       },
       "decision": "Selective trade / watch entry; 3-10 trading days; risk Medium-high. Trading score 74.0, investment score 78.0.",
       "risk": "Medium-high",
-      "horizon": "3-10 trading days",
+      "horizon": "2026-05-28",
       "action": "Selective trade / watch entry",
       "snapshot": {
         "Rank": "3",
@@ -2560,6 +2724,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "Decision Snapshot": "Selective trade / watch entry; 3-10 trading days; risk Medium-high. Trading score 74.0, investment score 78.0."
       },
       "sma": null,
+      "marketData": {
+        "close": 518.065,
+        "prevClose": 495.57,
+        "chgPct": 4.54,
+        "barDate": "2026-05-28"
+      },
       "fullReport": {
         "available": true,
         "path": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\full_tradingagents_batch_2026-05-26\\2026-05-22_ollama_qwen3_1.7b\\AMD\\full_tradingagents_output.md",
@@ -2624,9 +2794,9 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
     },
     {
       "symbol": "CRM",
-      "last": 176.17,
+      "last": 176.3,
       "lastDisplay": "",
-      "chgPct": -0.75,
+      "chgPct": -0.74,
       "color": "",
       "source": "local",
       "assetType": "",
@@ -2644,6 +2814,12 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": null,
+      "marketData": {
+        "close": 176.3,
+        "prevClose": 177.62,
+        "chgPct": -0.74,
+        "barDate": "2026-05-28"
+      },
       "fullReport": {
         "available": true,
         "path": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\CRM_2026-05-29_grounded_full_report\\CRM_TradingAgents_Full_Report_2026-05-29.md",
