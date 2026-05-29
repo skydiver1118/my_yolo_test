@@ -54,4 +54,14 @@ Refresh, publish to GitHub Pages, and send the completion email:
 python scripts\publish_tradingagents_dashboard.py --reports missing --email-to skydiver1118@gmail.com
 ```
 
+## On-Demand Backend
+
+The GitHub Pages dashboard can request a fresh TradingAgents run from this local backend:
+
+```powershell
+python scripts\serve_tradingagents_backend.py
+```
+
+Then open the GitHub Pages dashboard and type a ticker in the `Run` box. The page calls `http://127.0.0.1:8790/analyze`, waits for the local TradingAgents report to finish, and renders the returned full report in the same top panel and module tabs as the saved watchlist reports.
+
 The dashboard is plain HTML, CSS, JavaScript, and a generated `data/dashboard-data.js` file, so it can also be uploaded to a static host such as Cloudflare Pages or Netlify.

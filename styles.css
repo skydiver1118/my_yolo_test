@@ -78,6 +78,80 @@ input {
   gap: 10px;
 }
 
+.ticker-runner {
+  display: grid;
+  grid-template-columns: minmax(150px, 210px) auto minmax(120px, 190px);
+  align-items: center;
+  gap: 8px;
+}
+
+.ticker-runner label {
+  display: grid;
+  grid-template-columns: auto minmax(70px, 1fr);
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.ticker-runner span,
+.runner-status {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ticker-runner input {
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.ticker-runner button {
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.ticker-runner button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.runner-status {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.runner-status[data-tone="ready"] {
+  color: var(--green);
+}
+
+.runner-status[data-tone="busy"] {
+  color: var(--blue);
+}
+
+.runner-status[data-tone="warn"] {
+  color: var(--amber);
+}
+
+.runner-status[data-tone="error"] {
+  color: var(--red);
+}
+
 .search-box {
   display: grid;
   grid-template-columns: auto minmax(170px, 240px);
@@ -583,6 +657,14 @@ input {
   .topbar-actions {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .ticker-runner {
+    grid-template-columns: 1fr auto;
+  }
+
+  .runner-status {
+    grid-column: 1 / -1;
   }
 
   .search-box {

@@ -5,6 +5,8 @@ const state = {
   filter: "all",
   query: "",
   moduleKey: "market",
+  backendUrl: "http://127.0.0.1:8790",
+  runnerBusy: false,
 };
 
 const moduleOrder = [
@@ -54,6 +56,10 @@ const el = {
   coverageBadge: document.querySelector("#coverageBadge"),
   coverageText: document.querySelector("#coverageText"),
   coverageDonut: document.querySelector("#coverageDonut"),
+  tickerRunner: document.querySelector("#tickerRunner"),
+  runnerSymbol: document.querySelector("#runnerSymbol"),
+  runnerButton: document.querySelector("#runnerButton"),
+  runnerStatus: document.querySelector("#runnerStatus"),
 };
 
 function formatCurrency(value, fallback = "--") {
@@ -189,7 +195,8 @@ function renderWatchlist() {
       const active = stock.symbol === state.selectedSymbol ? " active" : "";
       const changeClass = stock.chgPct >= 0 ? "chg-up" : "chg-down";
       const reportMark = stock.fullReport.available ? "Full report" : "Coverage pending";
-      const sourceMark = stock.source === "local" ? "Local list" : "E*TRADE";
+      const sourceMark =
+        stock.source === "local" ? "Local list" : stock.source === "on-demand" ? "On-demand" : "E*TRADE";
       return `
         <button class="stock-row${active}" type="button" data-symbol="${stock.symbol}" role="option" aria-selected="${stock.symbol === state.selectedSymbol}">
           <div>
@@ -352,6 +359,75 @@ function renderAll() {
   renderPortfolioRail();
 }
 
+function setRunnerStatus(message, tone = "idle") {
+  el.runnerStatus.textContent = message;
+  el.runnerStatus.dataset.tone = tone;
+}
+
+function normalizeRunnerSymbol(value) {
+  return String(value || "")
+    .toUpperCase()
+    .replace(/[^A-Z0-9.\-]/g, "")
+    .slice(0, 15);
+}
+
+function updatePortfolioCounts() {
+  data.portfolio.watchlistCount = data.stocks.length;
+  data.portfolio.coverageCount = data.stocks.filter((stock) => stock.fullReport?.available).length;
+  data.portfolio.snapshotOverlap = data.portfolio.snapshotOverlap || [];
+}
+
+function upsertStock(stock) {
+  const symbol = stock.symbol.toUpperCase();
+  const index = data.stocks.findIndex((item) => item.symbol === symbol);
+  if (index >= 0) {
+    data.stocks[index] = stock;
+  } else {
+    data.stocks.unshift(stock);
+  }
+  updatePortfolioCounts();
+  state.selectedSymbol = symbol;
+  state.moduleKey = "market";
+  state.filter = "all";
+  document.querySelectorAll("[data-filter]").forEach((button) => button.classList.toggle("active", button.dataset.filter === "all"));
+  renderAll();
+}
+
+async function checkBackend() {
+  try {
+    const response = await fetch(`${state.backendUrl}/health`, { cache: "no-store" });
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    setRunnerStatus("Backend ready", "ready");
+  } catch {
+    setRunnerStatus("Start local backend on port 8790", "warn");
+  }
+}
+
+async function runOnDemandReport(symbol) {
+  if (state.runnerBusy) return;
+  state.runnerBusy = true;
+  el.runnerButton.disabled = true;
+  setRunnerStatus(`Running ${symbol}`, "busy");
+  try {
+    const response = await fetch(`${state.backendUrl}/analyze`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ symbol }),
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || !payload.ok || !payload.stock) {
+      throw new Error(payload.error || payload.log || `HTTP ${response.status}`);
+    }
+    upsertStock(payload.stock);
+    setRunnerStatus(`${symbol} report loaded`, "ready");
+  } catch (error) {
+    setRunnerStatus(error.message || "TradingAgents run failed", "error");
+  } finally {
+    state.runnerBusy = false;
+    el.runnerButton.disabled = false;
+  }
+}
+
 function selectStock(symbol) {
   if (!data.stocks.some((stock) => stock.symbol === symbol)) return;
   state.selectedSymbol = symbol;
@@ -387,6 +463,22 @@ el.stockSearch.addEventListener("input", (event) => {
   renderWatchlist();
 });
 
+el.runnerSymbol.addEventListener("input", (event) => {
+  event.target.value = normalizeRunnerSymbol(event.target.value);
+});
+
+el.tickerRunner.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const symbol = normalizeRunnerSymbol(el.runnerSymbol.value);
+  if (!symbol) {
+    setRunnerStatus("Enter a ticker", "warn");
+    return;
+  }
+  el.runnerSymbol.value = symbol;
+  runOnDemandReport(symbol);
+});
+
 state.selectedSymbol =
   data.stocks.find((stock) => stock.fullReport.available)?.symbol || data.stocks[0]?.symbol || null;
 renderAll();
+checkBackend();

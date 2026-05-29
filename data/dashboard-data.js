@@ -1,5 +1,5 @@
 window.TRADING_AGENTS_DASHBOARD_DATA = {
-  "generatedAt": "2026-05-28T06:51:12-04:00",
+  "generatedAt": "2026-05-28T21:54:20-04:00",
   "sources": {
     "etradeCsv": "C:\\Users\\skydiver1118\\Downloads\\etrade_26May2026_2040.csv",
     "localWatchlist": "C:\\Users\\skydiver1118\\Documents\\New project\\tradingagents_dashboard\\watchlist.local.json",
@@ -55,10 +55,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 310.8500061035156,
-        "sma50": 272.69200714111327,
+        "price": 312.510009765625,
+        "sma50": 273.86228759765623,
         "symbol": "AAPL"
       },
       "fullReport": {
@@ -145,10 +145,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 567.8300170898438,
-        "sma50": 451.69420166015624,
+        "price": 599.8900146484375,
+        "sma50": 454.5102020263672,
         "symbol": "APP"
       },
       "fullReport": {
@@ -235,10 +235,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 421.8599853515625,
-        "sma50": 380.9235314941406,
+        "price": 426.5799865722656,
+        "sma50": 383.0423834228516,
         "symbol": "AVGO"
       },
       "fullReport": {
@@ -325,10 +325,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 93.80000305175781,
-        "sma50": 75.4157999420166,
+        "price": 96.86000061035156,
+        "sma50": 76.04719993591308,
         "symbol": "CHAT"
       },
       "fullReport": {
@@ -415,10 +415,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 645.3599853515625,
-        "sma50": 471.85319946289064,
+        "price": 671.0,
+        "sma50": 476.60919921875,
         "symbol": "CRWD"
       },
       "fullReport": {
@@ -505,10 +505,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 104.2699966430664,
-        "sma50": 102.73149948120117,
+        "price": 106.86000061035156,
+        "sma50": 103.22629943847656,
         "symbol": "CRWV"
       },
       "fullReport": {
@@ -595,10 +595,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
-        "below_sma50": true,
-        "price": 76.2300033569336,
-        "sma50": 76.24370010375976,
+        "bar_date": "2026-05-28",
+        "below_sma50": false,
+        "price": 84.83999633789062,
+        "sma50": 76.39350006103516,
         "symbol": "HOOD"
       },
       "fullReport": {
@@ -699,10 +699,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "Decision Snapshot": "Avoid near-term trade; No short-term entry; risk High. Trading score 31.1, investment score 78.0."
       },
       "sma": {
-        "bar_date": "2026-05-27",
-        "below_sma50": false,
-        "price": 902.3099975585938,
-        "sma50": 858.1899987792968,
+        "bar_date": "2026-05-28",
+        "below_sma50": true,
+        "price": 860.6199951171875,
+        "sma50": 862.4111987304688,
         "symbol": "LITE"
       },
       "fullReport": {
@@ -803,10 +803,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "Decision Snapshot": "Avoid near-term trade; No short-term entry; risk High. Trading score 35.7, investment score 79.0."
       },
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 928.4099731445312,
-        "sma50": 538.1058520507812,
+        "price": 923.52001953125,
+        "sma50": 547.3463299560547,
         "symbol": "MU"
       },
       "fullReport": {
@@ -907,10 +907,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "Decision Snapshot": "Long-term buy, wait for better short-term setup; Watch for pullback; risk Medium. Trading score 73.0, investment score 94.0."
       },
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 212.60000610351562,
-        "sma50": 198.08760009765626,
+        "price": 214.25,
+        "sma50": 198.73400024414062,
         "symbol": "NVDA"
       },
       "fullReport": {
@@ -997,10 +997,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
-        "below_sma50": true,
-        "price": 4.75,
-        "sma50": 4.917200021743774,
+        "bar_date": "2026-05-28",
+        "below_sma50": false,
+        "price": 5.070000171661377,
+        "sma50": 4.907400026321411,
         "symbol": "OPEN"
       },
       "fullReport": {
@@ -1087,10 +1087,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
-        "below_sma50": true,
-        "price": 132.50999450683594,
-        "sma50": 141.95269958496092,
+        "bar_date": "2026-05-28",
+        "below_sma50": false,
+        "price": 143.33999633789062,
+        "sma50": 141.71789947509765,
         "symbol": "PLTR"
       },
       "fullReport": {
@@ -1177,10 +1177,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 96.19000244140625,
-        "sma50": 76.8160033416748,
+        "price": 97.79000091552734,
+        "sma50": 77.43508094787597,
         "symbol": "QLD"
       },
       "fullReport": {
@@ -1267,10 +1267,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 156.50999450683594,
-        "sma50": 127.84554779052735,
+        "price": 159.05999755859375,
+        "sma50": 128.79826736450195,
         "symbol": "QTUM"
       },
       "fullReport": {
@@ -1357,10 +1357,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 150.22999572753906,
-        "sma50": 88.38219978332519,
+        "price": 148.02999877929688,
+        "sma50": 89.77099983215332,
         "symbol": "RKLB"
       },
       "fullReport": {
@@ -1447,10 +1447,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": true,
-        "price": 14.270000457763672,
-        "sma50": 14.613999996185303,
+        "price": 14.399999618530273,
+        "sma50": 14.60519998550415,
         "symbol": "RKT"
       },
       "fullReport": {
@@ -1537,10 +1537,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": true,
-        "price": 65.52999877929688,
-        "sma50": 69.705199508667,
+        "price": 67.91999816894531,
+        "sma50": 69.52499946594239,
         "symbol": "SHLD"
       },
       "fullReport": {
@@ -1641,10 +1641,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "Decision Snapshot": "Long-term buy, wait for better short-term setup; Watch for pullback; risk Medium. Trading score 57.8, investment score 84.0."
       },
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 595.5,
-        "sma50": 476.56620056152343,
+        "price": 599.8300170898438,
+        "sma50": 480.62520080566406,
         "symbol": "SMH"
       },
       "fullReport": {
@@ -1745,10 +1745,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         "Decision Snapshot": "Avoid near-term trade; No short-term entry; risk High. Trading score 23.7, investment score 70.0."
       },
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 1589.93994140625,
-        "sma50": 1041.3503967285155,
+        "price": 1641.6400146484375,
+        "sma50": 1059.7797973632812,
         "symbol": "SNDK"
       },
       "fullReport": {
@@ -1835,10 +1835,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
-        "below_sma50": true,
-        "price": 16.170000076293945,
-        "sma50": 16.697300033569334,
+        "bar_date": "2026-05-28",
+        "below_sma50": false,
+        "price": 16.969999313354492,
+        "sma50": 16.68930000305176,
         "symbol": "SOFI"
       },
       "fullReport": {
@@ -1925,10 +1925,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 440.3599853515625,
-        "sma50": 390.0782000732422,
+        "price": 442.1000061035156,
+        "sma50": 390.93480041503904,
         "symbol": "TSLA"
       },
       "fullReport": {
@@ -2015,10 +2015,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": true,
-        "price": 50.15999984741211,
-        "sma50": 51.79540016174317,
+        "price": 50.75,
+        "sma50": 51.80000015258789,
         "symbol": "URA"
       },
       "fullReport": {
@@ -2105,10 +2105,10 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "action": "Grounded full report",
       "snapshot": null,
       "sma": {
-        "bar_date": "2026-05-27",
+        "bar_date": "2026-05-28",
         "below_sma50": false,
-        "price": 295.6499938964844,
-        "sma50": 271.53792175292966,
+        "price": 296.1400146484375,
+        "sma50": 272.63057098388674,
         "symbol": "VRSN"
       },
       "fullReport": {
