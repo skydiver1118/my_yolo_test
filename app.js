@@ -360,7 +360,7 @@ function renderPortfolioRail() {
       return `
         <div class="top-name">
           <button type="button" data-symbol="${symbol}" ${inList ? "" : "disabled"}>${symbol}</button>
-          <span class="stock-sub">${inList ? "in E*TRADE list" : "snapshot only"}</span>
+          <span class="stock-sub">${inList ? "in E*TRADE list" : "not in current watchlist"}</span>
         </div>
       `;
     })

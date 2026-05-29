@@ -230,7 +230,8 @@ input {
   top: 16px;
   align-self: start;
   max-height: calc(100vh - 34px);
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .panel-heading {
