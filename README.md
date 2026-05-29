@@ -19,6 +19,12 @@ Add persistent manual symbols in `watchlist.local.json`. These are merged with t
 
 ## Refresh
 
+TradingAgents/yfinance daily bars use an exclusive end date. In practice:
+
+- A run requested as `2026-05-28` usually uses the latest completed bar through `2026-05-27`.
+- To publish the `2026-05-28` closing bar, run after Yahoo has posted that bar and request `2026-05-29`, or let the weekday 6 AM automation run on `2026-05-29`.
+- The safest refresh time for completed daily bars is the next trading morning around 6 AM Eastern. Intraday/manual runs should be treated as using the latest completed daily bar, not a live same-day close.
+
 Run this after new TradingAgents reports or a new E*TRADE export is available:
 
 ```powershell
