@@ -419,16 +419,25 @@ input {
 
 .report-layout {
   display: grid;
-  grid-template-columns: minmax(300px, 38%) minmax(0, 1fr);
+  grid-template-columns: 1fr;
   min-height: 520px;
 }
 
+.report-summary-grid {
+  display: grid;
+  grid-template-columns: minmax(280px, 1.15fr) minmax(280px, 1fr);
+  gap: 18px;
+  padding: 18px;
+  border-bottom: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(248, 250, 252, 0.8), rgba(255, 255, 255, 0.96));
+}
+
 .decision-card {
-  margin: 18px;
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fbfcfe;
+  min-width: 0;
 }
 
 .decision-card p:last-child {
@@ -438,11 +447,11 @@ input {
 }
 
 .score-canvas-wrap {
-  margin: 0 18px 18px;
   padding: 10px;
   border: 1px solid var(--line);
   border-radius: 8px;
   background: #fbfcfe;
+  min-width: 0;
 }
 
 #scoreCanvas {
@@ -462,7 +471,6 @@ input {
 #fullReport {
   max-height: 650px;
   overflow: auto;
-  border-left: 1px solid var(--line);
 }
 
 .markdown-body h1,
@@ -676,8 +684,11 @@ input {
   }
 
   .dashboard-grid,
-  .report-layout,
   .insight-rail {
+    grid-template-columns: 1fr;
+  }
+
+  .report-summary-grid {
     grid-template-columns: 1fr;
   }
 
@@ -693,8 +704,6 @@ input {
 
   #fullReport {
     max-height: 520px;
-    border-left: 0;
-    border-top: 1px solid var(--line);
   }
 
   .metric-strip {
