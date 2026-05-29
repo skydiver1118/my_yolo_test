@@ -555,6 +555,8 @@ input {
   display: grid;
   gap: 0;
   background: #fafafa;
+  padding-bottom: 12px;
+  scroll-padding-bottom: 12px;
 }
 
 .rail-block {
@@ -564,6 +566,7 @@ input {
 
 .rail-block:last-child {
   border-bottom: 0;
+  margin-bottom: 12px;
 }
 
 .muted-copy {

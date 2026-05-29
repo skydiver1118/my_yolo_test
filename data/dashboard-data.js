@@ -1,5 +1,5 @@
 window.TRADING_AGENTS_DASHBOARD_DATA = {
-  "generatedAt": "2026-05-29T09:12:45-04:00",
+  "generatedAt": "2026-05-29T09:15:47-04:00",
   "sources": {
     "etradeCsv": "C:\\Users\\skydiver1118\\Downloads\\etrade_26May2026_2040.csv",
     "localWatchlist": "C:\\Users\\skydiver1118\\Documents\\New project\\tradingagents_dashboard\\watchlist.local.json",
