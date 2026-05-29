@@ -446,6 +446,25 @@ async function runOnDemandReport(symbol) {
   }
 }
 
+function isUnknownEndpoint(response, payload) {
+  const message = String(payload?.error || payload?.message || "");
+  return response.status === 404 || /unknown endpoint/i.test(message);
+}
+
+async function analyzeWithWatchlistFallback(symbol) {
+  const response = await fetch(`${state.backendUrl}/analyze`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ symbol, persistToWatchlist: true }),
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok || !payload.ok || !payload.stock) {
+    throw new Error(payload.error || payload.log || `HTTP ${response.status}`);
+  }
+  upsertStock(payload.stock);
+  setRunnerStatus(payload.message || `${symbol} added to watchlist`, "ready");
+}
+
 async function addToWatchlist(symbol) {
   if (state.runnerBusy) return;
   state.runnerBusy = true;
@@ -459,6 +478,10 @@ async function addToWatchlist(symbol) {
       body: JSON.stringify({ symbol }),
     });
     const payload = await response.json().catch(() => ({}));
+    if (isUnknownEndpoint(response, payload)) {
+      await analyzeWithWatchlistFallback(symbol);
+      return;
+    }
     if (!response.ok || !payload.ok || !payload.stock) {
       throw new Error(payload.error || payload.log || `HTTP ${response.status}`);
     }
