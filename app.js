@@ -67,7 +67,8 @@ function formatCurrency(value, fallback = "--") {
   return new Intl.NumberFormat("en-US", {
     style: "currency",
     currency: "USD",
-    maximumFractionDigits: value >= 100 ? 2 : 4,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(value);
 }
 
@@ -89,6 +90,18 @@ function inlineMarkdown(value) {
   return escapeHtml(value)
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
     .replace(/`([^`]+)`/g, "<code>$1</code>");
+}
+
+function roundPriceLikeText(markdown) {
+  const priceContext =
+    /\b(price|closed at|close|sma|ema|vwma|bollinger|atr|52 week|day average|analyst target|target data|book value)\b/i;
+  return String(markdown || "")
+    .split(/\r?\n/)
+    .map((line) => {
+      if (!priceContext.test(line)) return line;
+      return line.replace(/(-?\d+\.\d{3,})/g, (match) => Number(match).toFixed(2));
+    })
+    .join("\n");
 }
 
 function renderTable(lines, startIndex) {
@@ -114,6 +127,7 @@ function renderTable(lines, startIndex) {
 }
 
 function markdownToHtml(markdown) {
+  markdown = roundPriceLikeText(markdown);
   if (!markdown || !markdown.trim()) return '<div class="empty-state">No report text is available for this section.</div>';
   const lines = markdown.split(/\r?\n/);
   const html = [];
