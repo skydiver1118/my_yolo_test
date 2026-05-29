@@ -210,7 +210,7 @@ function renderWatchlist() {
       const changeClass = stock.chgPct >= 0 ? "chg-up" : "chg-down";
       const reportMark = stock.fullReport.available ? "Full report" : "Coverage pending";
       const sourceMark =
-        stock.source === "local" ? "Local list" : stock.source === "on-demand" ? "On-demand" : "E*TRADE";
+        stock.source === "local" ? "Local list" : stock.source === "on-demand" ? "On-demand" : "Owned watchlist";
       return `
         <button class="stock-row${active}" type="button" data-symbol="${stock.symbol}" role="option" aria-selected="${stock.symbol === state.selectedSymbol}">
           <div>
@@ -239,11 +239,11 @@ function buildUnavailableReport(stock) {
   return `
 # ${stock.symbol} TradingAgents Coverage Pending
 
-No full TradingAgents artifact was found for this E*TRADE ticker in the local report folders scanned by this dashboard.
+No full TradingAgents artifact was found for this owned-watchlist ticker in the local report folders scanned by this dashboard.
 
 ## Available Position Context
-- E*TRADE last: ${formatCurrency(stock.last, stock.lastDisplay || "--")}
-- E*TRADE day change: ${stock.chgPct === null ? "--" : `${stock.chgPct.toFixed(2)}%`}
+- Owned-watchlist last: ${formatCurrency(stock.last, stock.lastDisplay || "--")}
+- Owned-watchlist day change: ${stock.chgPct === null ? "--" : `${stock.chgPct.toFixed(2)}%`}
 - Dashboard flag: ${stock.flag} (${stock.flagSource})
 - ${smaText}
 
@@ -351,7 +351,7 @@ function renderPortfolioRail() {
   el.portfolioDecision.textContent = portfolio.decision || "No portfolio decision text was found.";
   el.dataNote.textContent = portfolio.dataNote || "No data note was provided.";
   el.coverageBadge.textContent = `${portfolio.coverageCount}/${portfolio.watchlistCount} full`;
-  el.coverageText.textContent = `${portfolio.coverageCount} full TradingAgents reports mapped to ${portfolio.watchlistCount} E*TRADE tickers. ${portfolio.snapshotOverlap.length} tickers also have portfolio snapshot rows.`;
+  el.coverageText.textContent = `${portfolio.coverageCount} full TradingAgents reports mapped to ${portfolio.watchlistCount} owned-watchlist tickers. ${portfolio.snapshotOverlap.length} tickers also have portfolio snapshot rows.`;
   el.coverageDonut.style.setProperty("--coverage-angle", `${pct * 3.6}deg`);
   el.coverageDonut.querySelector("span").textContent = `${pct}%`;
   el.topNames.innerHTML = (portfolio.top5Symbols || [])
@@ -360,7 +360,7 @@ function renderPortfolioRail() {
       return `
         <div class="top-name">
           <button type="button" data-symbol="${symbol}" ${inList ? "" : "disabled"}>${symbol}</button>
-          <span class="stock-sub">${inList ? "in E*TRADE list" : "not in current watchlist"}</span>
+          <span class="stock-sub">${inList ? "in owned watchlist" : "not in current watchlist"}</span>
         </div>
       `;
     })
