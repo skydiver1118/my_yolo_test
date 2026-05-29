@@ -80,7 +80,7 @@ input {
 
 .ticker-runner {
   display: grid;
-  grid-template-columns: minmax(150px, 210px) auto minmax(120px, 190px);
+  grid-template-columns: minmax(150px, 210px) auto auto minmax(120px, 220px);
   align-items: center;
   gap: 8px;
 }
@@ -122,6 +122,12 @@ input {
   cursor: pointer;
   font-size: 12px;
   font-weight: 900;
+}
+
+#watchlistButton {
+  background: #eef4fb;
+  color: var(--blue);
+  border: 1px solid rgba(38, 98, 217, 0.18);
 }
 
 .ticker-runner button:disabled {
@@ -682,7 +688,7 @@ input {
   }
 
   .ticker-runner {
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr auto auto;
   }
 
   .runner-status {

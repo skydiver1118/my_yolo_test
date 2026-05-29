@@ -59,6 +59,7 @@ const el = {
   tickerRunner: document.querySelector("#tickerRunner"),
   runnerSymbol: document.querySelector("#runnerSymbol"),
   runnerButton: document.querySelector("#runnerButton"),
+  watchlistButton: document.querySelector("#watchlistButton"),
   runnerStatus: document.querySelector("#runnerStatus"),
 };
 
@@ -422,6 +423,7 @@ async function runOnDemandReport(symbol) {
   if (state.runnerBusy) return;
   state.runnerBusy = true;
   el.runnerButton.disabled = true;
+  el.watchlistButton.disabled = true;
   setRunnerStatus(`Running ${symbol}`, "busy");
   try {
     const response = await fetch(`${state.backendUrl}/analyze`, {
@@ -440,6 +442,34 @@ async function runOnDemandReport(symbol) {
   } finally {
     state.runnerBusy = false;
     el.runnerButton.disabled = false;
+    el.watchlistButton.disabled = false;
+  }
+}
+
+async function addToWatchlist(symbol) {
+  if (state.runnerBusy) return;
+  state.runnerBusy = true;
+  el.runnerButton.disabled = true;
+  el.watchlistButton.disabled = true;
+  setRunnerStatus(`Adding ${symbol} to watchlist`, "busy");
+  try {
+    const response = await fetch(`${state.backendUrl}/watchlist`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ symbol }),
+    });
+    const payload = await response.json().catch(() => ({}));
+    if (!response.ok || !payload.ok || !payload.stock) {
+      throw new Error(payload.error || payload.log || `HTTP ${response.status}`);
+    }
+    upsertStock(payload.stock);
+    setRunnerStatus(payload.message || `${symbol} added to watchlist`, "ready");
+  } catch (error) {
+    setRunnerStatus(error.message || "Watchlist update failed", "error");
+  } finally {
+    state.runnerBusy = false;
+    el.runnerButton.disabled = false;
+    el.watchlistButton.disabled = false;
   }
 }
 
@@ -491,6 +521,17 @@ el.tickerRunner.addEventListener("submit", (event) => {
   }
   el.runnerSymbol.value = symbol;
   runOnDemandReport(symbol);
+});
+
+el.watchlistButton.addEventListener("click", () => {
+  const typed = normalizeRunnerSymbol(el.runnerSymbol.value);
+  const symbol = typed || state.selectedSymbol;
+  if (!symbol) {
+    setRunnerStatus("Enter or select a ticker", "warn");
+    return;
+  }
+  el.runnerSymbol.value = symbol;
+  addToWatchlist(symbol);
 });
 
 state.selectedSymbol =
