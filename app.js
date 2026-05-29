@@ -344,6 +344,7 @@ function renderSelectedStock() {
 
 function renderPortfolioRail() {
   const portfolio = data.portfolio;
+  const ownedCount = data.stocks.filter((stock) => stock.source === "etrade").length;
   const pct = portfolio.watchlistCount
     ? Math.round((portfolio.coverageCount / portfolio.watchlistCount) * 100)
     : 0;
@@ -351,7 +352,7 @@ function renderPortfolioRail() {
   el.portfolioDecision.textContent = portfolio.decision || "No portfolio decision text was found.";
   el.dataNote.textContent = portfolio.dataNote || "No data note was provided.";
   el.coverageBadge.textContent = `${portfolio.coverageCount}/${portfolio.watchlistCount} full`;
-  el.coverageText.textContent = `${portfolio.coverageCount} full TradingAgents reports mapped to ${portfolio.watchlistCount} owned-watchlist tickers. ${portfolio.snapshotOverlap.length} tickers also have portfolio snapshot rows.`;
+  el.coverageText.textContent = `${portfolio.coverageCount} full TradingAgents reports mapped to ${portfolio.watchlistCount} current watchlist tickers, including ${ownedCount} owned-watchlist names. ${portfolio.snapshotOverlap.length} tickers also have portfolio snapshot rows.`;
   el.coverageDonut.style.setProperty("--coverage-angle", `${pct * 3.6}deg`);
   el.coverageDonut.querySelector("span").textContent = `${pct}%`;
   el.topNames.innerHTML = (portfolio.top5Symbols || [])
