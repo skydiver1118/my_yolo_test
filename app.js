@@ -246,10 +246,11 @@ function renderPriceChart(stock) {
 
   el.chartRange.textContent = `${formatShortDate(bars[0].date)} to ${formatShortDate(bars[bars.length - 1].date)}`;
 
-  const closeValues = bars.map((bar) => Number(bar.close)).filter((value) => !Number.isNaN(value));
+  const lowValues = bars.map((bar) => Number(bar.low)).filter((value) => !Number.isNaN(value));
+  const highValues = bars.map((bar) => Number(bar.high)).filter((value) => !Number.isNaN(value));
   const volumeValues = bars.map((bar) => Number(bar.volume)).filter((value) => !Number.isNaN(value));
-  const minClose = Math.min(...closeValues);
-  const maxClose = Math.max(...closeValues);
+  const minLow = Math.min(...lowValues);
+  const maxHigh = Math.max(...highValues);
   const maxVolume = Math.max(...volumeValues, 1);
 
   const padding = { top: 26, right: 18, bottom: 30, left: 56 };
@@ -260,9 +261,9 @@ function renderPriceChart(stock) {
   const volumeTop = priceBottom + gap;
   const usableWidth = width - padding.left - padding.right;
   const xStep = bars.length > 1 ? usableWidth / (bars.length - 1) : usableWidth;
-  const closeRange = maxClose - minClose || Math.max(1, maxClose * 0.04);
-  const priceMin = minClose - closeRange * 0.12;
-  const priceMax = maxClose + closeRange * 0.12;
+  const priceRange = maxHigh - minLow || Math.max(1, maxHigh * 0.04);
+  const priceMin = minLow - priceRange * 0.12;
+  const priceMax = maxHigh + priceRange * 0.12;
 
   ctx.fillStyle = "#fbfcfe";
   ctx.fillRect(0, 0, width, height);
@@ -291,34 +292,35 @@ function renderPriceChart(stock) {
     return { x, y, close };
   });
 
-  const areaGradient = ctx.createLinearGradient(0, padding.top, 0, priceBottom);
-  areaGradient.addColorStop(0, "rgba(38, 98, 217, 0.22)");
-  areaGradient.addColorStop(1, "rgba(38, 98, 217, 0.02)");
+  const candleWidth = Math.max(5, Math.min(18, usableWidth / Math.max(bars.length * 1.5, 10)));
+  bars.forEach((bar, index) => {
+    const x = padding.left + xStep * index;
+    const open = Number(bar.open);
+    const high = Number(bar.high);
+    const low = Number(bar.low);
+    const close = Number(bar.close);
+    const highY = padding.top + ((priceMax - high) / (priceMax - priceMin || 1)) * priceHeight;
+    const lowY = padding.top + ((priceMax - low) / (priceMax - priceMin || 1)) * priceHeight;
+    const openY = padding.top + ((priceMax - open) / (priceMax - priceMin || 1)) * priceHeight;
+    const closeY = padding.top + ((priceMax - close) / (priceMax - priceMin || 1)) * priceHeight;
+    const rising = close >= open;
+    ctx.strokeStyle = rising ? "#11824d" : "#c74343";
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.moveTo(x, highY);
+    ctx.lineTo(x, lowY);
+    ctx.stroke();
 
-  ctx.beginPath();
-  points.forEach((point, index) => {
-    if (index === 0) ctx.moveTo(point.x, point.y);
-    else ctx.lineTo(point.x, point.y);
+    const bodyTop = Math.min(openY, closeY);
+    const bodyHeight = Math.max(2, Math.abs(closeY - openY));
+    ctx.fillStyle = rising ? "rgba(17, 130, 77, 0.78)" : "rgba(199, 67, 67, 0.8)";
+    ctx.fillRect(x - candleWidth / 2, bodyTop, candleWidth, bodyHeight);
   });
-  ctx.lineTo(points[points.length - 1].x, priceBottom);
-  ctx.lineTo(points[0].x, priceBottom);
-  ctx.closePath();
-  ctx.fillStyle = areaGradient;
-  ctx.fill();
-
-  ctx.beginPath();
-  points.forEach((point, index) => {
-    if (index === 0) ctx.moveTo(point.x, point.y);
-    else ctx.lineTo(point.x, point.y);
-  });
-  ctx.strokeStyle = "#2662d9";
-  ctx.lineWidth = 2.5;
-  ctx.stroke();
 
   points.slice(-1).forEach((point) => {
-    ctx.fillStyle = "#2662d9";
+    ctx.fillStyle = "#1d4ed8";
     ctx.beginPath();
-    ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+    ctx.arc(point.x, point.y, 3.5, 0, Math.PI * 2);
     ctx.fill();
   });
 
@@ -394,8 +396,34 @@ function renderLinkRow(line) {
   return `<p class="link-row"><span>Source link</span><a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(url)}</a></p>`;
 }
 
-function renderReadableBlock(lines) {
+function renderMarketMetricsBlock(lines) {
+  const parts = lines.join(" ").split(";").map((part) => part.trim()).filter(Boolean);
+  const items = parts.map((part) => `<li>${inlineMarkdown(part)}</li>`).join("");
+  return `<ul class="metric-bullets">${items}</ul>`;
+}
+
+function renderSentimentSummaryTable(line) {
+  const introMatch = line.match(/^(.*?)(StockTwits:\s*.+)$/i);
+  const intro = introMatch ? introMatch[1].trim() : "";
+  const summary = introMatch ? introMatch[2].trim() : line.trim();
+  const entries = [...summary.matchAll(/(Bullish|Bearish|Unlabeled|Total):\s*([^-]+?)(?=(?:\s*-\s*(?:Bullish|Bearish|Unlabeled|Total):)|$)/gi)];
+  if (!entries.length) {
+    return `<p>${inlineMarkdown(line)}</p>`;
+  }
+  const rows = entries
+    .map(([, label, value]) => `<tr><th>${inlineMarkdown(label)}</th><td>${inlineMarkdown(value.trim())}</td></tr>`)
+    .join("");
+  return `${intro ? `<p>${inlineMarkdown(intro)}</p>` : ""}<table class="summary-table"><tbody>${rows}</tbody></table>`;
+}
+
+function renderReadableBlock(moduleKey, lines) {
   if (!lines.length) return "";
+  if (moduleKey === "market" && lines.length === 1 && lines[0].includes(";")) {
+    return renderMarketMetricsBlock(lines);
+  }
+  if (moduleKey === "sentiment" && lines.length === 1 && /StockTwits:\s*/i.test(lines[0])) {
+    return renderSentimentSummaryTable(lines[0]);
+  }
   if (lines.every((line) => /^\s*\|.*\|\s*$/.test(line))) {
     return renderTable(lines, 0).html;
   }
@@ -449,7 +477,7 @@ function renderReadableModule(moduleKey, markdown) {
   return sections
     .map((section, index) => {
       const body = splitBlocks(section.lines)
-        .map((block) => renderReadableBlock(block))
+        .map((block) => renderReadableBlock(moduleKey, block))
         .join("");
       const headingHtml = section.title
         ? `<header class="module-section-head"><h3>${inlineMarkdown(section.title)}</h3></header>`
