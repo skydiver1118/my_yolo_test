@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TradingAgents Stock Command Center</title>
-    <link rel="stylesheet" href="styles.css?v=20260530115142" />
+    <link rel="stylesheet" href="styles.css?v=20260530120808" />
   </head>
   <body>
     <div class="app-shell">
@@ -88,6 +88,16 @@
             </div>
 
             <div class="report-layout">
+              <section class="chart-panel" aria-label="Recent price chart">
+                <div class="chart-panel-head">
+                  <div>
+                    <p class="eyebrow">Last month</p>
+                    <h3>Daily chart + volume</h3>
+                  </div>
+                  <span id="chartRange" class="path-chip">--</span>
+                </div>
+                <canvas id="priceChartCanvas" width="1280" height="340" aria-label="Daily price and volume chart"></canvas>
+              </section>
               <div class="report-summary-grid">
                 <div class="decision-card">
                   <p class="eyebrow">Decision snapshot</p>
@@ -142,7 +152,7 @@
       </main>
     </div>
 
-    <script src="data/dashboard-data.js?v=20260530115142"></script>
-    <script src="app.js?v=20260530115142"></script>
+    <script src="data/dashboard-data.js?v=20260530120808"></script>
+    <script src="app.js?v=20260530120808"></script>
   </body>
 </html>

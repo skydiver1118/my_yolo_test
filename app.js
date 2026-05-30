@@ -43,6 +43,8 @@ const el = {
   metricTrading: document.querySelector("#metricTrading"),
   metricInvestment: document.querySelector("#metricInvestment"),
   metricRisk: document.querySelector("#metricRisk"),
+  chartRange: document.querySelector("#chartRange"),
+  priceChartCanvas: document.querySelector("#priceChartCanvas"),
   decisionText: document.querySelector("#decisionText"),
   decisionNextEarnings: document.querySelector("#decisionNextEarnings"),
   fullReport: document.querySelector("#fullReport"),
@@ -79,6 +81,14 @@ function formatScore(value) {
   return Number(value).toFixed(1);
 }
 
+function formatCompactNumber(value, fallback = "--") {
+  if (value === null || value === undefined || Number.isNaN(value)) return fallback;
+  return new Intl.NumberFormat("en-US", {
+    notation: "compact",
+    maximumFractionDigits: 1,
+  }).format(value);
+}
+
 function formatDate(value, fallback = "--") {
   if (!value) return fallback;
   const parsed = new Date(`${value}T12:00:00`);
@@ -87,6 +97,16 @@ function formatDate(value, fallback = "--") {
     month: "short",
     day: "numeric",
     year: "numeric",
+  }).format(parsed);
+}
+
+function formatShortDate(value, fallback = "--") {
+  if (!value) return fallback;
+  const parsed = new Date(`${value}T12:00:00`);
+  if (Number.isNaN(parsed.getTime())) return String(value);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
   }).format(parsed);
 }
 
@@ -99,10 +119,19 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function linkifyUrls(value) {
+  return value.replace(
+    /(https?:\/\/[^\s<]+)/g,
+    '<a href="$1" target="_blank" rel="noreferrer">$1</a>'
+  );
+}
+
 function inlineMarkdown(value) {
-  return escapeHtml(value)
+  return linkifyUrls(
+    escapeHtml(value)
     .replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>")
-    .replace(/`([^`]+)`/g, "<code>$1</code>");
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+  );
 }
 
 function roundPriceLikeText(markdown) {
@@ -191,6 +220,243 @@ function markdownToHtml(markdown) {
   }
   closeList();
   return html.join("");
+}
+
+function renderPriceChart(stock) {
+  const canvas = el.priceChartCanvas;
+  const ctx = canvas.getContext("2d");
+  const dpr = window.devicePixelRatio || 1;
+  const width = Math.max(360, Math.floor(canvas.clientWidth || 640));
+  const height = 340;
+  canvas.width = Math.floor(width * dpr);
+  canvas.height = Math.floor(height * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  ctx.clearRect(0, 0, width, height);
+
+  const bars = Array.isArray(stock.chart) ? stock.chart : [];
+  if (!bars.length) {
+    el.chartRange.textContent = "Chart unavailable";
+    ctx.fillStyle = "#f8fafc";
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = "#627082";
+    ctx.font = "700 14px Segoe UI, sans-serif";
+    ctx.fillText("No recent daily chart data is available for this ticker.", 24, 44);
+    return;
+  }
+
+  el.chartRange.textContent = `${formatShortDate(bars[0].date)} to ${formatShortDate(bars[bars.length - 1].date)}`;
+
+  const closeValues = bars.map((bar) => Number(bar.close)).filter((value) => !Number.isNaN(value));
+  const volumeValues = bars.map((bar) => Number(bar.volume)).filter((value) => !Number.isNaN(value));
+  const minClose = Math.min(...closeValues);
+  const maxClose = Math.max(...closeValues);
+  const maxVolume = Math.max(...volumeValues, 1);
+
+  const padding = { top: 26, right: 18, bottom: 30, left: 56 };
+  const volumeHeight = 86;
+  const gap = 14;
+  const priceHeight = height - padding.top - padding.bottom - volumeHeight - gap;
+  const priceBottom = padding.top + priceHeight;
+  const volumeTop = priceBottom + gap;
+  const usableWidth = width - padding.left - padding.right;
+  const xStep = bars.length > 1 ? usableWidth / (bars.length - 1) : usableWidth;
+  const closeRange = maxClose - minClose || Math.max(1, maxClose * 0.04);
+  const priceMin = minClose - closeRange * 0.12;
+  const priceMax = maxClose + closeRange * 0.12;
+
+  ctx.fillStyle = "#fbfcfe";
+  ctx.fillRect(0, 0, width, height);
+
+  ctx.strokeStyle = "#e1e8f0";
+  ctx.lineWidth = 1;
+  for (let i = 0; i < 4; i += 1) {
+    const y = padding.top + (priceHeight / 3) * i;
+    ctx.beginPath();
+    ctx.moveTo(padding.left, y);
+    ctx.lineTo(width - padding.right, y);
+    ctx.stroke();
+  }
+
+  ctx.fillStyle = "#627082";
+  ctx.font = "700 11px Segoe UI, sans-serif";
+  [priceMax, (priceMax + priceMin) / 2, priceMin].forEach((value, index) => {
+    const y = padding.top + (priceHeight / 2) * index;
+    ctx.fillText(formatCurrency(value), 6, y + 4);
+  });
+
+  const points = bars.map((bar, index) => {
+    const close = Number(bar.close);
+    const x = padding.left + xStep * index;
+    const y = padding.top + ((priceMax - close) / (priceMax - priceMin || 1)) * priceHeight;
+    return { x, y, close };
+  });
+
+  const areaGradient = ctx.createLinearGradient(0, padding.top, 0, priceBottom);
+  areaGradient.addColorStop(0, "rgba(38, 98, 217, 0.22)");
+  areaGradient.addColorStop(1, "rgba(38, 98, 217, 0.02)");
+
+  ctx.beginPath();
+  points.forEach((point, index) => {
+    if (index === 0) ctx.moveTo(point.x, point.y);
+    else ctx.lineTo(point.x, point.y);
+  });
+  ctx.lineTo(points[points.length - 1].x, priceBottom);
+  ctx.lineTo(points[0].x, priceBottom);
+  ctx.closePath();
+  ctx.fillStyle = areaGradient;
+  ctx.fill();
+
+  ctx.beginPath();
+  points.forEach((point, index) => {
+    if (index === 0) ctx.moveTo(point.x, point.y);
+    else ctx.lineTo(point.x, point.y);
+  });
+  ctx.strokeStyle = "#2662d9";
+  ctx.lineWidth = 2.5;
+  ctx.stroke();
+
+  points.slice(-1).forEach((point) => {
+    ctx.fillStyle = "#2662d9";
+    ctx.beginPath();
+    ctx.arc(point.x, point.y, 4, 0, Math.PI * 2);
+    ctx.fill();
+  });
+
+  const barWidth = Math.max(4, Math.min(18, usableWidth / Math.max(bars.length * 1.7, 10)));
+  bars.forEach((bar, index) => {
+    const x = padding.left + xStep * index - barWidth / 2;
+    const ratio = Number(bar.volume) / maxVolume;
+    const barHeight = Math.max(2, ratio * (volumeHeight - 18));
+    const y = volumeTop + (volumeHeight - barHeight);
+    ctx.fillStyle = Number(bar.close) >= Number(bar.open) ? "rgba(17, 130, 77, 0.72)" : "rgba(199, 67, 67, 0.7)";
+    ctx.fillRect(x, y, barWidth, barHeight);
+  });
+
+  ctx.fillStyle = "#627082";
+  ctx.font = "700 11px Segoe UI, sans-serif";
+  ctx.fillText("Volume", 8, volumeTop + 12);
+  ctx.fillText(formatCompactNumber(maxVolume), 8, volumeTop + 30);
+  ctx.fillText(formatShortDate(bars[0].date), padding.left, height - 10);
+  ctx.fillText(formatShortDate(bars[bars.length - 1].date), width - padding.right - 52, height - 10);
+}
+
+function splitBlocks(lines) {
+  const blocks = [];
+  let current = [];
+  lines.forEach((line) => {
+    if (!line.trim()) {
+      if (current.length) {
+        blocks.push(current);
+        current = [];
+      }
+      return;
+    }
+    current.push(line);
+  });
+  if (current.length) blocks.push(current);
+  return blocks;
+}
+
+function isKeyValueLine(line) {
+  return /^[A-Za-z0-9][A-Za-z0-9 /%&().,'+\-]{1,42}:\s+.+$/.test(line.trim()) && !/^Link:/i.test(line.trim());
+}
+
+function renderKeyValueGrid(lines) {
+  const items = lines
+    .map((line) => line.match(/^([^:]+):\s+(.+)$/))
+    .filter(Boolean)
+    .map(([, label, value]) => `
+      <div class="kv-item">
+        <span>${inlineMarkdown(label.trim())}</span>
+        <strong>${inlineMarkdown(value.trim())}</strong>
+      </div>
+    `);
+  return `<div class="kv-grid">${items.join("")}</div>`;
+}
+
+function renderFeedCards(lines) {
+  const cards = lines.map((line) => {
+    const match = line.match(/^\[(.+?)\]\s*(.*)$/);
+    const header = match ? match[1] : "";
+    const body = match ? match[2] : line;
+    return `
+      <article class="feed-card">
+        <p class="feed-meta">${inlineMarkdown(header)}</p>
+        <p>${inlineMarkdown(body)}</p>
+      </article>
+    `;
+  });
+  return `<div class="feed-grid">${cards.join("")}</div>`;
+}
+
+function renderLinkRow(line) {
+  const url = line.replace(/^Link:\s*/i, "").trim();
+  return `<p class="link-row"><span>Source link</span><a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${escapeHtml(url)}</a></p>`;
+}
+
+function renderReadableBlock(lines) {
+  if (!lines.length) return "";
+  if (lines.every((line) => /^\s*\|.*\|\s*$/.test(line))) {
+    return renderTable(lines, 0).html;
+  }
+  if (lines.every((line) => /^\s*[-*]\s+/.test(line))) {
+    return `<ul>${lines.map((line) => `<li>${inlineMarkdown(line.replace(/^\s*[-*]\s+/, ""))}</li>`).join("")}</ul>`;
+  }
+  if (lines.length >= 3 && lines.every(isKeyValueLine)) {
+    return renderKeyValueGrid(lines);
+  }
+  if (lines.length >= 2 && lines.every((line) => /^\[.+\]/.test(line.trim()))) {
+    return renderFeedCards(lines);
+  }
+  if (lines.length === 1 && /^Link:\s+https?:\/\//i.test(lines[0].trim())) {
+    return renderLinkRow(lines[0]);
+  }
+  if (lines.length >= 2 && lines.every((line) => /\s{2,}/.test(line) || /^Earnings Date/.test(line))) {
+    return `<pre class="data-pre">${escapeHtml(lines.join("\n"))}</pre>`;
+  }
+  return lines.map((line) => `<p>${inlineMarkdown(line)}</p>`).join("");
+}
+
+function normalizeModuleText(moduleKey, markdown) {
+  let normalized = roundPriceLikeText(markdown);
+  if (moduleKey === "news") {
+    normalized = normalized
+      .replace(/^Ticker news:\s*##\s*(.+)$/m, "## Ticker news\n$1")
+      .replace(/^Macro\/global news sample:\s*##\s*(.+)$/m, "## Macro and global news\n$1");
+  }
+  return normalized;
+}
+
+function renderReadableModule(moduleKey, markdown) {
+  const normalized = normalizeModuleText(moduleKey, markdown);
+  if (!normalized || !normalized.trim()) {
+    return '<div class="empty-state">No report text is available for this section.</div>';
+  }
+
+  const sections = [];
+  let current = { title: "", level: 0, lines: [] };
+  normalized.split(/\r?\n/).forEach((line) => {
+    const heading = line.match(/^(#{1,3})\s+(.*)$/);
+    if (heading) {
+      if (current.title || current.lines.length) sections.push(current);
+      current = { title: heading[2].trim(), level: heading[1].length, lines: [] };
+      return;
+    }
+    current.lines.push(line);
+  });
+  if (current.title || current.lines.length) sections.push(current);
+
+  return sections
+    .map((section, index) => {
+      const body = splitBlocks(section.lines)
+        .map((block) => renderReadableBlock(block))
+        .join("");
+      const headingHtml = section.title
+        ? `<header class="module-section-head"><h3>${inlineMarkdown(section.title)}</h3></header>`
+        : "";
+      return `<section class="module-section-card level-${section.level || 0}">${headingHtml}${body}</section>`;
+    })
+    .join("");
 }
 
 function flagClass(flag) {
@@ -340,6 +606,7 @@ function renderSelectedStock() {
   el.decisionText.textContent = stock.decision || "";
   el.decisionNextEarnings.textContent = formatDate(stock.nextEarningsDate);
 
+  renderPriceChart(stock);
   renderScoreCanvas(stock);
   renderModuleTabs(stock);
 
@@ -350,7 +617,8 @@ function renderSelectedStock() {
   el.moduleStatus.textContent = stock.fullReport.available
     ? `${stock.fullReport.provider || "provider"} / ${stock.fullReport.tradeDate || "date"}`
     : "coverage pending";
-  el.moduleContent.innerHTML = markdownToHtml(
+  el.moduleContent.innerHTML = renderReadableModule(
+    state.moduleKey,
     module?.text ||
       `# ${moduleLabels[state.moduleKey]} Module\n\nNo ${moduleLabels[state.moduleKey]} module was found for ${stock.symbol}. Generate a full TradingAgents run to populate this section.`
   );
@@ -568,6 +836,12 @@ el.watchlistButton.addEventListener("click", () => {
   }
   el.runnerSymbol.value = symbol;
   addToWatchlist(symbol);
+});
+
+window.addEventListener("resize", () => {
+  if (state.selectedSymbol) {
+    renderSelectedStock();
+  }
 });
 
 state.selectedSymbol =
