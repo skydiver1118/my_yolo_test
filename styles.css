@@ -452,6 +452,26 @@ input {
   line-height: 1.45;
 }
 
+.decision-meta {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.decision-meta strong {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 900;
+}
+
 .score-canvas-wrap {
   padding: 10px;
   border: 1px solid var(--line);

@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>TradingAgents Stock Command Center</title>
-    <link rel="stylesheet" href="styles.css?v=20260530113425" />
+    <link rel="stylesheet" href="styles.css?v=20260530115142" />
   </head>
   <body>
     <div class="app-shell">
@@ -92,6 +92,10 @@
                 <div class="decision-card">
                   <p class="eyebrow">Decision snapshot</p>
                   <p id="decisionText"></p>
+                  <div class="decision-meta">
+                    <span>Next earnings date</span>
+                    <strong id="decisionNextEarnings">--</strong>
+                  </div>
                 </div>
                 <div class="score-canvas-wrap">
                   <canvas id="scoreCanvas" width="720" height="180" aria-label="TradingAgents score bars"></canvas>
@@ -138,7 +142,7 @@
       </main>
     </div>
 
-    <script src="data/dashboard-data.js?v=20260530113425"></script>
-    <script src="app.js?v=20260530113425"></script>
+    <script src="data/dashboard-data.js?v=20260530115142"></script>
+    <script src="app.js?v=20260530115142"></script>
   </body>
 </html>

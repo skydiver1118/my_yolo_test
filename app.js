@@ -44,6 +44,7 @@ const el = {
   metricInvestment: document.querySelector("#metricInvestment"),
   metricRisk: document.querySelector("#metricRisk"),
   decisionText: document.querySelector("#decisionText"),
+  decisionNextEarnings: document.querySelector("#decisionNextEarnings"),
   fullReport: document.querySelector("#fullReport"),
   moduleTabs: document.querySelector("#moduleTabs"),
   moduleContent: document.querySelector("#moduleContent"),
@@ -76,6 +77,17 @@ function formatCurrency(value, fallback = "--") {
 function formatScore(value) {
   if (value === null || value === undefined || Number.isNaN(value)) return "--";
   return Number(value).toFixed(1);
+}
+
+function formatDate(value, fallback = "--") {
+  if (!value) return fallback;
+  const parsed = new Date(`${value}T12:00:00`);
+  if (Number.isNaN(parsed.getTime())) return String(value);
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  }).format(parsed);
 }
 
 function escapeHtml(value) {
@@ -326,6 +338,7 @@ function renderSelectedStock() {
   el.metricInvestment.textContent = formatScore(stock.scores.investment);
   el.metricRisk.textContent = stock.risk || "--";
   el.decisionText.textContent = stock.decision || "";
+  el.decisionNextEarnings.textContent = formatDate(stock.nextEarningsDate);
 
   renderScoreCanvas(stock);
   renderModuleTabs(stock);

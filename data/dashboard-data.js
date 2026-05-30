@@ -1,5 +1,5 @@
 window.TRADING_AGENTS_DASHBOARD_DATA = {
-  "generatedAt": "2026-05-30T11:34:24-04:00",
+  "generatedAt": "2026-05-30T11:51:41-04:00",
   "sources": {
     "etradeCsv": "C:\\Users\\skydiver1118\\Downloads\\etrade_26May2026_2040.csv",
     "localWatchlist": "C:\\Users\\skydiver1118\\Documents\\New project\\tradingagents_dashboard\\watchlist.local.json",
@@ -22,8 +22,8 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "ASML"
     ],
     "resultCount": 22,
-    "coverageCount": 31,
-    "watchlistCount": 31,
+    "coverageCount": 32,
+    "watchlistCount": 32,
     "snapshotOverlap": [
       "LITE",
       "MU",
@@ -56,6 +56,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium-high",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-07-30",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -85,6 +86,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. AAPL closed at 312.06 on 2026 05 29, with a one day return of 0.14% and a 30 calendar day TradingAgents window return of 15.11%.",
         "riskLabel": "Medium-high",
+        "nextEarningsDate": "2026-07-30",
         "latestClose": 312.06,
         "oneDayReturnPct": -0.14,
         "modules": {
@@ -152,6 +154,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-05",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -181,6 +184,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. APP closed at 613.09 on 2026 05 29, with a one day return of 2.2% and a 30 calendar day TradingAgents window return of 37.36%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-08-05",
         "latestClose": 613.09,
         "oneDayReturnPct": 2.2,
         "modules": {
@@ -248,6 +252,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-06-03",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -277,6 +282,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. AVGO closed at 446.77 on 2026 05 29, with a one day return of 4.73% and a 30 calendar day TradingAgents window return of 7.03%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-06-03",
         "latestClose": 446.77,
         "oneDayReturnPct": 4.73,
         "modules": {
@@ -344,6 +350,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium-high",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": null,
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -373,6 +380,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. CHAT closed at 98.22 on 2026 05 29, with a one day return of 1.4% and a 30 calendar day TradingAgents window return of 25.94%.",
         "riskLabel": "Medium-high",
+        "nextEarningsDate": null,
         "latestClose": 98.22,
         "oneDayReturnPct": 1.4,
         "modules": {
@@ -440,6 +448,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium-high",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-06-03",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -469,6 +478,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. CRWD closed at 731.00 on 2026 05 29, with a one day return of 8.94% and a 30 calendar day TradingAgents window return of 63.99%.",
         "riskLabel": "Medium-high",
+        "nextEarningsDate": "2026-06-03",
         "latestClose": 731.0,
         "oneDayReturnPct": 8.94,
         "modules": {
@@ -536,6 +546,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-12",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -565,6 +576,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. CRWV closed at 109.53 on 2026 05 29, with a one day return of 2.5% and a 30 calendar day TradingAgents window return of 1.85%.",
         "riskLabel": "High",
+        "nextEarningsDate": "2026-08-12",
         "latestClose": 109.53,
         "oneDayReturnPct": 2.5,
         "modules": {
@@ -632,6 +644,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-07-29",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -661,6 +674,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. HOOD closed at 94.30 on 2026 05 29, with a one day return of 11.15% and a 30 calendar day TradingAgents window return of 29.37%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-07-29",
         "latestClose": 94.3,
         "oneDayReturnPct": 11.15,
         "modules": {
@@ -728,6 +742,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Avoid near-term trade",
+      "nextEarningsDate": "2026-08-12",
       "snapshot": {
         "Rank": "18",
         "Symbol": "LITE",
@@ -771,6 +786,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: SELL. LITE closed at 854.96 on 2026 05 29, with a one day return of 0.66% and a 30 calendar day TradingAgents window return of 5.25%.",
         "riskLabel": "High",
+        "nextEarningsDate": "2026-08-12",
         "latestClose": 854.96,
         "oneDayReturnPct": -0.66,
         "modules": {
@@ -838,6 +854,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Avoid near-term trade",
+      "nextEarningsDate": "2026-06-24",
       "snapshot": {
         "Rank": "17",
         "Symbol": "MU",
@@ -881,6 +898,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. MU closed at 971.00 on 2026 05 29, with a one day return of 5.14% and a 30 calendar day TradingAgents window return of 87.76%.",
         "riskLabel": "Medium-high",
+        "nextEarningsDate": "2026-06-24",
         "latestClose": 971.0,
         "oneDayReturnPct": 5.14,
         "modules": {
@@ -948,6 +966,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Long-term buy, wait for better short-term setup",
+      "nextEarningsDate": "2026-06-03",
       "snapshot": {
         "Rank": "4",
         "Symbol": "NVDA",
@@ -991,6 +1010,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. NVDA closed at 211.14 on 2026 05 29, with a one day return of 1.45% and a 30 calendar day TradingAgents window return of 5.8%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-06-03",
         "latestClose": 211.14,
         "oneDayReturnPct": -1.45,
         "modules": {
@@ -1058,6 +1078,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-06",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1087,6 +1108,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. OPEN closed at 5.04 on 2026 05 29, with a one day return of 0.59% and a 30 calendar day TradingAgents window return of 6.32%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-08-06",
         "latestClose": 5.04,
         "oneDayReturnPct": -0.59,
         "modules": {
@@ -1154,6 +1176,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-03",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1183,6 +1206,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. PLTR closed at 156.54 on 2026 05 29, with a one day return of 9.21% and a 30 calendar day TradingAgents window return of 12.53%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-08-03",
         "latestClose": 156.54,
         "oneDayReturnPct": 9.21,
         "modules": {
@@ -1250,6 +1274,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium-high",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": null,
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1279,6 +1304,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. QLD closed at 98.46 on 2026 05 29, with a one day return of 0.69% and a 30 calendar day TradingAgents window return of 21.48%.",
         "riskLabel": "Medium-high",
+        "nextEarningsDate": null,
         "latestClose": 98.46,
         "oneDayReturnPct": 0.69,
         "modules": {
@@ -1346,6 +1372,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": null,
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1375,6 +1402,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. QTUM closed at 159.75 on 2026 05 29, with a one day return of 0.43% and a 30 calendar day TradingAgents window return of 19.19%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": null,
         "latestClose": 159.75,
         "oneDayReturnPct": 0.43,
         "modules": {
@@ -1442,6 +1470,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-06",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1471,6 +1500,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: BUY. RKLB closed at 143.48 on 2026 05 29, with a one day return of 3.07% and a 30 calendar day TradingAgents window return of 73.89%.",
         "riskLabel": "High",
+        "nextEarningsDate": "2026-08-06",
         "latestClose": 143.48,
         "oneDayReturnPct": -3.07,
         "modules": {
@@ -1538,6 +1568,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-07-30",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1567,6 +1598,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. RKT closed at 14.51 on 2026 05 29, with a one day return of 0.76% and a 30 calendar day TradingAgents window return of 0.75%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-07-30",
         "latestClose": 14.51,
         "oneDayReturnPct": 0.76,
         "modules": {
@@ -1634,6 +1666,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": null,
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1663,6 +1696,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. SHLD closed at 67.53 on 2026 05 29, with a one day return of 0.57% and a 30 calendar day TradingAgents window return of 1.0%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": null,
         "latestClose": 67.53,
         "oneDayReturnPct": -0.57,
         "modules": {
@@ -1730,6 +1764,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Long-term buy, wait for better short-term setup",
+      "nextEarningsDate": null,
       "snapshot": {
         "Rank": "8",
         "Symbol": "SMH",
@@ -1773,6 +1808,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. SMH closed at 598.93 on 2026 05 29, with a one day return of 0.15% and a 30 calendar day TradingAgents window return of 18.2%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": null,
         "latestClose": 598.93,
         "oneDayReturnPct": -0.15,
         "modules": {
@@ -1840,6 +1876,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Avoid near-term trade",
+      "nextEarningsDate": "2026-08-24",
       "snapshot": {
         "Rank": "20",
         "Symbol": "SNDK",
@@ -1883,6 +1920,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. SNDK closed at 1694.98 on 2026 05 29, with a one day return of 3.25% and a 30 calendar day TradingAgents window return of 54.58%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-08-24",
         "latestClose": 1694.98,
         "oneDayReturnPct": 3.25,
         "modules": {
@@ -1950,6 +1988,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-07-28",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -1979,6 +2018,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. SOFI closed at 18.22 on 2026 05 29, with a one day return of 7.37% and a 30 calendar day TradingAgents window return of 13.17%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-07-28",
         "latestClose": 18.22,
         "oneDayReturnPct": 7.37,
         "modules": {
@@ -2046,6 +2086,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-07-22",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -2075,6 +2116,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. TSLA closed at 435.79 on 2026 05 29, with a one day return of 1.43% and a 30 calendar day TradingAgents window return of 14.19%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-07-22",
         "latestClose": 435.79,
         "oneDayReturnPct": -1.43,
         "modules": {
@@ -2142,6 +2184,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": null,
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -2171,6 +2214,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: SELL. URA closed at 50.76 on 2026 05 29, with a one day return of 0.02% and a 30 calendar day TradingAgents window return of 10.03%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": null,
         "latestClose": 50.76,
         "oneDayReturnPct": 0.02,
         "modules": {
@@ -2238,6 +2282,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-07-23",
       "snapshot": null,
       "sma": {
         "bar_date": "2026-05-28",
@@ -2267,6 +2312,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. VRSN closed at 285.38 on 2026 05 29, with a one day return of 3.63% and a 30 calendar day TradingAgents window return of 6.5%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-07-23",
         "latestClose": 285.38,
         "oneDayReturnPct": -3.63,
         "modules": {
@@ -2334,6 +2380,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Selective trade / watch entry",
+      "nextEarningsDate": "2026-06-16",
       "snapshot": {
         "Rank": "22",
         "Symbol": "POWL",
@@ -2371,6 +2418,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. POWL closed at 284.42 on 2026 05 29, with a one day return of 1.55% and a 30 calendar day TradingAgents window return of 2.62%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-06-16",
         "latestClose": 284.42,
         "oneDayReturnPct": -1.55,
         "modules": {
@@ -2438,6 +2486,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium-high",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": null,
       "snapshot": null,
       "sma": null,
       "marketData": {
@@ -2461,6 +2510,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. EUV closed at 27.02 on 2026 05 29, with a one day return of 0.92% and a 30 calendar day TradingAgents window return of 2.0%.",
         "riskLabel": "Medium-high",
+        "nextEarningsDate": null,
         "latestClose": 27.02,
         "oneDayReturnPct": -0.92,
         "modules": {
@@ -2528,6 +2578,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-06-10",
       "snapshot": null,
       "sma": null,
       "marketData": {
@@ -2551,6 +2602,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. MSFT closed at 450.24 on 2026 05 29, with a one day return of 5.45% and a 30 calendar day TradingAgents window return of 10.65%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-06-10",
         "latestClose": 450.24,
         "oneDayReturnPct": 5.45,
         "modules": {
@@ -2618,6 +2670,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-27",
       "snapshot": null,
       "sma": null,
       "marketData": {
@@ -2641,6 +2694,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. MRVL closed at 205.00 on 2026 05 29, with a one day return of 0.08% and a 30 calendar day TradingAgents window return of 24.13%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-08-27",
         "latestClose": 205.0,
         "oneDayReturnPct": 0.08,
         "modules": {
@@ -2708,6 +2762,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium-high",
       "horizon": "2026-05-29",
       "action": "Selective trade / watch entry",
+      "nextEarningsDate": "2026-08-04",
       "snapshot": {
         "Rank": "3",
         "Symbol": "AMD",
@@ -2745,6 +2800,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. AMD closed at 516.10 on 2026 05 29, with a one day return of 0.38% and a 30 calendar day TradingAgents window return of 45.59%.",
         "riskLabel": "Medium-high",
+        "nextEarningsDate": "2026-08-04",
         "latestClose": 516.1,
         "oneDayReturnPct": -0.38,
         "modules": {
@@ -2812,6 +2868,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "Medium",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-09-02",
       "snapshot": null,
       "sma": null,
       "marketData": {
@@ -2835,6 +2892,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. CRM closed at 191.10 on 2026 05 29, with a one day return of 8.47% and a 30 calendar day TradingAgents window return of 8.25%.",
         "riskLabel": "Medium",
+        "nextEarningsDate": "2026-09-02",
         "latestClose": 191.1,
         "oneDayReturnPct": 8.47,
         "modules": {
@@ -2902,6 +2960,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-27",
       "snapshot": null,
       "sma": null,
       "marketData": {
@@ -2925,6 +2984,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: BUY. IREN closed at 63.54 on 2026 05 29, with a one day return of 0.8% and a 30 calendar day TradingAgents window return of 39.62%.",
         "riskLabel": "High",
+        "nextEarningsDate": "2026-08-27",
         "latestClose": 63.54,
         "oneDayReturnPct": -0.8,
         "modules": {
@@ -2992,6 +3052,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
       "risk": "High",
       "horizon": "2026-05-29",
       "action": "Grounded full report",
+      "nextEarningsDate": "2026-08-13",
       "snapshot": null,
       "sma": null,
       "marketData": {
@@ -3015,6 +3076,7 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
         },
         "decisionSummary": "Final stance: HOLD. FIGR closed at 35.35 on 2026 05 29, with a one day return of 1.79% and a 30 calendar day TradingAgents window return of 0.71%.",
         "riskLabel": "High",
+        "nextEarningsDate": "2026-08-13",
         "latestClose": 35.35,
         "oneDayReturnPct": 1.79,
         "modules": {
@@ -3060,6 +3122,98 @@ window.TRADING_AGENTS_DASHBOARD_DATA = {
           }
         },
         "fullMarkdown": "# FIGR TradingAgents Full Report\n\n- Generated: 2026-05-30T11:34:16\n- Requested trade date: 2026-05-30\n- Latest data date used: 2026-05-29\n- Run mode: TradingAgents data tools + deterministic synthesis; OpenAI gpt-5.5 is the configured full-graph model\n- Full graph note: Grounded fallback report. Run scripts/run_full_tradingagents_batch.py for the complete OpenAI gpt-5.5 LangGraph workflow when API quota is available.\n\n# FIGR TradingAgents Grounded Full Report\n\n## Executive Summary\nFinal stance: HOLD. FIGR closed at 35.35 on 2026-05-29, with a one-day return of 1.79% and a 30-calendar-day TradingAgents window return of 0.71%. The short-history technical setup is constructive, but classic 50/200-day trend confirmation is not yet available, while the risk read depends on valuation, earnings expectations, and whether recent momentum can hold.\n\n## Market Analyst Report\nPrice closed at 35.35; 50-day SMA 35.16100002288818; 200-day SMA unavailable (180 price bars available; tool reference 39.99163892534044). RSI was 47.15407014442869; MACD was -0.2326697002055198 versus signal 0.3386920634484685; ATR was 2.786369143926989; Bollinger upper band was 42.7956416458667. This points to a momentum-aware setup with volatility that needs position sizing discipline.\n\n## Fundamentals Analyst Report\n# Company Fundamentals for FIGR\n# Data retrieved on: 2026-05-30 11:34:09\n\nName: Figure Technology Solutions, Inc.\nSector: Financial Services\nIndustry: Capital Markets\nMarket Cap: 7815914496\nPE Ratio (TTM): 43.109756\nForward PE: 25.61594\nPrice to Book: 6.224687\nEPS (TTM): 0.82\nForward EPS: 1.38\n52 Week High: 78.0\n52 Week Low: 25.01\n50 Day Average: 35.161\n200 Day Average: 39.99164\nRevenue (TTM): 510352992\nGross Profit: 510352992\nNet Income: 107791000\nProfit Margin: 0.35196\nOperating Margin: 0.24861999\nReturn on Equity: 0.21672001\nReturn on Assets: 0.03891\nDebt to Equity: 102.468\nCurrent Ratio: 1.898\nBook Value: 5.679\nFree Cash Flow: 78646872\n\nRecent quarterly statement highlights: income {'Total Revenue': '141717000.0', 'Gross Profit': '133646000.0', 'Operating Income': '36086000.0', 'Net Income': '44945000.0', 'Diluted EPS': '0.18', 'EBITDA': '59703000.0'}; cash flow {'Operating Cash Flow': '-37818000.0', 'Free Cash Flow': '-44254000.0', 'Capital Expenditure': '-6436000.0', 'End Cash Position': '1536590000.0'}; balance sheet {'Total Debt': '1322541000.0', 'Net Debt': '', 'Stockholders Equity': '1292021000.0', 'Working Capital': '1053382000.0', 'Current Liabilities': '1172756000.0'}.\n\n## Sentiment Analyst Report\nStockTwits and Reddit checks were run through TradingAgents sentiment inputs. StockTwits: Bullish: 13 (43%) - Bearish: 4 (13%) - Unlabeled: 13 - Total: 30 most-recent messages\n\n[2026-05-29T19:03:39Z - @MarketBeat - no-label] https://marketbeat.com/a/8682437/   $FIGR  Figure Technology Solutions Bets on Blockchain Rails to Reinvent Capital Markets\n[2026-05-29T18:09:11Z - @DarkPooling - Bullish] $FIGR $PWRL $INDI $CSIQ fate\n[2026-05-29T14:41:28Z - @Capital2Work - Bullish] $FIGR Watched a video where the CEO stated they saved people from paying $12K closing to only $1K that is phenomenal.    40' P/E, P/S is respectable 15. hot not overbought. Float of 127m. Short 5%.  This has plenty of chance of making another move to $38-42 and going for $50+ aft...\n[2026-05-28T22:03:17Z - @Beat_market_loser - no-label] $FIGR will see big jump tomorrow\n[2026-05-28T13:41:09Z - @__LucidDreamer__ - no-label] $FIGR in\n[2026-05-28T13:28:19Z - @BullYa - no-label] $FIGR  $30 ... Reddit: <Reddit unavailable: configure REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET for the official Reddit API>\n\n## News Analyst Report\nTicker news: ## FIGR News, from 2026-04-30 to 2026-05-30:\n\n### Figure Technology Solutions Bets on Blockchain Rails to Reinvent Capital Markets (source: MarketBeat)\nFigure Technology Solutions (NASDAQ:FIGR) Chief Executive Officer Michael Tannenbaum said the company's core strategy has remained consistent since its founding in 2018: building capital markets marketplaces on blockchain rails while using automation to lower costs and improve liquidity. Speaking w\nLink: https://www.marketbeat.com/instant-alerts/figure-technology-solutions-bets-on-blockchain-rails-to-reinvent-capital-markets-2026-05-29/?utm_source=yahoofinance&utm_medium=yahoofinance\n\n### High Insider Stakes In Leading Growth Companies May 2026 (source: Simply Wall St.)\nThe United States market has shown robust performance, climbing 1.8% in the last 7 days and up 28% over the past year, with earnings forecasted to grow by 17% annually. In this thriving environment, growth companies with high insider ownership can be particularly compelling as they often signal confidence from those who know the company best.\nLink: https://finance.yahoo.com/markets/stocks/articles/high-insider-stakes-leading-growth-113602959.html\n\n### Top Growth Companies With Significant Insider Ownership May 2026 (source: Simply Wall St.)\nThe United States market has shown robust performance recently, climbing 2.5% in the last 7 days and achieving a 26% ...\n\nMacro/global news sample: ## Global Market News, from 2026-05-23 to 2026-05-30:\n\n### VanEck Launches First BNB Exchange-Traded Fund (source: CryptoProwl)\nLink: https://finance.yahoo.com/m/4146e76b-9ce6-3b30-b4b6-0208938b6a11/vaneck-launches-first-bnb.html\n\n### Shoe Prices Continue to Rise in March as Iran War Adds Fuel to the Fire (source: Footwear News)\nLink: https://finance.yahoo.com/m/9fc86965-918a-3b18-b9ff-f688dd156071/shoe-prices-continue-to-rise.html\n\n### Job Concerns, Shoe Price Hikes and Shaky Consumer Suggests Slower Sales on the Horizon (source: Footwear News)\nLink: https://finance.yahoo.com/m/dde2144f-026b-3fce-a5d3-3dca0e4e444a/job-concerns%2C-shoe-price.html\n\n### Oil Rate Increases Could Mean Shoe ...\n\n## Bull Case\nThe bull case is trend and momentum continuation, supported by short-term trend strength without a confirmed 50/200-day moving-average stack, positive/firm MACD if confirmed, and any positive earnings or sector news. Bulls would want follow-through volume and stable fundamental revisions.\n\n## Bear Case\nThe bear case is valuation and event risk after a sharp move. If price is stretched versus analyst targets, near the upper Bollinger band, or if earnings expectations are already priced in, downside/reversion risk rises. Insider selling, a negative earnings surprise, or margin deterioration would add caution.\n\n## Trader Transaction Proposal\nHOLD. Use disciplined sizing, avoid chasing extended intraday strength, and require confirmation after earnings/news catalysts. A trader already holding shares can monitor trend support and volatility rather than adding aggressively.\n\n## Risk Management Debate\nAggressive view: momentum can persist while price holds above short- and intermediate-term averages. Conservative view: high volatility and any gap above analyst targets argue for restraint. Neutral view: maintain or initiate only a modest exposure with a pre-defined exit level.\n\n## Portfolio-Level Final Decision\nHOLD. This is a grounded research artifact, not personalized financial advice. Position size should reflect portfolio risk, liquidity, and event exposure.\n\n## Earnings And Data Availability\nEarnings/calendar data from yfinance: {'Earnings Date': [datetime.date(2026, 5, 11)], 'Earnings High': 0.34, 'Earnings Low': 0.26, 'Earnings Average': 0.3075, 'Revenue High': 217826000, 'Revenue Low': 199168000, 'Revenue Average': 209332920}\n\nRecent earnings dates: EPS Estimate  Reported EPS  Surprise(%)\nEarnings Date                                                     \n2026-08-13 16:00:00-04:00          0.31           NaN          NaN\n2026-05-11 18:00:00-04:00          0.23          0.20        -9.96\n2026-02-26 16:00:00-05:00          0.12          0.06       -51.35\n2025-11-13 16:00:00-05:00          0.17          0.77       362.41\n\nAnalyst target data: {'current': 35.35, 'high': 75.0, 'low': 33.0, 'mean': 53.875, 'median': 55.0}\n\nRecommendation summary:   period  strongBuy  buy  hold  sell  strongSell\n0     0m          3    3     1     0           1\n1    -1m          3    3     1     0           1\n2    -2m          3    3     1     0           1\n3    -3m          3    3     1     0           1"
+      }
+    },
+    {
+      "symbol": "APLD",
+      "last": 47.29,
+      "lastDisplay": "",
+      "chgPct": -4.75,
+      "color": "",
+      "source": "local",
+      "assetType": "",
+      "note": "Added from dashboard watchlist button.",
+      "flag": "BUY",
+      "flagSource": "TradingAgents",
+      "scores": {
+        "trading": 95.0,
+        "investment": 41.0,
+        "nearTerm": 79.9
+      },
+      "decision": "Final stance: BUY. APLD closed at 47.28 on 2026 05 29, with a one day return of 4.77% and a 30 calendar day TradingAgents window return of 38.04%.",
+      "risk": "High",
+      "horizon": "2026-05-29",
+      "action": "Grounded full report",
+      "nextEarningsDate": "2026-07-29",
+      "snapshot": null,
+      "sma": null,
+      "marketData": {
+        "close": 47.29,
+        "prevClose": 49.65,
+        "chgPct": -4.75,
+        "barDate": "2026-05-29"
+      },
+      "fullReport": {
+        "available": true,
+        "path": "C:\\Users\\skydiver1118\\Documents\\Stock Analysis\\TradingAgents\\reports\\APLD_2026-05-30_grounded_full_report\\APLD_TradingAgents_Full_Report_2026-05-30.md",
+        "provider": "grounded-tools",
+        "quickModel": null,
+        "deepModel": null,
+        "tradeDate": "2026-05-29",
+        "processedRating": "BUY",
+        "derivedScores": {
+          "trading": 95.0,
+          "investment": 41.0,
+          "nearTerm": 79.9
+        },
+        "decisionSummary": "Final stance: BUY. APLD closed at 47.28 on 2026 05 29, with a one day return of 4.77% and a 30 calendar day TradingAgents window return of 38.04%.",
+        "riskLabel": "High",
+        "nextEarningsDate": "2026-07-29",
+        "latestClose": 47.28,
+        "oneDayReturnPct": -4.77,
+        "modules": {
+          "market": {
+            "label": "Market Analyst",
+            "text": "Price closed at 47.28; 50-day SMA 34.37810001373291; 200-day SMA 29.240225024223328. RSI was 60.04331835196022; MACD was 3.6548385502523786 versus signal 3.4118195588542446; ATR was 3.9897720828147416; Bollinger upper band was 52.01222930624311. This points to a momentum-aware setup with volatility that needs position sizing discipline.",
+            "summary": "Price closed at 47.28; 50 day SMA 34.37810001373291; 200 day SMA 29.240225024223328. RSI was 60.04331835196022; MACD was 3.6548385502523786 versus signal 3.4118195588542446; ATR was 3.9897720828147416; Bollinger upper band was 52.01222930624311. This points to a momentum aware s..."
+          },
+          "sentiment": {
+            "label": "Sentiment Analyst",
+            "text": "StockTwits and Reddit checks were run through TradingAgents sentiment inputs. StockTwits: Bullish: 21 (70%) - Bearish: 1 (3%) - Unlabeled: 8 - Total: 30 most-recent messages\n\n[2026-05-30T12:48:44Z - @Starnotes - Bullish] $HDRN  $APLD $TSLA $PLTR   with all these data centers being built . nobody is really talking about infustructure everyone is hyping space .   we have to up the power to run all these data centers   Hydron is where it&#39;s at . usually when nobody is talking about it is the best...\n[2026-05-30T12:04:56Z - @Helioss - Bullish] $APLD  Jason Zhang and Wes Cummins will be attending Datacloud Global Congress, with Wes speaking on the keynote panel: Which future tech innovation will change the digital infrastructure landscape?  Tuesday, June 2, 2026 | 3:45 PM - 4:30 PM |\n[2026-05-30T11:14:52Z - @PaulThomasTPG - Bullish] $APLD $HIVE   Remember when APLD was $4 and I called it out.....      Even at $25 I felt there was much more upside.     Today it is $47 ... Reddit: <Reddit unavailable: configure REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET for the official Reddit API>",
+            "summary": "StockTwits and Reddit checks were run through TradingAgents sentiment inputs. StockTwits: Bullish: 21 (70%) Bearish: 1 (3%) Unlabeled: 8 Total: 30 most recent messages [2026 05 30T12:48:44Z @Starnotes Bullish] $HDRN $APLD $TSLA $PLTR with all these data centers being built . nob..."
+          },
+          "news": {
+            "label": "News Analyst",
+            "text": "Ticker news: ## APLD News, from 2026-04-30 to 2026-05-30:\n\n### Why Applied Digital Corporation (APLD) Is Gaining Attention After $7.5B New Lease Agreement (source: Insider Monkey)\nWe recently compiled a list of the 12 Best Strong Buy Tech Stocks to Invest In Now. Applied Digital Corporation (NASDAQ:APLD) is also one of the best Strong Buy stocks on this list. TheFly reported on May 21 that Lake Street raised its price target on APLD to $70 from $55 while reaffirming a Buy rating on [...]\nLink: https://finance.yahoo.com/markets/stocks/articles/why-applied-digital-corporation-apld-113440614.html\n\n### Applied Digital (APLD) Is Up 23.9% After 15-Year Hyperscaler Lease Lifts AI Campus Backlog (source: Simply Wall St.)\nEarlier in May 2026, Applied Digital Corporation announced a 15-year take-or-pay lease with a U.S.-based investment-grade hyperscaler for its Polaris Forge 3 AI campus, adding 300 MW of critical IT load and lifting total contracted lease revenue to US$31.00 billion across four AI Factory campuses. This latest agreement deepens Applied Digital's relationship with a major hyperscaler and pushes its contracted AI data center capacity to 1,200 MW, underscoring the scale of long-term demand it is...\nLink: https://finance.yahoo.com/markets/stocks/articles/applied-digital-apld-23-9-050520898.html\n\n### Applied Digital's Hyperscaler Deal Is Just the Beginning of a Much Bigger AI ...\n\nMacro/global news sample: ## Global Market News, from 2026-05-23 to 2026-05-30:\n\n### VanEck Launches First BNB Exchange-Traded Fund (source: CryptoProwl)\nLink: https://finance.yahoo.com/m/4146e76b-9ce6-3b30-b4b6-0208938b6a11/vaneck-launches-first-bnb.html\n\n### Shoe Prices Continue to Rise in March as Iran War Adds Fuel to the Fire (source: Footwear News)\nLink: https://finance.yahoo.com/m/9fc86965-918a-3b18-b9ff-f688dd156071/shoe-prices-continue-to-rise.html\n\n### Job Concerns, Shoe Price Hikes and Shaky Consumer Suggests Slower Sales on the Horizon (source: Footwear News)\nLink: https://finance.yahoo.com/m/dde2144f-026b-3fce-a5d3-3dca0e4e444a/job-concerns%2C-shoe-price.html\n\n### Oil Rate Increases Could Mean Shoe ...",
+            "summary": "Ticker news: APLD News, from 2026 04 30 to 2026 05 30: Why Applied Digital Corporation (APLD) Is Gaining Attention After $7.5B New Lease Agreement (source: Insider Monkey) We recently compiled a list of the 12 Best Strong Buy Tech Stocks to Invest In Now. Applied Digital Corpora..."
+          },
+          "fundamentals": {
+            "label": "Fundamentals Analyst",
+            "text": "Name: Applied Digital Corporation\nSector: Technology\nIndustry: Information Technology Services\nMarket Cap: 13511183360\nForward PE: -49.76842\nPEG Ratio: 1.83\nPrice to Book: 8.532756\nEPS (TTM): -0.38\nForward EPS: -0.95\nBeta: 5.7\n52 Week High: 50.725\n52 Week Low: 8.03\n50 Day Average: 34.3781\n200 Day Average: 29.240225\nRevenue (TTM): 319262016\nGross Profit: 144975008\nEBITDA: 13905000\nNet Income: -119756000\nProfit Margin: -0.59472\nOperating Margin: -0.20466\nReturn on Equity: -0.055609997\nReturn on Assets: -0.00598\nDebt to Equity: 110.128\nCurrent Ratio: 2.382\nBook Value: 5.541\nFree Cash Flow: -1496915328\n\nRecent quarterly statement highlights: income {'Total Revenue': '126637000.0', 'Gross Profit': '53805000.0', 'Operating Income': '-25918000.0', 'Net Income': '-99303000.0', 'Diluted EPS': '-0.36', 'EBITDA': '-5105000.0'}; cash flow {'Operating Cash Flow': '55008000.0', 'Free Cash Flow': '-720199000.0', 'Capital Expenditure': '-775207000.0', 'End Cash Position': '2107673000.0'}; balance sheet {'Total Debt': '2827480000.0', 'Net Debt': '962235000.0', 'Stockholders Equity': '1581221000.0', 'Working Capital': '1409003000.0', 'Current Liabilities': '1019318000.0'}.\n\nEarnings/calendar data from yfinance: {'Earnings Date': [datetime.date(2026, 7, 29)], 'Earnings High': -0.4, 'Earnings Low': -0.4, 'Earnings Average': -0.4, 'Revenue High': 107100000, 'Revenue Low': 81500000, 'Revenue Average': 95812560}\n\nRecent earnings dates: EPS Estimate  Reported EPS  Surprise(%)\nEarnings Date                                                     \n2026-07-29 16:00:00-04:00         -0.40           NaN          NaN\n2026-04-08 16:00:00-04:00         -0.21          0.09       142.86\n2026-01-07 16:00:00-05:00         -0.12         -0.07        43.24\n2025-10-09 16:00:00-04:00         -0.15         -0.03        80.65\n2025-07-30 16:00:00-04:00         -0.21         -0.03        85.94\n2025-04-14 16:00:00-04:00         -0.10         -0.08        21.95\n2025-01-14 16:00:00-05:00         -0.14         -0.06        55.88\n2024-10-09 16:00:00-04:00         -0.26         -0.15        42.31\n2024-08-28 16:00:00-04:00         -0.22         -0.36       -63.64\n2024-04-11 16:00:00-04:00         -0.07         -0.24      -259.98\n2024-01-16 08:00:00-05:00          0.01         -0.05      -600.00\n2023-10-09 08:00:00-04:00         -0.01           NaN       106.56\n2023-07-24 08:00:00-04:00         -0.07         -0.01        85.00\n2023-04-06 08:00:00-04:00         -0.04         -0.01        75.00\n2023-01-09 16:00:00-05:00         -0.05         -0.04        27.27\n2022-10-11 16:00:00-04:00         -0.04         -0.04          NaN\n2022-08-25 ...\n\nAnalyst target data: {'current': 47.28, 'high': 106.0, 'low': 40.0, 'mean': 64.59091, 'median': 66.0}\n\nRecommendation summary:   period  strongBuy  buy  hold  sell  strongSell\n0     0m          2    9     0     0           0\n1    -1m          2    9     0     0           0\n2    -2m          2   10     0     0           0\n3    -3m          2   10     0     0           0",
+            "summary": "Name: Applied Digital Corporation Sector: Technology Industry: Information Technology Services Market Cap: 13511183360 Forward PE: 49.76842 PEG Ratio: 1.83 Price to Book: 8.532756 EPS (TTM): 0.38 Forward EPS: 0.95 Beta: 5.7 52 Week High: 50.725 52 Week Low: 8.03 50 Day Average:..."
+          },
+          "research": {
+            "label": "Research Manager",
+            "text": "Final stance: BUY. APLD closed at 47.28 on 2026-05-29, with a one-day return of -4.77% and a 30-calendar-day TradingAgents window return of 38.04%. The technical setup is constructive if price remains above its major moving averages, while the risk read depends on valuation, earnings expectations, and whether recent momentum can hold.\n\nThe bull case is trend and momentum continuation, supported by the latest close above the moving-average stack, positive/firm MACD if confirmed, and any positive earnings or sector news. Bulls would want follow-through volume and stable fundamental revisions.\n\nThe bear case is valuation and event risk after a sharp move. If price is stretched versus analyst targets, near the upper Bollinger band, or if earnings expectations are already priced in, downside/reversion risk rises. Insider selling, a negative earnings surprise, or margin deterioration would add caution.",
+            "summary": "Final stance: BUY. APLD closed at 47.28 on 2026 05 29, with a one day return of 4.77% and a 30 calendar day TradingAgents window return of 38.04%. The technical setup is constructive if price remains above its major moving averages, while the risk read depends on valuation, earn..."
+          },
+          "trader": {
+            "label": "Trader Proposal",
+            "text": "BUY. Use disciplined sizing, avoid chasing extended intraday strength, and require confirmation after earnings/news catalysts. A trader already holding shares can monitor trend support and volatility rather than adding aggressively.",
+            "summary": "BUY. Use disciplined sizing, avoid chasing extended intraday strength, and require confirmation after earnings/news catalysts. A trader already holding shares can monitor trend support and volatility rather than adding aggressively."
+          },
+          "risk": {
+            "label": "Risk Debate",
+            "text": "Aggressive view: momentum can persist while price holds above short- and intermediate-term averages. Conservative view: high volatility and any gap above analyst targets argue for restraint. Neutral view: maintain or initiate only a modest exposure with a pre-defined exit level.",
+            "summary": "Aggressive view: momentum can persist while price holds above short and intermediate term averages. Conservative view: high volatility and any gap above analyst targets argue for restraint. Neutral view: maintain or initiate only a modest exposure with a pre defined exit level."
+          },
+          "portfolio": {
+            "label": "Portfolio Manager",
+            "text": "BUY. This is a grounded research artifact, not personalized financial advice. Position size should reflect portfolio risk, liquidity, and event exposure.",
+            "summary": "BUY. This is a grounded research artifact, not personalized financial advice. Position size should reflect portfolio risk, liquidity, and event exposure."
+          }
+        },
+        "fullMarkdown": "# APLD TradingAgents Full Report\n\n- Generated: 2026-05-30T11:43:33\n- Requested trade date: 2026-05-30\n- Latest data date used: 2026-05-29\n- Run mode: TradingAgents data tools + deterministic synthesis; OpenAI gpt-5.5 is the configured full-graph model\n- Full graph note: Grounded fallback report. Run scripts/run_full_tradingagents_batch.py for the complete OpenAI gpt-5.5 LangGraph workflow when API quota is available.\n\n# APLD TradingAgents Grounded Full Report\n\n## Executive Summary\nFinal stance: BUY. APLD closed at 47.28 on 2026-05-29, with a one-day return of -4.77% and a 30-calendar-day TradingAgents window return of 38.04%. The technical setup is constructive if price remains above its major moving averages, while the risk read depends on valuation, earnings expectations, and whether recent momentum can hold.\n\n## Market Analyst Report\nPrice closed at 47.28; 50-day SMA 34.37810001373291; 200-day SMA 29.240225024223328. RSI was 60.04331835196022; MACD was 3.6548385502523786 versus signal 3.4118195588542446; ATR was 3.9897720828147416; Bollinger upper band was 52.01222930624311. This points to a momentum-aware setup with volatility that needs position sizing discipline.\n\n## Fundamentals Analyst Report\n# Company Fundamentals for APLD\n# Data retrieved on: 2026-05-30 11:43:24\n\nName: Applied Digital Corporation\nSector: Technology\nIndustry: Information Technology Services\nMarket Cap: 13511183360\nForward PE: -49.76842\nPEG Ratio: 1.83\nPrice to Book: 8.532756\nEPS (TTM): -0.38\nForward EPS: -0.95\nBeta: 5.7\n52 Week High: 50.725\n52 Week Low: 8.03\n50 Day Average: 34.3781\n200 Day Average: 29.240225\nRevenue (TTM): 319262016\nGross Profit: 144975008\nEBITDA: 13905000\nNet Income: -119756000\nProfit Margin: -0.59472\nOperating Margin: -0.20466\nReturn on Equity: -0.055609997\nReturn on Assets: -0.00598\nDebt to Equity: 110.128\nCurrent Ratio: 2.382\nBook Value: 5.541\nFree Cash Flow: -1496915328\n\nRecent quarterly statement highlights: income {'Total Revenue': '126637000.0', 'Gross Profit': '53805000.0', 'Operating Income': '-25918000.0', 'Net Income': '-99303000.0', 'Diluted EPS': '-0.36', 'EBITDA': '-5105000.0'}; cash flow {'Operating Cash Flow': '55008000.0', 'Free Cash Flow': '-720199000.0', 'Capital Expenditure': '-775207000.0', 'End Cash Position': '2107673000.0'}; balance sheet {'Total Debt': '2827480000.0', 'Net Debt': '962235000.0', 'Stockholders Equity': '1581221000.0', 'Working Capital': '1409003000.0', 'Current Liabilities': '1019318000.0'}.\n\n## Sentiment Analyst Report\nStockTwits and Reddit checks were run through TradingAgents sentiment inputs. StockTwits: Bullish: 21 (70%) - Bearish: 1 (3%) - Unlabeled: 8 - Total: 30 most-recent messages\n\n[2026-05-30T12:48:44Z - @Starnotes - Bullish] $HDRN  $APLD $TSLA $PLTR   with all these data centers being built . nobody is really talking about infustructure everyone is hyping space .   we have to up the power to run all these data centers   Hydron is where it&#39;s at . usually when nobody is talking about it is the best...\n[2026-05-30T12:04:56Z - @Helioss - Bullish] $APLD  Jason Zhang and Wes Cummins will be attending Datacloud Global Congress, with Wes speaking on the keynote panel: Which future tech innovation will change the digital infrastructure landscape?  Tuesday, June 2, 2026 | 3:45 PM - 4:30 PM |\n[2026-05-30T11:14:52Z - @PaulThomasTPG - Bullish] $APLD $HIVE   Remember when APLD was $4 and I called it out.....      Even at $25 I felt there was much more upside.     Today it is $47 ... Reddit: <Reddit unavailable: configure REDDIT_CLIENT_ID and REDDIT_CLIENT_SECRET for the official Reddit API>\n\n## News Analyst Report\nTicker news: ## APLD News, from 2026-04-30 to 2026-05-30:\n\n### Why Applied Digital Corporation (APLD) Is Gaining Attention After $7.5B New Lease Agreement (source: Insider Monkey)\nWe recently compiled a list of the 12 Best Strong Buy Tech Stocks to Invest In Now. Applied Digital Corporation (NASDAQ:APLD) is also one of the best Strong Buy stocks on this list. TheFly reported on May 21 that Lake Street raised its price target on APLD to $70 from $55 while reaffirming a Buy rating on [...]\nLink: https://finance.yahoo.com/markets/stocks/articles/why-applied-digital-corporation-apld-113440614.html\n\n### Applied Digital (APLD) Is Up 23.9% After 15-Year Hyperscaler Lease Lifts AI Campus Backlog (source: Simply Wall St.)\nEarlier in May 2026, Applied Digital Corporation announced a 15-year take-or-pay lease with a U.S.-based investment-grade hyperscaler for its Polaris Forge 3 AI campus, adding 300 MW of critical IT load and lifting total contracted lease revenue to US$31.00 billion across four AI Factory campuses. This latest agreement deepens Applied Digital's relationship with a major hyperscaler and pushes its contracted AI data center capacity to 1,200 MW, underscoring the scale of long-term demand it is...\nLink: https://finance.yahoo.com/markets/stocks/articles/applied-digital-apld-23-9-050520898.html\n\n### Applied Digital's Hyperscaler Deal Is Just the Beginning of a Much Bigger AI ...\n\nMacro/global news sample: ## Global Market News, from 2026-05-23 to 2026-05-30:\n\n### VanEck Launches First BNB Exchange-Traded Fund (source: CryptoProwl)\nLink: https://finance.yahoo.com/m/4146e76b-9ce6-3b30-b4b6-0208938b6a11/vaneck-launches-first-bnb.html\n\n### Shoe Prices Continue to Rise in March as Iran War Adds Fuel to the Fire (source: Footwear News)\nLink: https://finance.yahoo.com/m/9fc86965-918a-3b18-b9ff-f688dd156071/shoe-prices-continue-to-rise.html\n\n### Job Concerns, Shoe Price Hikes and Shaky Consumer Suggests Slower Sales on the Horizon (source: Footwear News)\nLink: https://finance.yahoo.com/m/dde2144f-026b-3fce-a5d3-3dca0e4e444a/job-concerns%2C-shoe-price.html\n\n### Oil Rate Increases Could Mean Shoe ...\n\n## Bull Case\nThe bull case is trend and momentum continuation, supported by the latest close above the moving-average stack, positive/firm MACD if confirmed, and any positive earnings or sector news. Bulls would want follow-through volume and stable fundamental revisions.\n\n## Bear Case\nThe bear case is valuation and event risk after a sharp move. If price is stretched versus analyst targets, near the upper Bollinger band, or if earnings expectations are already priced in, downside/reversion risk rises. Insider selling, a negative earnings surprise, or margin deterioration would add caution.\n\n## Trader Transaction Proposal\nBUY. Use disciplined sizing, avoid chasing extended intraday strength, and require confirmation after earnings/news catalysts. A trader already holding shares can monitor trend support and volatility rather than adding aggressively.\n\n## Risk Management Debate\nAggressive view: momentum can persist while price holds above short- and intermediate-term averages. Conservative view: high volatility and any gap above analyst targets argue for restraint. Neutral view: maintain or initiate only a modest exposure with a pre-defined exit level.\n\n## Portfolio-Level Final Decision\nBUY. This is a grounded research artifact, not personalized financial advice. Position size should reflect portfolio risk, liquidity, and event exposure.\n\n## Earnings And Data Availability\nEarnings/calendar data from yfinance: {'Earnings Date': [datetime.date(2026, 7, 29)], 'Earnings High': -0.4, 'Earnings Low': -0.4, 'Earnings Average': -0.4, 'Revenue High': 107100000, 'Revenue Low': 81500000, 'Revenue Average': 95812560}\n\nRecent earnings dates: EPS Estimate  Reported EPS  Surprise(%)\nEarnings Date                                                     \n2026-07-29 16:00:00-04:00         -0.40           NaN          NaN\n2026-04-08 16:00:00-04:00         -0.21          0.09       142.86\n2026-01-07 16:00:00-05:00         -0.12         -0.07        43.24\n2025-10-09 16:00:00-04:00         -0.15         -0.03        80.65\n2025-07-30 16:00:00-04:00         -0.21         -0.03        85.94\n2025-04-14 16:00:00-04:00         -0.10         -0.08        21.95\n2025-01-14 16:00:00-05:00         -0.14         -0.06        55.88\n2024-10-09 16:00:00-04:00         -0.26         -0.15        42.31\n2024-08-28 16:00:00-04:00         -0.22         -0.36       -63.64\n2024-04-11 16:00:00-04:00         -0.07         -0.24      -259.98\n2024-01-16 08:00:00-05:00          0.01         -0.05      -600.00\n2023-10-09 08:00:00-04:00         -0.01           NaN       106.56\n2023-07-24 08:00:00-04:00         -0.07         -0.01        85.00\n2023-04-06 08:00:00-04:00         -0.04         -0.01        75.00\n2023-01-09 16:00:00-05:00         -0.05         -0.04        27.27\n2022-10-11 16:00:00-04:00         -0.04         -0.04          NaN\n2022-08-25 ...\n\nAnalyst target data: {'current': 47.28, 'high': 106.0, 'low': 40.0, 'mean': 64.59091, 'median': 66.0}\n\nRecommendation summary:   period  strongBuy  buy  hold  sell  strongSell\n0     0m          2    9     0     0           0\n1    -1m          2    9     0     0           0\n2    -2m          2   10     0     0           0\n3    -3m          2   10     0     0           0"
       }
     }
   ]
