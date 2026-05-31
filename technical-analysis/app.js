@@ -18,6 +18,7 @@ const el = {
   failedCount: document.querySelector("#failedCount"),
   selectedTicker: document.querySelector("#selectedTicker"),
   selectedLabel: document.querySelector("#selectedLabel"),
+  topDecision: document.querySelector("#topDecision"),
   selectedScore: document.querySelector("#selectedScore"),
   metricLast: document.querySelector("#metricLast"),
   metricChange: document.querySelector("#metricChange"),
@@ -242,6 +243,27 @@ function getReportHeadings(markdown) {
     .slice(0, 9);
 }
 
+function decisionFromReport(stock) {
+  const report = String(stock.reportMarkdown || "");
+  const lines = report
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  const classification = lines.find((line) => line.includes("Framework classification:"));
+  const explanation = lines.find(
+    (line) =>
+      line.startsWith("Bullish under the framework") ||
+      line.startsWith("Not bullish")
+  );
+  const parts = [classification, explanation]
+    .filter(Boolean)
+    .map((line) => line.replace(/\*\*/g, "").replace(/\.$/, ""));
+  if (parts.length) return `${parts.join(" - ")}.`;
+  if (stock.scoreError) return stock.scoreError;
+  return stock.tradingView || stock.technicalLabel || "--";
+}
+
 function sortedStocks() {
   return [...data.stocks].sort((a, b) => {
     const aScore = number(a.tradingScore);
@@ -361,6 +383,7 @@ function renderSelected() {
   el.selectedTicker.textContent = stock.symbol;
   el.selectedLabel.textContent = stock.technicalLabel || (stock.scoreError ? "No data" : "--");
   el.selectedLabel.dataset.label = stock.technicalLabel || "";
+  el.topDecision.textContent = decisionFromReport(stock);
   el.selectedScore.textContent = formatScore(stock.tradingScore);
 
   el.metricLast.textContent = formatCurrency(stock.last);

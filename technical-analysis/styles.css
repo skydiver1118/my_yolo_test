@@ -358,6 +358,34 @@ input {
   font-size: 34px;
 }
 
+.decision-block {
+  min-width: 0;
+  flex: 1;
+  padding: 0 18px;
+  border-left: 1px solid var(--line);
+  border-right: 1px solid var(--line);
+}
+
+.decision-block span {
+  display: block;
+  color: var(--muted);
+  font-size: 11px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.decision-block p {
+  display: -webkit-box;
+  margin: 5px 0 0;
+  overflow: hidden;
+  color: #243142;
+  font-size: 14px;
+  font-weight: 750;
+  line-height: 1.35;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
 .metric-strip {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -639,6 +667,15 @@ input {
   .section-head {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .decision-block {
+    width: 100%;
+    padding: 12px 0;
+    border-left: 0;
+    border-right: 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
   }
 
   .score-block {
