@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Technical Analysis Command Center</title>
+    <link rel="stylesheet" href="styles.css?v=20260531184003" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Technical analysis dashboard</p>
+          <h1>Watchlist Command Center</h1>
+        </div>
+        <div class="topbar-actions">
+          <label class="search-box">
+            <span>Search</span>
+            <input id="stockSearch" type="search" placeholder="Ticker, view, entry" />
+          </label>
+          <div class="segmented" role="group" aria-label="Filter stocks">
+            <button class="segmented-button active" data-filter="all" type="button">All</button>
+            <button class="segmented-button" data-filter="Bullish" type="button">Bullish</button>
+            <button class="segmented-button" data-filter="Neutral" type="button">Neutral</button>
+            <button class="segmented-button" data-filter="Bearish" type="button">Bearish</button>
+            <button class="segmented-button" data-filter="failed" type="button">No data</button>
+          </div>
+        </div>
+      </header>
+
+      <main class="dashboard-grid">
+        <aside class="watchlist-panel" aria-label="Technical watchlist">
+          <div class="panel-heading">
+            <div>
+              <p class="eyebrow">Ranked by technical score</p>
+              <h2>Watchlist</h2>
+            </div>
+            <span id="coverageBadge" class="coverage-badge"></span>
+          </div>
+          <div class="summary-strip">
+            <div>
+              <span>Avg Score</span>
+              <strong id="avgScore">--</strong>
+            </div>
+            <div>
+              <span>Bullish</span>
+              <strong id="bullishCount">--</strong>
+            </div>
+            <div>
+              <span>Failed</span>
+              <strong id="failedCount">--</strong>
+            </div>
+          </div>
+          <div id="watchlist" class="watchlist" role="listbox" aria-label="Selectable stocks"></div>
+        </aside>
+
+        <section class="primary-panel" aria-live="polite">
+          <section class="hero-panel">
+            <div class="ticker-block">
+              <p class="eyebrow">Selected setup</p>
+              <div class="ticker-line">
+                <h2 id="selectedTicker">--</h2>
+                <span id="selectedLabel" class="status-pill">--</span>
+              </div>
+            </div>
+            <div class="score-block">
+              <span>Technical Score</span>
+              <strong id="selectedScore">--</strong>
+            </div>
+          </section>
+
+          <section class="metric-strip" aria-label="Selected stock metrics">
+            <div class="metric">
+              <span>Last</span>
+              <strong id="metricLast">--</strong>
+            </div>
+            <div class="metric">
+              <span>Day Chg</span>
+              <strong id="metricChange">--</strong>
+            </div>
+            <div class="metric">
+              <span>RSI</span>
+              <strong id="metricRsi">--</strong>
+            </div>
+            <div class="metric">
+              <span>ADX</span>
+              <strong id="metricAdx">--</strong>
+            </div>
+            <div class="metric">
+              <span>ATR</span>
+              <strong id="metricAtr">--</strong>
+            </div>
+            <div class="metric">
+              <span>Investment</span>
+              <strong id="metricInvestment">--</strong>
+            </div>
+          </section>
+
+          <section class="chart-section" aria-label="Technical chart">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Three-month daily chart</p>
+                <h2>Candles, trend, momentum, volume</h2>
+              </div>
+              <span id="chartDate" class="path-chip">--</span>
+            </div>
+            <div id="chartFrame" class="chart-frame"></div>
+          </section>
+
+          <section class="setup-grid">
+            <article class="setup-panel">
+              <p class="eyebrow">Entry plan</p>
+              <h2 id="entryPlan">--</h2>
+              <dl class="setup-list">
+                <div>
+                  <dt>Zone</dt>
+                  <dd id="entryZone">--</dd>
+                </div>
+                <div>
+                  <dt>Stop</dt>
+                  <dd id="entryStop">--</dd>
+                </div>
+                <div>
+                  <dt>Target 1</dt>
+                  <dd id="entryTarget1">--</dd>
+                </div>
+                <div>
+                  <dt>Target 2</dt>
+                  <dd id="entryTarget2">--</dd>
+                </div>
+              </dl>
+              <p id="entryTrigger" class="trigger-copy"></p>
+            </article>
+            <article class="setup-panel">
+              <p class="eyebrow">Levels</p>
+              <h2 id="levelHeadline">--</h2>
+              <dl class="setup-list two-col">
+                <div>
+                  <dt>SMA20</dt>
+                  <dd id="sma20">--</dd>
+                </div>
+                <div>
+                  <dt>SMA50</dt>
+                  <dd id="sma50">--</dd>
+                </div>
+                <div>
+                  <dt>Support</dt>
+                  <dd id="support">--</dd>
+                </div>
+                <div>
+                  <dt>Resistance</dt>
+                  <dd id="resistance">--</dd>
+                </div>
+              </dl>
+            </article>
+          </section>
+
+          <section class="report-section">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Full technical report</p>
+                <h2>Decision, score breakdown, levels, entries</h2>
+              </div>
+              <span id="reportStatus" class="path-chip">--</span>
+            </div>
+            <article id="fullReport" class="markdown-body"></article>
+          </section>
+        </section>
+
+        <aside class="insight-rail" aria-label="Technical context">
+          <section class="rail-block">
+            <p class="eyebrow">Watchlist stance</p>
+            <h2 id="stanceTitle">--</h2>
+            <p id="dataNote" class="muted-copy"></p>
+          </section>
+          <section class="rail-block">
+            <p class="eyebrow">Top setups</p>
+            <div id="topNames" class="top-names"></div>
+          </section>
+          <section class="rail-block">
+            <p class="eyebrow">Selected diagnostics</p>
+            <div id="diagnostics" class="diagnostics"></div>
+          </section>
+          <section class="rail-block">
+            <p class="eyebrow">Report sections</p>
+            <nav id="reportNav" class="report-nav" aria-label="Report sections"></nav>
+          </section>
+        </aside>
+      </main>
+    </div>
+
+    <script src="data/dashboard-data.js?v=20260531184003"></script>
+    <script src="app.js?v=20260531184003"></script>
+  </body>
+</html>
