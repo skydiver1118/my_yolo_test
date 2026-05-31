@@ -184,10 +184,7 @@ function localRunnerUrl(symbol, persistToWatchlist) {
 }
 
 function shouldOpenLocalRunner(error) {
-  return (
-    window.location.protocol === "https:" &&
-    /failed to fetch|networkerror|load failed/i.test(String(error?.message || error))
-  );
+  return window.location.protocol === "https:";
 }
 
 function escapeHtml(value) {
