@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Technical Analysis Command Center</title>
-    <link rel="stylesheet" href="styles.css?v=20260531184003" />
+    <link rel="stylesheet" href="styles.css?v=20260531185910" />
   </head>
   <body>
     <div class="app-shell">
@@ -96,17 +96,6 @@
             </div>
           </section>
 
-          <section class="chart-section" aria-label="Technical chart">
-            <div class="section-head">
-              <div>
-                <p class="eyebrow">Three-month daily chart</p>
-                <h2>Candles, trend, momentum, volume</h2>
-              </div>
-              <span id="chartDate" class="path-chip">--</span>
-            </div>
-            <div id="chartFrame" class="chart-frame"></div>
-          </section>
-
           <section class="setup-grid">
             <article class="setup-panel">
               <p class="eyebrow">Entry plan</p>
@@ -136,12 +125,20 @@
               <h2 id="levelHeadline">--</h2>
               <dl class="setup-list two-col">
                 <div>
+                  <dt>EMA8</dt>
+                  <dd id="ema8">--</dd>
+                </div>
+                <div>
                   <dt>SMA20</dt>
                   <dd id="sma20">--</dd>
                 </div>
                 <div>
                   <dt>SMA50</dt>
                   <dd id="sma50">--</dd>
+                </div>
+                <div>
+                  <dt>SMA200</dt>
+                  <dd id="sma200">--</dd>
                 </div>
                 <div>
                   <dt>Support</dt>
@@ -153,6 +150,17 @@
                 </div>
               </dl>
             </article>
+          </section>
+
+          <section class="chart-section" aria-label="Technical chart">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Three-month daily chart</p>
+                <h2>Candles, trend, momentum, volume</h2>
+              </div>
+              <span id="chartDate" class="path-chip">--</span>
+            </div>
+            <div id="chartFrame" class="chart-frame"></div>
           </section>
 
           <section class="report-section">
@@ -189,7 +197,7 @@
       </main>
     </div>
 
-    <script src="data/dashboard-data.js?v=20260531184003"></script>
-    <script src="app.js?v=20260531184003"></script>
+    <script src="data/dashboard-data.js?v=20260531185910"></script>
+    <script src="app.js?v=20260531185910"></script>
   </body>
 </html>

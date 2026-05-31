@@ -34,8 +34,10 @@ const el = {
   entryTarget2: document.querySelector("#entryTarget2"),
   entryTrigger: document.querySelector("#entryTrigger"),
   levelHeadline: document.querySelector("#levelHeadline"),
+  ema8: document.querySelector("#ema8"),
   sma20: document.querySelector("#sma20"),
   sma50: document.querySelector("#sma50"),
+  sma200: document.querySelector("#sma200"),
   support: document.querySelector("#support"),
   resistance: document.querySelector("#resistance"),
   reportStatus: document.querySelector("#reportStatus"),
@@ -384,8 +386,10 @@ function renderSelected() {
   el.entryTrigger.textContent = stock.entry?.trigger || "";
 
   el.levelHeadline.textContent = `${formatCurrency(stock.levels?.nearestSupport)} / ${formatCurrency(stock.levels?.nearestResistance)}`;
+  el.ema8.textContent = formatCurrency(stock.indicators?.ema8);
   el.sma20.textContent = formatCurrency(stock.indicators?.sma20);
   el.sma50.textContent = formatCurrency(stock.indicators?.sma50);
+  el.sma200.textContent = formatCurrency(stock.indicators?.sma200);
   el.support.textContent = formatCurrency(stock.levels?.nearestSupport);
   el.resistance.textContent = formatCurrency(stock.levels?.nearestResistance);
 
