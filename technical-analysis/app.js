@@ -177,6 +177,19 @@ async function checkBackend() {
   }
 }
 
+function localRunnerUrl(symbol, persistToWatchlist) {
+  const params = new URLSearchParams({ run: symbol });
+  if (persistToWatchlist) params.set("watchlist", "1");
+  return `http://127.0.0.1:8788/?${params.toString()}`;
+}
+
+function shouldOpenLocalRunner(error) {
+  return (
+    window.location.protocol === "https:" &&
+    /failed to fetch|networkerror|load failed/i.test(String(error?.message || error))
+  );
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -445,10 +458,25 @@ async function runTicker({ persistToWatchlist = false } = {}) {
     el.runnerSymbol.value = symbol;
     setRunnerStatus(result.message || `${symbol} report loaded`, "ready");
   } catch (error) {
+    if (shouldOpenLocalRunner(error)) {
+      setRunnerStatus("Opening local runner...", "busy");
+      window.location.href = localRunnerUrl(symbol, persistToWatchlist);
+      return;
+    }
     setRunnerStatus(error.message || "Backend request failed", "error");
   } finally {
     setRunnerBusy(false);
   }
+}
+
+function runTickerFromUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const symbol = normalizeSymbol(params.get("run") || "");
+  if (!symbol) return;
+  if (el.runnerSymbol) el.runnerSymbol.value = symbol;
+  const persistToWatchlist = params.get("watchlist") === "1";
+  window.history.replaceState({}, "", window.location.pathname);
+  runTicker({ persistToWatchlist });
 }
 
 function renderWatchlist() {
@@ -591,14 +619,15 @@ function bindEvents() {
   });
 }
 
-function init() {
+async function init() {
   const first = sortedStocks()[0];
   state.selectedSymbol = first?.symbol || null;
   renderSummary();
   renderWatchlist();
   renderSelected();
   bindEvents();
-  checkBackend();
+  await checkBackend();
+  runTickerFromUrl();
 }
 
 init();
