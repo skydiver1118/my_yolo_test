@@ -78,6 +78,88 @@ input {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.ticker-runner {
+  display: grid;
+  grid-template-columns: minmax(150px, 210px) auto auto minmax(135px, 220px);
+  align-items: center;
+  gap: 8px;
+}
+
+.ticker-runner label {
+  display: grid;
+  grid-template-columns: auto minmax(72px, 1fr);
+  align-items: center;
+  gap: 8px;
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: var(--panel);
+}
+
+.ticker-runner span,
+.runner-status {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 850;
+}
+
+.ticker-runner input {
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  color: var(--ink);
+  text-transform: uppercase;
+}
+
+.ticker-runner button {
+  height: 40px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--blue);
+  color: #fff;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+#watchlistButton {
+  border: 1px solid rgba(40, 100, 216, 0.18);
+  background: #eef4fb;
+  color: var(--blue);
+}
+
+.ticker-runner button:disabled {
+  cursor: wait;
+  opacity: 0.62;
+}
+
+.runner-status {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.runner-status[data-tone="ready"] {
+  color: var(--green);
+}
+
+.runner-status[data-tone="busy"] {
+  color: var(--blue);
+}
+
+.runner-status[data-tone="warn"] {
+  color: var(--amber);
+}
+
+.runner-status[data-tone="error"] {
+  color: var(--red);
 }
 
 .search-box {
@@ -628,6 +710,14 @@ input {
     flex-direction: column;
   }
 
+  .ticker-runner {
+    grid-template-columns: 1fr auto auto;
+  }
+
+  .runner-status {
+    grid-column: 1 / -1;
+  }
+
   .segmented {
     grid-auto-flow: row;
     grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -657,6 +747,10 @@ input {
     grid-template-columns: 1fr;
     height: auto;
     padding: 9px 12px;
+  }
+
+  .ticker-runner {
+    grid-template-columns: 1fr;
   }
 
   .segmented {

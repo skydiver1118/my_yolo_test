@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Technical Analysis Command Center</title>
-    <link rel="stylesheet" href="styles.css?v=20260531192213" />
+    <link rel="stylesheet" href="styles.css?v=20260531195349" />
   </head>
   <body>
     <div class="app-shell">
@@ -14,6 +14,15 @@
           <h1>Watchlist Command Center</h1>
         </div>
         <div class="topbar-actions">
+          <form id="tickerRunner" class="ticker-runner" aria-label="Run technical analysis ticker report">
+            <label>
+              <span>Run</span>
+              <input id="runnerSymbol" type="text" inputmode="latin" autocomplete="off" placeholder="Ticker" maxlength="15" />
+            </label>
+            <button id="runnerButton" type="submit">Analyze</button>
+            <button id="watchlistButton" type="button">Add to Watchlist</button>
+            <span id="runnerStatus" class="runner-status" aria-live="polite">Backend check pending</span>
+          </form>
           <label class="search-box">
             <span>Search</span>
             <input id="stockSearch" type="search" placeholder="Ticker, view, entry" />
@@ -201,7 +210,7 @@
       </main>
     </div>
 
-    <script src="data/dashboard-data.js?v=20260531192213"></script>
-    <script src="app.js?v=20260531192213"></script>
+    <script src="data/dashboard-data.js?v=20260531195349"></script>
+    <script src="app.js?v=20260531195349"></script>
   </body>
 </html>

@@ -24,6 +24,16 @@ python -m http.server 8788 --bind 127.0.0.1
 
 Open `http://127.0.0.1:8788/`.
 
+## On-Demand Reports
+
+The GitHub Pages dashboard can run a fresh technical report from a local backend:
+
+```powershell
+python scripts\serve_technical_analysis_backend.py
+```
+
+Then use the top `Run` box on the dashboard. `Analyze` returns the report immediately in the page, and `Add to Watchlist` also persists the symbol to `tradingagents_dashboard/watchlist.local.json`.
+
 ## Publish
 
 The intended GitHub Pages path is:

@@ -7,9 +7,16 @@ const state = {
   selectedSymbol: null,
   filter: "all",
   query: "",
+  backendUrl: "http://127.0.0.1:8791",
+  runnerBusy: false,
 };
 
 const el = {
+  tickerRunner: document.querySelector("#tickerRunner"),
+  runnerSymbol: document.querySelector("#runnerSymbol"),
+  runnerButton: document.querySelector("#runnerButton"),
+  watchlistButton: document.querySelector("#watchlistButton"),
+  runnerStatus: document.querySelector("#runnerStatus"),
   stockSearch: document.querySelector("#stockSearch"),
   watchlist: document.querySelector("#watchlist"),
   coverageBadge: document.querySelector("#coverageBadge"),
@@ -110,6 +117,64 @@ function formatDate(value, fallback = "--") {
     day: "numeric",
     year: "numeric",
   }).format(parsed);
+}
+
+function normalizeSymbol(value) {
+  return String(value || "")
+    .toUpperCase()
+    .replace(/[^A-Z0-9.\-]/g, "")
+    .slice(0, 15);
+}
+
+function setRunnerStatus(text, tone = "") {
+  if (!el.runnerStatus) return;
+  el.runnerStatus.textContent = text;
+  el.runnerStatus.dataset.tone = tone;
+}
+
+function setRunnerBusy(busy) {
+  state.runnerBusy = busy;
+  if (el.runnerButton) el.runnerButton.disabled = busy;
+  if (el.watchlistButton) el.watchlistButton.disabled = busy;
+  if (el.runnerSymbol) el.runnerSymbol.disabled = busy;
+}
+
+async function postBackend(path, payload) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 120000);
+  try {
+    const response = await fetch(`${state.backendUrl}${path}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+      signal: controller.signal,
+    });
+    const body = await response.json().catch(() => ({}));
+    if (!response.ok || body.ok === false) {
+      throw new Error(body.error || `Backend returned ${response.status}`);
+    }
+    return body;
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
+async function checkBackend() {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 1800);
+  try {
+    const response = await fetch(`${state.backendUrl}/health`, { signal: controller.signal });
+    const body = await response.json();
+    if (response.ok && body.ok) {
+      setRunnerStatus("Backend ready", "ready");
+      return;
+    }
+    setRunnerStatus("Backend unavailable", "warn");
+  } catch (_error) {
+    setRunnerStatus("Start local backend on :8791", "warn");
+  } finally {
+    window.clearTimeout(timeout);
+  }
 }
 
 function escapeHtml(value) {
@@ -275,6 +340,43 @@ function sortedStocks() {
   });
 }
 
+function computedSummary() {
+  const stocks = data.stocks || [];
+  const scored = stocks.filter((stock) => number(stock.tradingScore) !== null);
+  const scoreValues = scored.map((stock) => Number(stock.tradingScore));
+  const sorted = [...scored].sort((a, b) => Number(b.tradingScore) - Number(a.tradingScore));
+  const average =
+    scoreValues.length > 0
+      ? scoreValues.reduce((sum, value) => sum + value, 0) / scoreValues.length
+      : null;
+  return {
+    ...data.summary,
+    watchlistCount: stocks.length,
+    scoredCount: scored.length,
+    failedCount: stocks.length - scored.length,
+    averageTradingScore: average,
+    bullishCount: scored.filter((stock) => stock.technicalLabel === "Bullish").length,
+    topSymbols: sorted.slice(0, 8).map((stock) => stock.symbol),
+  };
+}
+
+function upsertStock(stock) {
+  if (!stock || !stock.symbol) return;
+  const symbol = normalizeSymbol(stock.symbol);
+  stock.symbol = symbol;
+  const existingIndex = data.stocks.findIndex((item) => item.symbol === symbol);
+  if (existingIndex >= 0) {
+    data.stocks.splice(existingIndex, 1, stock);
+  } else {
+    data.stocks.push(stock);
+  }
+  state.selectedSymbol = symbol;
+  state.query = "";
+  if (el.stockSearch) el.stockSearch.value = "";
+  renderSummary();
+  renderSelected();
+}
+
 function filteredStocks() {
   const query = state.query.trim().toUpperCase();
   return sortedStocks().filter((stock) => {
@@ -302,7 +404,7 @@ function findSelected() {
 }
 
 function renderSummary() {
-  const summary = data.summary || {};
+  const summary = computedSummary();
   el.coverageBadge.textContent = `${summary.scoredCount || 0}/${summary.watchlistCount || 0} scored`;
   el.avgScore.textContent = formatDecimal(summary.averageTradingScore, 1);
   el.bullishCount.textContent = summary.bullishCount ?? "--";
@@ -318,6 +420,35 @@ function renderSummary() {
       </button>`;
     })
     .join("");
+}
+
+async function runTicker({ persistToWatchlist = false } = {}) {
+  if (state.runnerBusy) return;
+  const symbol = normalizeSymbol(el.runnerSymbol?.value || state.selectedSymbol || "");
+  if (!symbol) {
+    setRunnerStatus("Enter a ticker first", "warn");
+    el.runnerSymbol?.focus();
+    return;
+  }
+
+  setRunnerBusy(true);
+  setRunnerStatus(
+    persistToWatchlist ? `Adding ${symbol}...` : `Analyzing ${symbol}...`,
+    "busy"
+  );
+  try {
+    const result = await postBackend(persistToWatchlist ? "/watchlist" : "/analyze", {
+      symbol,
+      period: "2y",
+    });
+    upsertStock(result.stock);
+    el.runnerSymbol.value = symbol;
+    setRunnerStatus(result.message || `${symbol} report loaded`, "ready");
+  } catch (error) {
+    setRunnerStatus(error.message || "Backend request failed", "error");
+  } finally {
+    setRunnerBusy(false);
+  }
 }
 
 function renderWatchlist() {
@@ -424,6 +555,19 @@ function renderSelected() {
 }
 
 function bindEvents() {
+  el.runnerSymbol?.addEventListener("input", (event) => {
+    event.target.value = normalizeSymbol(event.target.value);
+  });
+
+  el.tickerRunner?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    runTicker({ persistToWatchlist: false });
+  });
+
+  el.watchlistButton?.addEventListener("click", () => {
+    runTicker({ persistToWatchlist: true });
+  });
+
   el.stockSearch.addEventListener("input", (event) => {
     state.query = event.target.value;
     renderWatchlist();
@@ -454,6 +598,7 @@ function init() {
   renderWatchlist();
   renderSelected();
   bindEvents();
+  checkBackend();
 }
 
 init();
