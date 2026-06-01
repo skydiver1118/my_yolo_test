@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>10x Framework Dashboard</title>
-    <link rel="stylesheet" href="styles.css?v=2026060105">
+    <link rel="stylesheet" href="styles.css?v=2026060106">
   </head>
   <body>
     <main class="app-shell">
@@ -180,19 +180,36 @@
             <div id="forecastLens" class="forecast-lens"></div>
           </section>
 
-          <div class="report-split">
-            <section class="subpanel">
-              <h3>Dorsey Five Rules</h3>
-              <div id="dorseyRules" class="rule-list"></div>
+          <div class="module-grid" aria-label="Independent 10x framework modules">
+            <section class="module-card module-research">
+              <div class="module-head">
+                <div>
+                  <span>Module 1</span>
+                  <h3>Independent Research</h3>
+                </div>
+                <strong id="ownResearchScore">--</strong>
+              </div>
+              <div id="ownResearchModule" class="module-body"></div>
             </section>
-            <section class="subpanel">
-              <h3>Moat & Leader Check</h3>
-              <dl class="leader-list">
-                <dt>Moat</dt>
-                <dd id="moatText">--</dd>
-                <dt>Leader</dt>
-                <dd id="leaderText">--</dd>
-              </dl>
+            <section class="module-card module-dorsey">
+              <div class="module-head">
+                <div>
+                  <span>Module 2</span>
+                  <h3>Dorsey Five Rules</h3>
+                </div>
+                <strong id="dorseyScore">--</strong>
+              </div>
+              <div id="dorseyModule" class="module-body"></div>
+            </section>
+            <section class="module-card module-baillie">
+              <div class="module-head">
+                <div>
+                  <span>Module 3</span>
+                  <h3>Baillie Gifford Outlier</h3>
+                </div>
+                <strong id="baillieScore">--</strong>
+              </div>
+              <div id="baillieModule" class="module-body"></div>
             </section>
           </div>
 
@@ -216,6 +233,6 @@
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="data/dashboard-data.js?v=2026060101"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="app.js?v=2026060105"></script>
+    <script src="app.js?v=2026060106"></script>
   </body>
 </html>

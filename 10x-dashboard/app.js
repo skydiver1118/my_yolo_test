@@ -379,12 +379,10 @@ function renderReport(row) {
   $("reportTenX").textContent = reportRow.TenXMarketCapDisplay || "N/A";
   $("reportEarnings").textContent = `${reportRow.PositiveEarningsNow_Basis || "Unknown"}`.replace(" - ", "\n");
   $("reportForecastScore").textContent = reportRow.ForecastLens.hasData ? `${reportRow.ForecastLens.score}/10` : "No data";
-  $("moatText").textContent = reportRow.MoatSummary || reportRow.MoatStrength || "Needs moat research.";
-  $("leaderText").textContent = reportRow.InvestLeaderInstead || reportRow.SectorLeaderBenchmark || "Identify direct leader during diligence.";
 
   renderScoreLens(reportRow);
   renderForecastLens(reportRow);
-  renderDorseyRules(reportRow.DorseyRules || dorseyRules(reportRow));
+  renderIndependentModules(reportRow);
   $("markdownReport").innerHTML = markdownToHtml(state.currentMarkdown);
   $("tickerInput").value = reportRow.Symbol;
   populateForecastInputs(reportRow);
@@ -440,23 +438,6 @@ function renderForecastLens(row) {
   `;
 }
 
-function renderDorseyRules(rules) {
-  const box = $("dorseyRules");
-  box.innerHTML = "";
-  for (const rule of rules) {
-    const item = document.createElement("article");
-    item.className = "rule-item";
-    item.innerHTML = `
-      <div>
-        <strong>${rule.rule}</strong>
-        <p>${rule.note || ""}</p>
-      </div>
-      <span>${rule.status || "Review"}</span>
-    `;
-    box.appendChild(item);
-  }
-}
-
 function dorseyRules(row) {
   if (!row.Pillars || !row.Pillars.length) {
     return [
@@ -479,6 +460,232 @@ function dorseyRules(row) {
     { rule: "Margin of safety", status: starting >= 12 ? "Pass" : starting >= 7 ? "Partial" : "Weak", note: `10x target market cap is ${row.TenXMarketCapDisplay || "N/A"}.` },
     { rule: "Hold long, sell when facts break", status: balance >= 7 ? "Pass" : "Needs triggers", note: "Track revenue growth, margin trend, dilution, cash flow, and moat evidence quarterly." },
   ];
+}
+
+function clamp(value, min, max) {
+  return Math.max(min, Math.min(max, value));
+}
+
+function numericField(row, key) {
+  return toNumber(row[key]) || 0;
+}
+
+function usefulText(value) {
+  return Boolean(value) && !/(unknown|needs research|needs customer|not researched|n\/a)/i.test(String(value));
+}
+
+function componentScore(row, key, fallback = 0) {
+  const value = numericField(row, key);
+  return value > 0 ? value : fallback;
+}
+
+function moduleLabel(score) {
+  if (score >= 80) return "Strong";
+  if (score >= 65) return "Watch";
+  if (score >= 45) return "Mixed";
+  return "Weak";
+}
+
+function scoreStatus(score, max) {
+  const pct = max ? (score / max) * 100 : 0;
+  if (pct >= 80) return "Pass";
+  if (pct >= 60) return "Partial";
+  if (pct >= 40) return "Review";
+  return "Weak";
+}
+
+function renderIndependentModules(row) {
+  const own = ownResearchModule(row);
+  const dorsey = dorseyModule(row);
+  const baillie = baillieModule(row);
+  $("ownResearchScore").textContent = `${own.score}/100`;
+  $("dorseyScore").textContent = `${dorsey.score}/100`;
+  $("baillieScore").textContent = `${baillie.score}/100`;
+  renderModuleCard("ownResearchModule", own);
+  renderModuleCard("dorseyModule", dorsey);
+  renderModuleCard("baillieModule", baillie);
+}
+
+function renderModuleCard(id, module) {
+  const box = $(id);
+  box.innerHTML = `
+    <p class="module-verdict">${escapeHtml(module.verdict)}</p>
+    <div class="module-checks">
+      ${module.checks
+        .map(
+          (check) => `
+            <article class="module-check">
+              <div><strong>${escapeHtml(check.name)}</strong><em>${escapeHtml(check.status)}</em></div>
+              <p>${escapeHtml(check.note)}</p>
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+    <p class="module-source">${escapeHtml(module.source)}</p>
+  `;
+}
+
+function ownResearchModule(row) {
+  const checks = [
+    {
+      name: "Starting size / valuation",
+      score: numericField(row, "StartingSizeValuationScore_15"),
+      max: 15,
+      note: `${row.MarketCapDisplay || "N/A"} today; 10x target ${row.TenXMarketCapDisplay || "N/A"}.`,
+    },
+    {
+      name: "Pain point / market pull",
+      score: numericField(row, "PainPointMarketPullScore_15"),
+      max: 15,
+      note: row.KeyPainPoint || "Customer pain point needs direct research.",
+    },
+    {
+      name: "Growth runway",
+      score: numericField(row, "GrowthRunwayScore_15"),
+      max: 15,
+      note: row.WhyCan10x || "Add revenue growth and TAM evidence.",
+    },
+    {
+      name: "Fundamental quality",
+      score: numericField(row, "FundamentalQualityScore_15"),
+      max: 15,
+      note: row.PositiveEarningsNow_Basis || "Verify margin, cash flow, and earnings quality.",
+    },
+    {
+      name: "Moat durability",
+      score: numericField(row, "MoatDurabilityScore_15"),
+      max: 15,
+      note: row.MoatSummary || row.MoatStrength || "Moat evidence needed.",
+    },
+    {
+      name: "Management / ownership",
+      score: numericField(row, "ManagementOwnershipScore_10"),
+      max: 10,
+      note: "Check founder ownership, incentives, execution record, and capital allocation.",
+    },
+    {
+      name: "Balance sheet / dilution",
+      score: numericField(row, "BalanceSheetDilutionScore_10"),
+      max: 10,
+      note: "Check cash runway, debt, share issuance, and ability to fund growth.",
+    },
+    {
+      name: "Variant perception / catalyst",
+      score: numericField(row, "VariantPerceptionCatalystScore_5"),
+      max: 5,
+      note: row.TopRisks || "Define what the market is missing and what would prove it.",
+    },
+  ];
+  const hasDetailedScores = checks.some((check) => check.score > 0);
+  if (!hasDetailedScores && toNumber(row.InvestmentScore) !== null) {
+    const score = Math.round(toNumber(row.InvestmentScore));
+    return {
+      score,
+      verdict: `${moduleLabel(score)} independent research setup. Detailed pillars are not embedded for this row, so this module is using the existing independent research total and raw notes.`,
+      checks: [
+        {
+          name: "Independent research total",
+          status: `${score}/100 Imported`,
+          note: "Detailed pillar scores are missing from the static data row; refresh the research file to expose the full breakdown.",
+        },
+        {
+          name: "Growth thesis",
+          status: usefulText(row.WhyCan10x) ? "Present" : "Review",
+          note: row.WhyCan10x || "Add 10x thesis evidence.",
+        },
+        {
+          name: "Moat evidence",
+          status: usefulText(row.MoatSummary) ? "Present" : "Review",
+          note: row.MoatSummary || row.MoatStrength || "Add moat evidence.",
+        },
+        {
+          name: "Risk evidence",
+          status: usefulText(row.TopRisks) ? "Present" : "Review",
+          note: row.TopRisks || "Add failure modes and kill triggers.",
+        },
+      ],
+      source: "Separate module: original 10x research only; no Dorsey or Baillie outputs used.",
+    };
+  }
+  const score = Math.round(checks.reduce((sum, check) => sum + check.score, 0));
+  return {
+    score,
+    verdict: `${moduleLabel(score)} independent research setup. This module uses only the original 10x research pillars and raw company facts.`,
+    checks: checks.map((check) => ({ ...check, status: `${check.score}/${check.max} ${scoreStatus(check.score, check.max)}` })),
+    source: "Separate module: original 10x research only; no Dorsey or Baillie outputs used.",
+  };
+}
+
+function dorseyModule(row) {
+  const rules = row.DorseyRules || dorseyRules(row);
+  const points = {
+    Pass: 20,
+    Partial: 12,
+    Review: 10,
+    "Needs triggers": 8,
+    Incomplete: 4,
+    Weak: 4,
+  };
+  const score = rules.reduce((sum, rule) => sum + (points[rule.status] ?? 8), 0);
+  return {
+    score,
+    verdict: `${moduleLabel(score)} Dorsey discipline. This module only asks whether the business can be owned patiently under quality/value rules.`,
+    checks: rules.map((rule) => ({
+      name: rule.rule,
+      status: rule.status || "Review",
+      note: rule.note || "Needs direct evidence.",
+    })),
+    source: "Separate module: Dorsey Five Rules only; no independent-research or Baillie scores used.",
+  };
+}
+
+function baillieModule(row) {
+  const hasMarketCapMath = usefulText(row.MarketCapDisplay) && usefulText(row.TenXMarketCapDisplay);
+  const hasPositiveEarnings = `${row.PositiveEarningsNow_Basis || ""}`.startsWith("Yes");
+  const growth = componentScore(row, "GrowthRunwayScore_15", usefulText(row.WhyCan10x) ? 9 : 0);
+  const moat = componentScore(row, "MoatDurabilityScore_15", usefulText(row.MoatSummary) ? 7 : 0);
+  const management = componentScore(row, "ManagementOwnershipScore_10", 4);
+  const fundamentals = componentScore(row, "FundamentalQualityScore_15", hasPositiveEarnings ? 10 : 4);
+  const balance = componentScore(row, "BalanceSheetDilutionScore_10", 4);
+  const starting = componentScore(row, "StartingSizeValuationScore_15", hasMarketCapMath ? 8 : 0);
+  const catalyst = componentScore(row, "VariantPerceptionCatalystScore_5", usefulText(row.Decision) ? 2 : 0);
+  const pain = componentScore(row, "PainPointMarketPullScore_15", usefulText(row.KeyPainPoint) ? 8 : 0);
+  const combinedText = `${row.WhyCan10x || ""} ${row.MoatSummary || ""} ${row.KeyPainPoint || ""} ${row.SectorTheme || ""}`.toLowerCase();
+  const flexibleAssets = /(platform|ecosystem|data|software|cloud|network|integration|infrastructure|model|workflow|device|marketplace)/.test(combinedText);
+  const founderSignal = /(founder|owner|insider|entrepreneur|ceo)/.test(combinedText);
+  const agileSignal = /(speed|faster|rapid|agile|flat|experiment|iterate|adapt|deployment)/.test(combinedText);
+  const forecast = row.Forecast || {};
+  const forwardGrowth = Math.max(toNumber(forecast.revenueGrowthPct) || 0, toNumber(forecast.epsGrowthPct) || 0);
+
+  const questions = [
+    ["Double sales in five years", clamp(Math.round((growth / 15) * 10 + (forwardGrowth >= 25 ? 1 : 0)), 0, 10), row.WhyCan10x || "Add five-year sales growth evidence."],
+    ["Ten years and beyond", clamp(Math.round((growth / 15) * 6 + (starting / 15) * 4), 0, 10), row.SectorTheme || "Define the long-term growth driver."],
+    ["Competitive advantage", clamp(Math.round((moat / 15) * 10), 0, 10), row.MoatSummary || "Moat evidence is thin."],
+    ["Culture and adaptability", clamp(Math.round((management / 10) * 5 + (flexibleAssets ? 2 : 0) + (founderSignal ? 1.5 : 0) + (agileSignal ? 1.5 : 0)), 0, 10), adaptabilityNote(flexibleAssets, founderSignal, agileSignal)],
+    ["Customer love / society", clamp(Math.round((pain / 15) * 10), 0, 10), row.KeyPainPoint || "Identify why customers pull the product."],
+    ["Returns worthwhile", clamp(Math.round((fundamentals / 15) * 10), 0, 10), row.PositiveEarningsNow_Basis || "Verify returns and cash conversion."],
+    ["Returns rising or falling", clamp(Math.round((fundamentals / 15) * 6 + (growth / 15) * 4), 0, 10), "Check whether scale improves margin and returns."],
+    ["Capital deployment", clamp(Math.round((balance / 10) * 5 + (management / 10) * 5), 0, 10), "Check reinvestment discipline, dilution, debt, and owner mindset."],
+    ["Could be worth 5x or more", clamp(Math.round((starting / 15) * 8 + (growth / 15) * 2), 0, 10), `5x/10x math: ${row.TenXMarketCapDisplay || "N/A"}.`],
+    ["Why market misses it", clamp(Math.round((catalyst / 5) * 7 + (agileSignal || flexibleAssets ? 2 : 0)), 0, 10), "Look for time-horizon arbitrage, second acts, and under-modeled optionality."],
+  ];
+
+  const score = questions.reduce((sum, [, value]) => sum + value, 0);
+  return {
+    score,
+    verdict: `${moduleLabel(score)} Baillie-style outlier setup. This module emphasizes 10Q upside, adaptability, second acts, and time-horizon arbitrage.`,
+    checks: questions.map(([name, value, note]) => ({ name, status: `${value}/10 ${scoreStatus(value, 10)}`, note })),
+    source: "Separate module: Baillie Gifford LTGG 10Q plus adaptability lens from the Wenxuecity article; no other module scores used.",
+  };
+}
+
+function adaptabilityNote(flexibleAssets, founderSignal, agileSignal) {
+  const parts = [];
+  parts.push(flexibleAssets ? "Flexible core assets visible" : "Flexible core assets need proof");
+  parts.push(founderSignal ? "founder/owner signal visible" : "founder/owner signal not yet shown");
+  parts.push(agileSignal ? "agility signal visible" : "agility signal needs proof");
+  return parts.join("; ");
 }
 
 function loadReport(symbol) {
@@ -557,12 +764,52 @@ This GitHub Pages version is static. It can generate a starter report and watchl
 }
 
 function reportMarkdown(row) {
-  const base = row.ReportMarkdown || starterMarkdown(row);
-  return `${base.trim()}
+  return `# ${row.Symbol} 10x Three-Module Report
+
+Prepared: ${data.asOf || "latest"}
+
+## Raw Company Snapshot
+
+| Item | Assessment |
+|---|---|
+| Company | ${row.Company || "N/A"} |
+| Market cap | ${row.MarketCapDisplay || "N/A"} |
+| 10x market cap needed | ${row.TenXMarketCapDisplay || "N/A"} |
+| Positive earnings now | ${row.PositiveEarningsNow_Basis || "Unknown"} |
+| Next earnings | ${row.NextEarningsDate || "TBA"} |
+| Sector | ${row.OfficialSector || "N/A"} |
+| Subsector | ${row.Subsector || row.SectorTheme || "N/A"} |
+| Pain point | ${row.KeyPainPoint || "Needs research"} |
+| Why it can 10x | ${row.WhyCan10x || "Needs research"} |
+| Top risks | ${row.TopRisks || "Needs research"} |
+
+${moduleMarkdown("Module 1 - Independent Research", ownResearchModule(row))}
+
+${moduleMarkdown("Module 2 - Dorsey Five Rules", dorseyModule(row))}
+
+${moduleMarkdown("Module 3 - Baillie Gifford Outlier", baillieModule(row))}
 
 ## E*TRADE Forecast Lens
 
-${forecastMarkdown(row)}`;
+${forecastMarkdown(row)}
+
+## Source Notes
+
+- Baillie Gifford LTGG 10-question framework and adaptability article were used only for Module 3 design.
+- Wenxuecity article was used only for the adaptability emphasis in Module 3.
+- The three modules share the raw company facts above, but they do not use each other's scores or verdicts.`;
+}
+
+function moduleMarkdown(title, module) {
+  return `## ${title}
+
+Score: ${module.score}/100
+
+Verdict: ${module.verdict}
+
+${module.checks.map((check) => `- ${check.name}: ${check.status} - ${check.note}`).join("\n")}
+
+Source boundary: ${module.source}`;
 }
 
 function forecastMarkdown(row) {

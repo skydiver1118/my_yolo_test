@@ -598,15 +598,122 @@ li {
   height: 100%;
 }
 
-.report-split {
+.module-grid {
   display: grid;
   gap: 12px;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   padding: 0 15px 12px;
 }
 
-.subpanel {
+.subpanel,
+.module-card {
   padding: 13px;
+}
+
+.module-card {
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+}
+
+.module-research {
+  border-top: 4px solid var(--blue);
+}
+
+.module-dorsey {
+  border-top: 4px solid var(--gold);
+}
+
+.module-baillie {
+  border-top: 4px solid var(--green);
+}
+
+.module-head {
+  align-items: start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.module-head span {
+  color: var(--muted);
+  display: block;
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.module-head strong {
+  background: #f1f5f6;
+  border-radius: 999px;
+  color: var(--ink);
+  font-size: 13px;
+  min-width: 62px;
+  padding: 6px 9px;
+  text-align: center;
+}
+
+.module-body {
+  display: grid;
+  gap: 10px;
+}
+
+.module-verdict {
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 750;
+}
+
+.module-checks {
+  display: grid;
+  gap: 7px;
+}
+
+.module-check {
+  background: #f7f9f8;
+  border: 1px solid #e4eaed;
+  border-radius: 7px;
+  display: grid;
+  gap: 4px;
+  padding: 8px;
+}
+
+.module-check div:first-child {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+}
+
+.module-check strong {
+  color: var(--ink);
+  font-size: 12px;
+}
+
+.module-check em {
+  background: #edf4f6;
+  border-radius: 999px;
+  color: var(--blue-dark);
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 850;
+  padding: 3px 7px;
+  white-space: nowrap;
+}
+
+.module-check p {
+  font-size: 12px;
+}
+
+.module-source {
+  border-top: 1px solid #eef2f3;
+  color: #6c7880;
+  font-size: 11px;
+  font-weight: 700;
+  padding-top: 8px;
 }
 
 .subpanel h3 {
@@ -814,7 +921,7 @@ li {
   .metric-strip,
   .decision-row,
   .score-lens,
-  .report-split,
+  .module-grid,
   .forecast-facts,
   .forecast-summary {
     grid-template-columns: 1fr;
