@@ -223,38 +223,11 @@ li {
   width: 30px;
 }
 
-.metric-strip {
-  display: grid;
-  gap: 12px;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  margin: 0 auto 14px;
-  max-width: 1680px;
-}
-
-.metric-strip article,
 .panel,
 .subpanel {
   background: var(--panel);
   border: 1px solid var(--line);
   border-radius: 8px;
-}
-
-.metric-strip article {
-  padding: 14px 16px;
-}
-
-.metric-strip span {
-  color: var(--muted);
-  display: block;
-  font-size: 12px;
-  font-weight: 700;
-  text-transform: uppercase;
-}
-
-.metric-strip strong {
-  display: block;
-  font-size: 26px;
-  margin-top: 4px;
 }
 
 .workspace-grid {
@@ -1008,7 +981,6 @@ li {
     grid-column: 1 / -1;
   }
 
-  .metric-strip,
   .decision-row,
   .module-summary,
   .score-lens,

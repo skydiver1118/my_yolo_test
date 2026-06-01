@@ -305,10 +305,6 @@ function filteredScores() {
 }
 
 function renderMetrics() {
-  $("trackedCount").textContent = state.scores.length;
-  $("deepCount").textContent = state.scores.filter((row) => Number(row.InvestmentScore) >= 80).length;
-  $("earningsCount").textContent = state.scores.filter((row) => `${row.PositiveEarningsNow_Basis || ""}`.startsWith("Yes")).length;
-  $("watchCount").textContent = state.watchlist.length;
   $("asOf").textContent = `Published GitHub Pages build as of ${data.asOf || "latest"}. Watchlist is saved in this browser.`;
 }
 
