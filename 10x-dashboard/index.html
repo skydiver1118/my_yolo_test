@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>10x Framework Dashboard</title>
-    <link rel="stylesheet" href="styles.css?v=2026060101">
+    <link rel="stylesheet" href="styles.css?v=2026060102">
   </head>
   <body>
     <main class="app-shell">
@@ -25,6 +25,46 @@
             </button>
             <button class="icon-button" id="addWatchTop" type="button" title="Add current report to watchlist" aria-label="Add current report to watchlist">
               <i data-lucide="bookmark-plus"></i>
+            </button>
+          </div>
+          <div class="forecast-inputs" aria-label="E*TRADE forecast inputs">
+            <label>
+              <span>Rev FY+1 %</span>
+              <input id="forecastRevenue" type="number" step="0.1" inputmode="decimal">
+            </label>
+            <label>
+              <span>EPS FY+1 %</span>
+              <input id="forecastEps" type="number" step="0.1" inputmode="decimal">
+            </label>
+            <label>
+              <span>Target %</span>
+              <input id="forecastTarget" type="number" step="0.1" inputmode="decimal">
+            </label>
+            <label>
+              <span>Analysts</span>
+              <input id="forecastAnalysts" type="number" step="1" min="0" inputmode="numeric">
+            </label>
+            <label>
+              <span>Rating</span>
+              <select id="forecastRating">
+                <option value="">--</option>
+                <option value="Strong Buy">Strong Buy</option>
+                <option value="Buy">Buy</option>
+                <option value="Hold">Hold</option>
+                <option value="Sell">Sell</option>
+              </select>
+            </label>
+            <label>
+              <span>Revisions</span>
+              <select id="forecastRevision">
+                <option value="">--</option>
+                <option value="Up">Up</option>
+                <option value="Stable">Stable</option>
+                <option value="Down">Down</option>
+              </select>
+            </label>
+            <button class="icon-button" id="clearForecastButton" type="button" title="Clear forecast inputs" aria-label="Clear forecast inputs">
+              <i data-lucide="eraser"></i>
             </button>
           </div>
         </form>
@@ -120,9 +160,18 @@
               <span>Earnings</span>
               <strong id="reportEarnings">--</strong>
             </article>
+            <article>
+              <span>Forecast</span>
+              <strong id="reportForecastScore">--</strong>
+            </article>
           </div>
 
           <div class="score-lens" id="scoreLens"></div>
+
+          <section class="subpanel forecast-panel">
+            <h3>E*TRADE Forecast Lens</h3>
+            <div id="forecastLens" class="forecast-lens"></div>
+          </section>
 
           <div class="report-split">
             <section class="subpanel">
@@ -160,6 +209,6 @@
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="data/dashboard-data.js?v=2026060101"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="app.js?v=2026060101"></script>
+    <script src="app.js?v=2026060102"></script>
   </body>
 </html>

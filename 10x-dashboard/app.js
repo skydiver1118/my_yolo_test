@@ -3,12 +3,14 @@ const data = window.TENX_DASHBOARD_DATA || { scores: [], watchlistSeed: [] };
 const state = {
   scores: data.scores || [],
   watchlist: [],
+  forecasts: {},
   filter: "all",
   current: null,
   currentMarkdown: "",
 };
 
 const WATCHLIST_KEY = "tenx-dashboard-watchlist-v1";
+const FORECAST_KEY = "tenx-dashboard-forecast-v1";
 const $ = (id) => document.getElementById(id);
 
 function initIcons() {
@@ -31,8 +33,197 @@ function loadWatchlist() {
   }
 }
 
+function loadForecasts() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(FORECAST_KEY) || "{}");
+    state.forecasts = saved && typeof saved === "object" && !Array.isArray(saved) ? saved : {};
+  } catch {
+    state.forecasts = {};
+  }
+}
+
 function saveWatchlist() {
   localStorage.setItem(WATCHLIST_KEY, JSON.stringify(state.watchlist));
+}
+
+function saveForecasts() {
+  localStorage.setItem(FORECAST_KEY, JSON.stringify(state.forecasts));
+}
+
+function toNumber(value) {
+  if (value === null || value === undefined || value === "") return null;
+  const number = Number(value);
+  return Number.isFinite(number) ? number : null;
+}
+
+function formatPct(value) {
+  const number = toNumber(value);
+  if (number === null) return "N/A";
+  return `${number > 0 ? "+" : ""}${number.toFixed(1)}%`;
+}
+
+function forecastInputs() {
+  return {
+    revenueGrowthPct: toNumber($("forecastRevenue").value),
+    epsGrowthPct: toNumber($("forecastEps").value),
+    targetUpsidePct: toNumber($("forecastTarget").value),
+    analystCount: toNumber($("forecastAnalysts").value),
+    rating: $("forecastRating").value,
+    revisionTrend: $("forecastRevision").value,
+    source: "E*TRADE forecast",
+    updatedAt: new Date().toISOString().slice(0, 10),
+  };
+}
+
+function hasForecastData(forecast) {
+  if (!forecast) return false;
+  return [
+    forecast.revenueGrowthPct,
+    forecast.epsGrowthPct,
+    forecast.targetUpsidePct,
+    forecast.analystCount,
+    forecast.rating,
+    forecast.revisionTrend,
+  ].some((value) => value !== null && value !== undefined && value !== "");
+}
+
+function cleanForecast(forecast) {
+  if (!hasForecastData(forecast)) return null;
+  return Object.fromEntries(
+    Object.entries(forecast).filter(([, value]) => value !== null && value !== undefined && value !== "")
+  );
+}
+
+function applyForecastOverride(symbol, forecast) {
+  const clean = cleanForecast(forecast);
+  if (!clean) return false;
+  state.forecasts[symbol] = clean;
+  saveForecasts();
+  return true;
+}
+
+function clearForecastInputs() {
+  $("forecastRevenue").value = "";
+  $("forecastEps").value = "";
+  $("forecastTarget").value = "";
+  $("forecastAnalysts").value = "";
+  $("forecastRating").value = "";
+  $("forecastRevision").value = "";
+}
+
+function populateForecastInputs(row) {
+  clearForecastInputs();
+  const forecast = row.Forecast || {};
+  $("forecastRevenue").value = forecast.revenueGrowthPct ?? "";
+  $("forecastEps").value = forecast.epsGrowthPct ?? "";
+  $("forecastTarget").value = forecast.targetUpsidePct ?? "";
+  $("forecastAnalysts").value = forecast.analystCount ?? "";
+  $("forecastRating").value = forecast.rating || "";
+  $("forecastRevision").value = forecast.revisionTrend || "";
+}
+
+function forecastFor(row) {
+  return {
+    ...(row.Forecast || {}),
+    ...(state.forecasts[row.Symbol] || {}),
+  };
+}
+
+function withForecast(row) {
+  const forecast = forecastFor(row);
+  const lens = scoreForecast(forecast);
+  const baseScore = toNumber(row.InvestmentScore);
+  const adjustment = lens.hasData && baseScore !== null ? Math.max(-5, Math.min(5, Math.round(lens.score - 5))) : 0;
+  return {
+    ...row,
+    Forecast: hasForecastData(forecast) ? forecast : null,
+    ForecastLens: lens,
+    ForecastAdjustedScore: baseScore === null ? null : Math.max(0, Math.min(100, baseScore + adjustment)),
+    ForecastAdjustment: adjustment,
+  };
+}
+
+function scoreForecast(forecast) {
+  const f = forecast || {};
+  let score = 0;
+  const notes = [];
+  const revenue = toNumber(f.revenueGrowthPct);
+  const eps = toNumber(f.epsGrowthPct);
+  const target = toNumber(f.targetUpsidePct);
+  const analysts = toNumber(f.analystCount);
+  const rating = `${f.rating || ""}`;
+  const revision = `${f.revisionTrend || ""}`;
+
+  if (analysts !== null) {
+    if (analysts >= 10) {
+      score += 2;
+      notes.push("Broad analyst coverage reduces single-model risk.");
+    } else if (analysts >= 4) {
+      score += 1.4;
+      notes.push("Moderate coverage is useful, but still check estimate dispersion.");
+    } else if (analysts >= 1) {
+      score += 0.7;
+      notes.push("Thin coverage can be wrong; treat the forecast as a lead, not proof.");
+    }
+  }
+
+  if (revenue !== null) {
+    if (revenue >= 25) score += 2;
+    else if (revenue >= 15) score += 1.5;
+    else if (revenue >= 8) score += 1;
+    else if (revenue > 0) score += 0.5;
+    notes.push(`Forward revenue growth estimate: ${formatPct(revenue)}.`);
+  }
+
+  if (eps !== null) {
+    if (eps >= 30) score += 2;
+    else if (eps >= 15) score += 1.5;
+    else if (eps >= 5) score += 1;
+    else if (eps > -10) score += 0.5;
+    notes.push(`Forward EPS growth or loss-narrowing estimate: ${formatPct(eps)}.`);
+  }
+
+  if (revision) {
+    if (revision === "Up") {
+      score += 2;
+      notes.push("Estimate revisions are moving up.");
+    } else if (revision === "Stable") {
+      score += 1;
+      notes.push("Estimate revisions are stable.");
+    } else if (revision === "Down") {
+      notes.push("Estimate revisions are moving down.");
+    }
+  }
+
+  if (target !== null) {
+    if (target >= 15 && target <= 80) score += 1;
+    else if (target > 80) score += 0.5;
+    else if (target > 0) score += 0.4;
+    notes.push(`Consensus target upside: ${formatPct(target)}.`);
+  }
+
+  if (rating) {
+    if (rating === "Strong Buy") score += 1;
+    else if (rating === "Buy") score += 0.8;
+    else if (rating === "Hold") score += 0.4;
+    notes.push(`Consensus rating: ${rating}.`);
+  }
+
+  const rounded = Math.round(Math.min(10, score) * 10) / 10;
+  return {
+    hasData: hasForecastData(f),
+    score: rounded,
+    max: 10,
+    notes,
+    verdict:
+      rounded >= 8
+        ? "Constructive forecast setup"
+        : rounded >= 6
+          ? "Useful but not decisive"
+          : rounded > 0
+            ? "Weak or incomplete forecast support"
+            : "No forecast data entered",
+  };
 }
 
 function scoreClass(score) {
@@ -116,24 +307,31 @@ function renderWatchlist() {
 }
 
 function renderReport(row) {
-  state.current = row;
-  state.currentMarkdown = row.ReportMarkdown || starterMarkdown(row);
+  const reportRow = withForecast(row);
+  state.current = reportRow;
+  state.currentMarkdown = reportMarkdown(reportRow);
 
-  $("reportTitle").textContent = `${row.Symbol} - ${row.Company || "Framework Report"}`;
-  $("reportNextEarnings").textContent = row.NextEarningsDate || "TBA";
-  $("reportSector").textContent = row.OfficialSector || "N/A";
-  $("reportSubsector").textContent = row.Subsector || row.SectorTheme || "N/A";
-  $("reportScore").textContent = `${row.InvestmentScore ?? "--"}/100`;
-  $("reportCap").textContent = row.MarketCapDisplay || "N/A";
-  $("reportTenX").textContent = row.TenXMarketCapDisplay || "N/A";
-  $("reportEarnings").textContent = `${row.PositiveEarningsNow_Basis || "Unknown"}`.replace(" - ", "\n");
-  $("moatText").textContent = row.MoatSummary || row.MoatStrength || "Needs moat research.";
-  $("leaderText").textContent = row.InvestLeaderInstead || row.SectorLeaderBenchmark || "Identify direct leader during diligence.";
+  $("reportTitle").textContent = `${reportRow.Symbol} - ${reportRow.Company || "Framework Report"}`;
+  $("reportNextEarnings").textContent = reportRow.NextEarningsDate || "TBA";
+  $("reportSector").textContent = reportRow.OfficialSector || "N/A";
+  $("reportSubsector").textContent = reportRow.Subsector || reportRow.SectorTheme || "N/A";
+  $("reportScore").textContent =
+    reportRow.ForecastLens.hasData && reportRow.ForecastAdjustment
+      ? `${reportRow.InvestmentScore ?? "--"} -> ${reportRow.ForecastAdjustedScore}/100`
+      : `${reportRow.InvestmentScore ?? "--"}/100`;
+  $("reportCap").textContent = reportRow.MarketCapDisplay || "N/A";
+  $("reportTenX").textContent = reportRow.TenXMarketCapDisplay || "N/A";
+  $("reportEarnings").textContent = `${reportRow.PositiveEarningsNow_Basis || "Unknown"}`.replace(" - ", "\n");
+  $("reportForecastScore").textContent = reportRow.ForecastLens.hasData ? `${reportRow.ForecastLens.score}/10` : "No data";
+  $("moatText").textContent = reportRow.MoatSummary || reportRow.MoatStrength || "Needs moat research.";
+  $("leaderText").textContent = reportRow.InvestLeaderInstead || reportRow.SectorLeaderBenchmark || "Identify direct leader during diligence.";
 
-  renderScoreLens(row);
-  renderDorseyRules(row.DorseyRules || dorseyRules(row));
+  renderScoreLens(reportRow);
+  renderForecastLens(reportRow);
+  renderDorseyRules(reportRow.DorseyRules || dorseyRules(reportRow));
   $("markdownReport").innerHTML = markdownToHtml(state.currentMarkdown);
-  $("tickerInput").value = row.Symbol;
+  $("tickerInput").value = reportRow.Symbol;
+  populateForecastInputs(reportRow);
   renderTable();
 }
 
@@ -155,6 +353,35 @@ function renderScoreLens(row) {
     `;
     lens.appendChild(item);
   }
+}
+
+function renderForecastLens(row) {
+  const box = $("forecastLens");
+  const forecast = row.Forecast || {};
+  const lens = row.ForecastLens || scoreForecast(forecast);
+  if (!lens.hasData) {
+    box.innerHTML = `<p class="empty-state">Enter E*TRADE forecast values above to add the analyst-estimate sanity check.</p>`;
+    return;
+  }
+  const adjustment =
+    row.ForecastAdjustment > 0 ? `+${row.ForecastAdjustment}` : row.ForecastAdjustment < 0 ? `${row.ForecastAdjustment}` : "0";
+  box.innerHTML = `
+    <div class="forecast-summary">
+      <span class="forecast-score">${lens.score}/10</span>
+      <p>${lens.verdict}. Score impact: ${adjustment} points, capped so forecast data cannot overpower moat, fundamentals, and valuation.</p>
+    </div>
+    <div class="forecast-facts">
+      <span><em>Revenue</em>${formatPct(forecast.revenueGrowthPct)}</span>
+      <span><em>EPS</em>${formatPct(forecast.epsGrowthPct)}</span>
+      <span><em>Target</em>${formatPct(forecast.targetUpsidePct)}</span>
+      <span><em>Analysts</em>${forecast.analystCount ?? "N/A"}</span>
+      <span><em>Rating</em>${forecast.rating || "N/A"}</span>
+      <span><em>Revisions</em>${forecast.revisionTrend || "N/A"}</span>
+    </div>
+    <ul class="forecast-notes">
+      ${lens.notes.map((note) => `<li>${escapeHtml(note)}</li>`).join("")}
+    </ul>
+  `;
 }
 
 function renderDorseyRules(rules) {
@@ -198,9 +425,10 @@ function dorseyRules(row) {
   ];
 }
 
-function loadReport(symbol) {
+function loadReport(symbol, forecastOverride = null) {
   const clean = String(symbol || "").trim().toUpperCase();
   if (!clean) return;
+  if (forecastOverride) applyForecastOverride(clean, forecastOverride);
   const known = state.scores.find((row) => row.Symbol === clean);
   renderReport(known || createStarterRow(clean));
 }
@@ -246,14 +474,51 @@ This GitHub Pages version is static. It can generate a starter report and watchl
 | Sector | ${row.OfficialSector} |
 | Subsector | ${row.Subsector} |
 | Moat | ${row.MoatStrength} |
+| E*TRADE forecast score | ${row.ForecastLens?.hasData ? `${row.ForecastLens.score}/10` : "Not entered"} |
 
 ## Next Research Steps
 
 - Pull latest 10-K/10-Q and revenue growth.
+- Add E*TRADE forward revenue, EPS, analyst count, target upside, rating, and estimate revisions.
 - Classify sector, subsector, direct competitors, and sector leader.
 - Verify positive earnings and free cash flow.
 - Score all eight 10x framework pillars.
 - Define milestones before adding real capital.`;
+}
+
+function reportMarkdown(row) {
+  const base = row.ReportMarkdown || starterMarkdown(row);
+  return `${base.trim()}
+
+## E*TRADE Forecast Lens
+
+${forecastMarkdown(row)}`;
+}
+
+function forecastMarkdown(row) {
+  const forecast = row.Forecast || {};
+  const lens = row.ForecastLens || scoreForecast(forecast);
+  if (!lens.hasData) {
+    return `No E*TRADE forecast values have been entered yet.
+
+Use this lens for consensus revenue growth, EPS growth or loss narrowing, analyst count, estimate revisions, target upside, and rating. Price target is treated as a light signal; revenue, EPS, and revisions matter more.`;
+  }
+  const adjustment =
+    row.ForecastAdjustment > 0 ? `+${row.ForecastAdjustment}` : row.ForecastAdjustment < 0 ? `${row.ForecastAdjustment}` : "0";
+  return `Forecast score: ${lens.score}/10
+
+Score impact: ${adjustment} points, capped at plus/minus 5.
+
+| E*TRADE field | Value |
+|---|---|
+| Forward revenue growth | ${formatPct(forecast.revenueGrowthPct)} |
+| Forward EPS growth / loss narrowing | ${formatPct(forecast.epsGrowthPct)} |
+| Consensus target upside | ${formatPct(forecast.targetUpsidePct)} |
+| Analyst count | ${forecast.analystCount ?? "N/A"} |
+| Consensus rating | ${forecast.rating || "N/A"} |
+| Estimate revisions | ${forecast.revisionTrend || "N/A"} |
+
+${lens.notes.map((note) => `- ${note}`).join("\n")}`;
 }
 
 function addWatch() {
@@ -271,6 +536,8 @@ function addWatch() {
     MarketCapDisplay: state.current.MarketCapDisplay,
     Decision: state.current.Decision || "Research before watchlist",
     MoatStrength: state.current.MoatStrength,
+    ForecastScore: state.current.ForecastLens?.hasData ? state.current.ForecastLens.score : null,
+    ForecastAdjustedScore: state.current.ForecastAdjustedScore,
     KnownFrameworkStock: state.scores.some((row) => row.Symbol === state.current.Symbol),
   });
   saveWatchlist();
@@ -371,10 +638,22 @@ function markdownToHtml(markdown) {
 function bindEvents() {
   $("tickerForm").addEventListener("submit", (event) => {
     event.preventDefault();
-    loadReport($("tickerInput").value);
+    loadReport($("tickerInput").value, forecastInputs());
   });
   $("addWatchTop").addEventListener("click", addWatch);
   $("addWatchReport").addEventListener("click", addWatch);
+  $("clearForecastButton").addEventListener("click", () => {
+    const symbol = String($("tickerInput").value || state.current?.Symbol || "").trim().toUpperCase();
+    clearForecastInputs();
+    if (symbol && state.forecasts[symbol]) {
+      delete state.forecasts[symbol];
+      saveForecasts();
+      loadReport(symbol);
+      toast(`${symbol} forecast cleared.`);
+    } else {
+      toast("Forecast inputs cleared.");
+    }
+  });
   $("copyReportButton").addEventListener("click", copyReport);
   $("refreshButton").addEventListener("click", () => {
     renderMetrics();
@@ -394,6 +673,7 @@ function bindEvents() {
 
 function boot() {
   loadWatchlist();
+  loadForecasts();
   bindEvents();
   initIcons();
   renderMetrics();
