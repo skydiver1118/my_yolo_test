@@ -291,17 +291,22 @@ function scoreClass(score) {
 }
 
 function bucketForFilter(row) {
-  const score = Number(row.InvestmentScore) || 0;
-  const view = `${row["Investment View"] || ""} ${row.Decision || ""}`.toLowerCase();
-  if (score >= 80 || view.includes("deep")) return "deep";
-  if (score >= 70 || view.includes("watchlist")) return "watch";
-  if (score >= 55 || view.includes("tracker") || view.includes("speculative")) return "spec";
+  const score = moduleScoreSet(row).average;
+  if (score >= 80) return "deep";
+  if (score >= 70) return "watch";
+  if (score >= 55) return "spec";
   return "reject";
 }
 
 function filteredScores() {
-  if (state.filter === "all") return state.scores;
-  return state.scores.filter((row) => bucketForFilter(row) === state.filter);
+  const rows =
+    state.filter === "all"
+      ? state.scores
+      : state.scores.filter((row) => bucketForFilter(row) === state.filter);
+  return [...rows].sort((a, b) => {
+    const avgDiff = moduleScoreSet(b).average - moduleScoreSet(a).average;
+    return avgDiff || String(a.Symbol).localeCompare(String(b.Symbol));
+  });
 }
 
 function renderMetrics() {
@@ -322,10 +327,10 @@ function renderTable() {
           <span>${row.Company || ""}</span>
         </button>
       </td>
+      <td><span class="score-pill ${scoreClass(scores.average)}">${scores.average}</span></td>
       <td><span class="mini-score ${scoreClass(scores.own.score)}">${scores.own.score}</span></td>
       <td><span class="mini-score ${scoreClass(scores.dorsey.score)}">${scores.dorsey.score}</span></td>
       <td><span class="mini-score ${scoreClass(scores.baillie.score)}">${scores.baillie.score}</span></td>
-      <td><span class="score-pill ${scoreClass(scores.average)}">${scores.average}</span></td>
     `;
     tr.querySelector("button").addEventListener("click", () => loadReport(row.Symbol));
     body.appendChild(tr);
