@@ -355,33 +355,12 @@ function renderReport(row) {
   $("reportEarnings").textContent = `${reportRow.PositiveEarningsNow_Basis || "Unknown"}`.replace(" - ", "\n");
   $("reportForecastScore").textContent = reportRow.ForecastLens.hasData ? `${reportRow.ForecastLens.score}/10` : "No data";
 
-  renderScoreLens(reportRow);
   renderForecastLens(reportRow);
   renderIndependentModules(reportRow);
   $("markdownReport").innerHTML = markdownToHtml(state.currentMarkdown);
   $("tickerInput").value = reportRow.Symbol;
   populateForecastInputs(reportRow);
   renderTable();
-}
-
-function renderScoreLens(row) {
-  const lens = $("scoreLens");
-  lens.innerHTML = "";
-  const pillars = row.Pillars || [];
-  if (!pillars.length) {
-    lens.innerHTML = `<p class="empty-state">Score pillars will appear after a full framework score.</p>`;
-    return;
-  }
-  for (const p of pillars) {
-    const pct = Math.max(0, Math.min(100, (Number(p.score) / Number(p.max || 1)) * 100));
-    const item = document.createElement("div");
-    item.className = "score-bar";
-    item.innerHTML = `
-      <div><span>${p.name}</span><strong>${p.score}/${p.max}</strong></div>
-      <div class="bar"><span style="width:${pct}%"></span></div>
-    `;
-    lens.appendChild(item);
-  }
 }
 
 function renderForecastLens(row) {
@@ -510,6 +489,7 @@ function renderModuleCard(id, module) {
         ${module.rationale.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
       </ul>
     </div>
+    <div class="module-detail-title">Detailed support</div>
     <div class="module-checks">
       ${module.checks
         .map(
