@@ -10,7 +10,8 @@ const state = {
 };
 
 const WATCHLIST_KEY = "tenx-dashboard-watchlist-v1";
-const FORECAST_KEY = "tenx-dashboard-forecast-v1";
+const FORECAST_KEY = "tenx-dashboard-forecast-v2";
+const LEGACY_FORECAST_KEYS = ["tenx-dashboard-forecast-v1"];
 const $ = (id) => document.getElementById(id);
 
 function initIcons() {
@@ -35,11 +36,66 @@ function loadWatchlist() {
 
 function loadForecasts() {
   try {
-    const saved = JSON.parse(localStorage.getItem(FORECAST_KEY) || "{}");
-    state.forecasts = saved && typeof saved === "object" && !Array.isArray(saved) ? saved : {};
+    const saved = parseForecastStore(FORECAST_KEY);
+    if (Object.keys(saved).length) {
+      state.forecasts = saved;
+      return;
+    }
+
+    state.forecasts = migrateLegacyForecasts();
   } catch {
     state.forecasts = {};
   }
+}
+
+function parseForecastStore(key) {
+  const saved = JSON.parse(localStorage.getItem(key) || "{}");
+  return saved && typeof saved === "object" && !Array.isArray(saved) ? saved : {};
+}
+
+function forecastSignature(forecast) {
+  const clean = cleanForecast(forecast);
+  if (!clean) return "";
+  return [
+    clean.revenueGrowthPct ?? "",
+    clean.epsGrowthPct ?? "",
+    clean.targetUpsidePct ?? "",
+    clean.analystCount ?? "",
+    clean.rating || "",
+    clean.revisionTrend || "",
+  ].join("|");
+}
+
+function sanitizeForecastMap(map, { dropDuplicateSignatures = false } = {}) {
+  const entries = Object.entries(map || {})
+    .map(([symbol, forecast]) => [symbol.toUpperCase(), cleanForecast(forecast)])
+    .filter(([, forecast]) => forecast);
+
+  const signatureCounts = entries.reduce((counts, [, forecast]) => {
+    const signature = forecastSignature(forecast);
+    counts[signature] = (counts[signature] || 0) + 1;
+    return counts;
+  }, {});
+
+  return Object.fromEntries(
+    entries.filter(([, forecast]) => {
+      if (!dropDuplicateSignatures) return true;
+      return signatureCounts[forecastSignature(forecast)] === 1;
+    })
+  );
+}
+
+function migrateLegacyForecasts() {
+  const migrated = {};
+  for (const key of LEGACY_FORECAST_KEYS) {
+    Object.assign(migrated, sanitizeForecastMap(parseForecastStore(key), { dropDuplicateSignatures: true }));
+    localStorage.removeItem(key);
+  }
+  const clean = sanitizeForecastMap(migrated);
+  if (Object.keys(clean).length) {
+    localStorage.setItem(FORECAST_KEY, JSON.stringify(clean));
+  }
+  return clean;
 }
 
 function saveWatchlist() {
