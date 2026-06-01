@@ -196,6 +196,14 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function chartImageSrc(path) {
+  const value = String(path || "");
+  if (!value || value.startsWith("data:") || value.startsWith("blob:")) return value;
+  const token = encodeURIComponent(data.generatedAt || data.summary?.latestMarketDate || "chart");
+  const separator = value.includes("?") ? "&" : "?";
+  return `${value}${separator}v=${token}`;
+}
+
 function linkifyUrls(value) {
   return value.replace(
     /(https?:\/\/[^\s<)]+)/g,
@@ -552,7 +560,7 @@ function renderSelected() {
 
   el.chartDate.textContent = formatDate(stock.latestDate);
   if (stock.chartPath) {
-    el.chartFrame.innerHTML = `<img src="${escapeHtml(stock.chartPath)}" alt="${escapeHtml(stock.symbol)} technical candlestick chart" />`;
+    el.chartFrame.innerHTML = `<img src="${escapeHtml(chartImageSrc(stock.chartPath))}" alt="${escapeHtml(stock.symbol)} technical candlestick chart" />`;
   } else {
     el.chartFrame.innerHTML = `<div class="empty-state">${escapeHtml(stock.scoreError || "No chart is available for this ticker.")}</div>`;
   }
