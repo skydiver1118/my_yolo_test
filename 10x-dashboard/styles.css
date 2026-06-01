@@ -530,9 +530,15 @@ li {
   font-size: 12px;
   font-style: normal;
   font-weight: 700;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+.summary-rationale {
+  border-top: 1px solid #edf2f3;
+  color: #4c5a62;
+  font-size: 11px;
+  line-height: 1.35;
+  margin-top: 4px;
+  padding-top: 7px;
 }
 
 .score-lens {

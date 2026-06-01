@@ -482,6 +482,10 @@ function renderIndependentModules(row) {
   $("summaryDorseyVerdict").textContent = dorsey.shortVerdict;
   $("summaryBaillieVerdict").textContent = baillie.shortVerdict;
   $("summaryAverageVerdict").textContent = moduleLabel(average);
+  $("summaryOwnRationale").textContent = compactModuleRationale(own);
+  $("summaryDorseyRationale").textContent = compactModuleRationale(dorsey);
+  $("summaryBaillieRationale").textContent = compactModuleRationale(baillie);
+  $("summaryAverageRationale").textContent = averageModuleRationale({ own, dorsey, baillie, average });
   renderModuleCard("ownResearchModule", own);
   renderModuleCard("dorseyModule", dorsey);
   renderModuleCard("baillieModule", baillie);
@@ -520,6 +524,23 @@ function renderModuleCard(id, module) {
     </div>
     <p class="module-source">${escapeHtml(module.source)}</p>
   `;
+}
+
+function compactModuleRationale(module) {
+  return (module.rationale || [])
+    .slice(0, 2)
+    .map((item) => String(item).replace(/\s+/g, " ").trim())
+    .filter(Boolean)
+    .join(" ");
+}
+
+function averageModuleRationale({ own, dorsey, baillie, average }) {
+  const modules = [
+    { name: "Independent", score: own.score },
+    { name: "Dorsey", score: dorsey.score },
+    { name: "Baillie", score: baillie.score },
+  ].sort((a, b) => b.score - a.score);
+  return `Rounded mean of ${own.score}/${dorsey.score}/${baillie.score} = ${average}. Strongest support: ${modules[0].name} ${modules[0].score}; biggest drag: ${modules[modules.length - 1].name} ${modules[modules.length - 1].score}.`;
 }
 
 function ownResearchModule(row) {
