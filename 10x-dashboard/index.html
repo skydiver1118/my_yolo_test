@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>10x Framework Dashboard</title>
-    <link rel="stylesheet" href="styles.css?v=2026060106">
+    <link rel="stylesheet" href="styles.css?v=2026060107">
   </head>
   <body>
     <main class="app-shell">
@@ -100,8 +100,8 @@
         <aside class="panel list-panel">
           <div class="panel-head">
             <div>
-              <h2>Score Table</h2>
-              <p>Click a row to open the full 10x report.</p>
+              <h2>Module Score Table</h2>
+              <p>Three independent scores plus average.</p>
             </div>
             <button class="icon-button" id="refreshButton" type="button" title="Refresh dashboard data" aria-label="Refresh dashboard data">
               <i data-lucide="refresh-cw"></i>
@@ -119,9 +119,10 @@
               <thead>
                 <tr>
                   <th>Symbol</th>
-                  <th>Score</th>
-                  <th>Cap</th>
-                  <th>Moat</th>
+                  <th>Own</th>
+                  <th>Dorsey</th>
+                  <th>BG</th>
+                  <th>Avg</th>
                 </tr>
               </thead>
               <tbody id="scoreTableBody"></tbody>
@@ -172,6 +173,29 @@
               <strong id="reportForecastScore">--</strong>
             </article>
           </div>
+
+          <section class="module-summary" aria-label="Current module score summary">
+            <article class="summary-card summary-own">
+              <span>Independent</span>
+              <strong id="summaryOwnScore">--</strong>
+              <em id="summaryOwnVerdict">--</em>
+            </article>
+            <article class="summary-card summary-dorsey">
+              <span>Dorsey</span>
+              <strong id="summaryDorseyScore">--</strong>
+              <em id="summaryDorseyVerdict">--</em>
+            </article>
+            <article class="summary-card summary-baillie">
+              <span>Baillie</span>
+              <strong id="summaryBaillieScore">--</strong>
+              <em id="summaryBaillieVerdict">--</em>
+            </article>
+            <article class="summary-card summary-average">
+              <span>Average</span>
+              <strong id="summaryAverageScore">--</strong>
+              <em id="summaryAverageVerdict">--</em>
+            </article>
+          </section>
 
           <div class="score-lens" id="scoreLens"></div>
 
@@ -233,6 +257,6 @@
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="data/dashboard-data.js?v=2026060101"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="app.js?v=2026060106"></script>
+    <script src="app.js?v=2026060107"></script>
   </body>
 </html>

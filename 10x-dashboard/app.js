@@ -316,6 +316,7 @@ function renderTable() {
   const body = $("scoreTableBody");
   body.innerHTML = "";
   for (const row of filteredScores()) {
+    const scores = moduleScoreSet(row);
     const tr = document.createElement("tr");
     tr.className = state.current?.Symbol === row.Symbol ? "selected" : "";
     tr.innerHTML = `
@@ -325,9 +326,10 @@ function renderTable() {
           <span>${row.Company || ""}</span>
         </button>
       </td>
-      <td><span class="score-pill ${scoreClass(row.InvestmentScore)}">${row.InvestmentScore}</span></td>
-      <td>${row.MarketCapDisplay || "N/A"}</td>
-      <td><span class="moat-chip">${row.MoatStrength || "N/A"}</span></td>
+      <td><span class="mini-score ${scoreClass(scores.own.score)}">${scores.own.score}</span></td>
+      <td><span class="mini-score ${scoreClass(scores.dorsey.score)}">${scores.dorsey.score}</span></td>
+      <td><span class="mini-score ${scoreClass(scores.baillie.score)}">${scores.baillie.score}</span></td>
+      <td><span class="score-pill ${scoreClass(scores.average)}">${scores.average}</span></td>
     `;
     tr.querySelector("button").addEventListener("click", () => loadReport(row.Symbol));
     body.appendChild(tr);
@@ -495,21 +497,42 @@ function scoreStatus(score, max) {
 }
 
 function renderIndependentModules(row) {
-  const own = ownResearchModule(row);
-  const dorsey = dorseyModule(row);
-  const baillie = baillieModule(row);
+  const { own, dorsey, baillie, average } = moduleScoreSet(row);
   $("ownResearchScore").textContent = `${own.score}/100`;
   $("dorseyScore").textContent = `${dorsey.score}/100`;
   $("baillieScore").textContent = `${baillie.score}/100`;
+  $("summaryOwnScore").textContent = own.score;
+  $("summaryDorseyScore").textContent = dorsey.score;
+  $("summaryBaillieScore").textContent = baillie.score;
+  $("summaryAverageScore").textContent = average;
+  $("summaryOwnVerdict").textContent = own.shortVerdict;
+  $("summaryDorseyVerdict").textContent = dorsey.shortVerdict;
+  $("summaryBaillieVerdict").textContent = baillie.shortVerdict;
+  $("summaryAverageVerdict").textContent = moduleLabel(average);
   renderModuleCard("ownResearchModule", own);
   renderModuleCard("dorseyModule", dorsey);
   renderModuleCard("baillieModule", baillie);
+}
+
+function moduleScoreSet(row) {
+  const reportRow = row.ForecastLens ? row : withForecast(row);
+  const own = ownResearchModule(reportRow);
+  const dorsey = dorseyModule(reportRow);
+  const baillie = baillieModule(reportRow);
+  const average = Math.round((own.score + dorsey.score + baillie.score) / 3);
+  return { own, dorsey, baillie, average };
 }
 
 function renderModuleCard(id, module) {
   const box = $(id);
   box.innerHTML = `
     <p class="module-verdict">${escapeHtml(module.verdict)}</p>
+    <div class="module-rationale">
+      <strong>Score rationale</strong>
+      <ul>
+        ${module.rationale.map((item) => `<li>${escapeHtml(item)}</li>`).join("")}
+      </ul>
+    </div>
     <div class="module-checks">
       ${module.checks
         .map(
@@ -605,14 +628,28 @@ function ownResearchModule(row) {
           note: row.TopRisks || "Add failure modes and kill triggers.",
         },
       ],
+      rationale: [
+        `Imported independent score is ${score}/100 because detailed pillar scores are missing for this static row.`,
+        usefulText(row.WhyCan10x) ? `Growth thesis: ${row.WhyCan10x}` : "Growth thesis still needs primary evidence.",
+        usefulText(row.MoatSummary) ? `Moat evidence: ${row.MoatSummary}` : "Moat evidence still needs primary research.",
+      ],
+      shortVerdict: moduleLabel(score),
       source: "Separate module: original 10x research only; no Dorsey or Baillie outputs used.",
     };
   }
   const score = Math.round(checks.reduce((sum, check) => sum + check.score, 0));
+  const topChecks = [...checks].sort((a, b) => b.score / b.max - a.score / a.max).slice(0, 2);
+  const weakChecks = [...checks].sort((a, b) => a.score / a.max - b.score / b.max).slice(0, 1);
   return {
     score,
     verdict: `${moduleLabel(score)} independent research setup. This module uses only the original 10x research pillars and raw company facts.`,
     checks: checks.map((check) => ({ ...check, status: `${check.score}/${check.max} ${scoreStatus(check.score, check.max)}` })),
+    rationale: [
+      `Strongest evidence: ${topChecks.map((check) => `${check.name} ${check.score}/${check.max}`).join("; ")}.`,
+      `Main drag: ${weakChecks.map((check) => `${check.name} ${check.score}/${check.max}`).join("; ")}.`,
+      `Raw thesis: ${row.WhyCan10x || "not yet documented"}`,
+    ],
+    shortVerdict: moduleLabel(score),
     source: "Separate module: original 10x research only; no Dorsey or Baillie outputs used.",
   };
 }
@@ -628,6 +665,8 @@ function dorseyModule(row) {
     Weak: 4,
   };
   const score = rules.reduce((sum, rule) => sum + (points[rule.status] ?? 8), 0);
+  const passCount = rules.filter((rule) => rule.status === "Pass").length;
+  const weakCount = rules.filter((rule) => ["Weak", "Incomplete"].includes(rule.status)).length;
   return {
     score,
     verdict: `${moduleLabel(score)} Dorsey discipline. This module only asks whether the business can be owned patiently under quality/value rules.`,
@@ -636,6 +675,12 @@ function dorseyModule(row) {
       status: rule.status || "Review",
       note: rule.note || "Needs direct evidence.",
     })),
+    rationale: [
+      `${passCount} of 5 rules are full passes under this module.`,
+      weakCount ? `${weakCount} rules are weak or incomplete and need proof before patient ownership.` : "No rule is marked weak or incomplete.",
+      "This score rewards quality, moat, margin of safety, and durable hold discipline only.",
+    ],
+    shortVerdict: moduleLabel(score),
     source: "Separate module: Dorsey Five Rules only; no independent-research or Baillie scores used.",
   };
 }
@@ -672,10 +717,18 @@ function baillieModule(row) {
   ];
 
   const score = questions.reduce((sum, [, value]) => sum + value, 0);
+  const strongQuestions = questions.filter(([, value]) => value >= 8).length;
+  const weakQuestions = questions.filter(([, value]) => value < 5).length;
   return {
     score,
     verdict: `${moduleLabel(score)} Baillie-style outlier setup. This module emphasizes 10Q upside, adaptability, second acts, and time-horizon arbitrage.`,
     checks: questions.map(([name, value, note]) => ({ name, status: `${value}/10 ${scoreStatus(value, 10)}`, note })),
+    rationale: [
+      `${strongQuestions} of 10 Baillie-style questions score 8/10 or better.`,
+      weakQuestions ? `${weakQuestions} questions remain below 5/10, usually from missing culture/adaptability or market-mispricing evidence.` : "No Baillie question is below 5/10.",
+      adaptabilityNote(flexibleAssets, founderSignal, agileSignal),
+    ],
+    shortVerdict: moduleLabel(score),
     source: "Separate module: Baillie Gifford LTGG 10Q plus adaptability lens from the Wenxuecity article; no other module scores used.",
   };
 }
@@ -764,6 +817,7 @@ This GitHub Pages version is static. It can generate a starter report and watchl
 }
 
 function reportMarkdown(row) {
+  const modules = moduleScoreSet(row);
   return `# ${row.Symbol} 10x Three-Module Report
 
 Prepared: ${data.asOf || "latest"}
@@ -783,11 +837,20 @@ Prepared: ${data.asOf || "latest"}
 | Why it can 10x | ${row.WhyCan10x || "Needs research"} |
 | Top risks | ${row.TopRisks || "Needs research"} |
 
-${moduleMarkdown("Module 1 - Independent Research", ownResearchModule(row))}
+## Module Score Summary
 
-${moduleMarkdown("Module 2 - Dorsey Five Rules", dorseyModule(row))}
+| Module | Score |
+|---|---:|
+| Independent Research | ${modules.own.score}/100 |
+| Dorsey Five Rules | ${modules.dorsey.score}/100 |
+| Baillie Gifford Outlier | ${modules.baillie.score}/100 |
+| Average | ${modules.average}/100 |
 
-${moduleMarkdown("Module 3 - Baillie Gifford Outlier", baillieModule(row))}
+${moduleMarkdown("Module 1 - Independent Research", modules.own)}
+
+${moduleMarkdown("Module 2 - Dorsey Five Rules", modules.dorsey)}
+
+${moduleMarkdown("Module 3 - Baillie Gifford Outlier", modules.baillie)}
 
 ## E*TRADE Forecast Lens
 
@@ -806,6 +869,9 @@ function moduleMarkdown(title, module) {
 Score: ${module.score}/100
 
 Verdict: ${module.verdict}
+
+Rationale:
+${module.rationale.map((item) => `- ${item}`).join("\n")}
 
 ${module.checks.map((check) => `- ${check.name}: ${check.status} - ${check.note}`).join("\n")}
 

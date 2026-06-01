@@ -260,7 +260,7 @@ li {
 .workspace-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: minmax(380px, 0.86fr) minmax(620px, 1.5fr) minmax(300px, 0.72fr);
+  grid-template-columns: minmax(460px, 0.96fr) minmax(720px, 1.54fr) minmax(300px, 0.7fr);
   margin: 0 auto;
   max-width: 1680px;
 }
@@ -328,7 +328,7 @@ li {
 .score-table th {
   color: #53616a;
   font-size: 11px;
-  padding: 9px 10px;
+  padding: 8px;
   text-align: left;
   text-transform: uppercase;
 }
@@ -336,7 +336,7 @@ li {
 .score-table td {
   border-top: 1px solid #edf1f2;
   color: var(--ink);
-  padding: 9px 10px;
+  padding: 8px;
   vertical-align: middle;
 }
 
@@ -379,6 +379,16 @@ li {
   font-weight: 800;
   padding: 4px 8px;
   white-space: nowrap;
+}
+
+.mini-score {
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 850;
+  min-width: 38px;
+  padding: 4px 7px;
+  text-align: center;
 }
 
 .score-high {
@@ -497,6 +507,62 @@ li {
   font-size: 15px;
   margin-top: 5px;
   overflow-wrap: anywhere;
+}
+
+.module-summary {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  padding: 0 15px 12px;
+}
+
+.summary-card {
+  background: #fff;
+  border: 1px solid #e1e7ea;
+  border-radius: 8px;
+  display: grid;
+  gap: 4px;
+  min-width: 0;
+  padding: 11px;
+}
+
+.summary-own {
+  border-top: 4px solid var(--blue);
+}
+
+.summary-dorsey {
+  border-top: 4px solid var(--gold);
+}
+
+.summary-baillie {
+  border-top: 4px solid var(--green);
+}
+
+.summary-average {
+  border-top: 4px solid #20384a;
+}
+
+.summary-card span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+
+.summary-card strong {
+  color: var(--ink);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.summary-card em {
+  color: var(--muted);
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .score-lens {
@@ -665,6 +731,30 @@ li {
   color: var(--ink);
   font-size: 13px;
   font-weight: 750;
+}
+
+.module-rationale {
+  background: #fbfcfb;
+  border: 1px solid #e6ecef;
+  border-radius: 7px;
+  padding: 9px;
+}
+
+.module-rationale strong {
+  color: var(--ink);
+  display: block;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.module-rationale ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.module-rationale li {
+  color: #4e5c64;
+  font-size: 12px;
 }
 
 .module-checks {
@@ -920,6 +1010,7 @@ li {
 
   .metric-strip,
   .decision-row,
+  .module-summary,
   .score-lens,
   .module-grid,
   .forecast-facts,
