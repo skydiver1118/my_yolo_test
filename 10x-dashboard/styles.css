@@ -233,7 +233,7 @@ li {
 .workspace-grid {
   display: grid;
   gap: 14px;
-  grid-template-columns: minmax(460px, 0.96fr) minmax(720px, 1.54fr) minmax(300px, 0.7fr);
+  grid-template-columns: minmax(460px, 0.9fr) minmax(780px, 1.7fr);
   margin: 0 auto;
   max-width: 1680px;
 }
@@ -317,8 +317,7 @@ li {
   background: #edf6fb;
 }
 
-.row-button,
-.watch-main {
+.row-button {
   background: transparent;
   border: 0;
   color: var(--ink);
@@ -329,13 +328,11 @@ li {
   text-align: left;
 }
 
-.row-button strong,
-.watch-main strong {
+.row-button strong {
   font-size: 13px;
 }
 
-.row-button span,
-.watch-main span {
+.row-button span {
   color: var(--muted);
   font-size: 12px;
   max-width: 170px;
@@ -893,30 +890,6 @@ li {
   color: #344651;
 }
 
-.watchlist {
-  display: grid;
-  gap: 8px;
-  max-height: calc(100vh - 220px);
-  overflow: auto;
-  padding: 12px;
-}
-
-.watch-card {
-  align-items: center;
-  background: #f8faf9;
-  border: 1px solid #e5ebee;
-  border-radius: 7px;
-  display: grid;
-  gap: 7px;
-  grid-template-columns: minmax(0, 1fr) auto auto auto;
-  padding: 9px;
-}
-
-.watch-card > span:not(.score-pill) {
-  color: var(--muted);
-  font-size: 12px;
-}
-
 .empty-state {
   color: #7b878d;
   font-size: 13px;
@@ -953,8 +926,7 @@ li {
     max-height: none;
   }
 
-  .table-wrap,
-  .watchlist {
+  .table-wrap {
     max-height: 460px;
   }
 }

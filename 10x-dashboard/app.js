@@ -332,34 +332,6 @@ function renderTable() {
   }
 }
 
-function renderWatchlist() {
-  const body = $("watchlistBody");
-  body.innerHTML = "";
-  if (!state.watchlist.length) {
-    body.innerHTML = `<p class="empty-state">No stocks added yet.</p>`;
-    return;
-  }
-  for (const item of state.watchlist) {
-    const card = document.createElement("article");
-    card.className = "watch-card";
-    card.innerHTML = `
-      <button class="watch-main" type="button">
-        <strong>${item.Symbol}</strong>
-        <span>${item.Company || ""}</span>
-      </button>
-      <span class="score-pill ${scoreClass(item.InvestmentScore)}">${item.InvestmentScore ?? "--"}</span>
-      <span>${item.MarketCapDisplay || "N/A"}</span>
-      <button class="icon-button tiny" type="button" title="Remove ${item.Symbol}" aria-label="Remove ${item.Symbol}">
-        <i data-lucide="x"></i>
-      </button>
-    `;
-    card.querySelector(".watch-main").addEventListener("click", () => loadReport(item.Symbol));
-    card.querySelector(".tiny").addEventListener("click", () => removeWatch(item.Symbol));
-    body.appendChild(card);
-  }
-  initIcons();
-}
-
 function renderReport(row) {
   const reportRow = withForecast(row);
   state.current = reportRow;
@@ -921,7 +893,6 @@ function addWatch() {
   });
   saveWatchlist();
   renderMetrics();
-  renderWatchlist();
   toast(`${state.current.Symbol} added to watchlist.`);
 }
 
@@ -929,7 +900,6 @@ function removeWatch(symbol) {
   state.watchlist = state.watchlist.filter((item) => item.Symbol !== symbol);
   saveWatchlist();
   renderMetrics();
-  renderWatchlist();
   toast(`${symbol} removed.`);
 }
 
@@ -1038,7 +1008,6 @@ function bindEvents() {
   $("refreshButton").addEventListener("click", () => {
     renderMetrics();
     renderTable();
-    renderWatchlist();
     toast("Static dashboard refreshed.");
   });
   document.querySelectorAll(".filter").forEach((button) => {
@@ -1058,7 +1027,6 @@ function boot() {
   initIcons();
   renderMetrics();
   renderTable();
-  renderWatchlist();
   loadReport(state.scores[0]?.Symbol || "TSSI");
 }
 
