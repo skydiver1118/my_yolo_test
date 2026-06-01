@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>10x Framework Dashboard</title>
+    <link rel="stylesheet" href="styles.css?v=2026060101">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="topbar" aria-label="10x dashboard controls">
+        <div class="brand-block">
+          <div class="brand-mark">10x</div>
+          <div>
+            <h1>10x Framework Dashboard</h1>
+            <p id="asOf">Loading framework data...</p>
+          </div>
+        </div>
+        <form id="tickerForm" class="ticker-form">
+          <label for="tickerInput">Ticker</label>
+          <div class="ticker-input-wrap">
+            <input id="tickerInput" autocomplete="off" inputmode="text" placeholder="TSSI, CRMD, POWL...">
+            <button class="icon-button primary" type="submit" title="Generate report" aria-label="Generate report">
+              <i data-lucide="search"></i>
+            </button>
+            <button class="icon-button" id="addWatchTop" type="button" title="Add current report to watchlist" aria-label="Add current report to watchlist">
+              <i data-lucide="bookmark-plus"></i>
+            </button>
+          </div>
+        </form>
+      </section>
+
+      <section class="metric-strip" aria-label="Dashboard summary">
+        <article>
+          <span>Tracked</span>
+          <strong id="trackedCount">--</strong>
+        </article>
+        <article>
+          <span>Deep Diligence</span>
+          <strong id="deepCount">--</strong>
+        </article>
+        <article>
+          <span>Positive Earnings</span>
+          <strong id="earningsCount">--</strong>
+        </article>
+        <article>
+          <span>Watchlist</span>
+          <strong id="watchCount">--</strong>
+        </article>
+      </section>
+
+      <section class="workspace-grid">
+        <aside class="panel list-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Score Table</h2>
+              <p>Click a row to open the full 10x report.</p>
+            </div>
+            <button class="icon-button" id="refreshButton" type="button" title="Refresh dashboard data" aria-label="Refresh dashboard data">
+              <i data-lucide="refresh-cw"></i>
+            </button>
+          </div>
+          <div class="filters">
+            <button class="filter active" data-filter="all">All</button>
+            <button class="filter" data-filter="deep">Deep</button>
+            <button class="filter" data-filter="watch">Watch</button>
+            <button class="filter" data-filter="spec">Spec</button>
+            <button class="filter" data-filter="reject">Reject</button>
+          </div>
+          <div class="table-wrap">
+            <table class="score-table">
+              <thead>
+                <tr>
+                  <th>Symbol</th>
+                  <th>Score</th>
+                  <th>Cap</th>
+                  <th>Moat</th>
+                </tr>
+              </thead>
+              <tbody id="scoreTableBody"></tbody>
+            </table>
+          </div>
+        </aside>
+
+        <section class="panel report-panel">
+          <div class="report-toolbar">
+            <div>
+              <span class="eyebrow">Current Report</span>
+              <h2 id="reportTitle">Select a stock</h2>
+              <div class="company-meta" aria-label="Company classification and earnings">
+                <span><strong>Next earnings</strong><em id="reportNextEarnings">--</em></span>
+                <span><strong>Sector</strong><em id="reportSector">--</em></span>
+                <span><strong>Subsector</strong><em id="reportSubsector">--</em></span>
+              </div>
+            </div>
+            <div class="report-actions">
+              <button class="icon-button" id="copyReportButton" type="button" title="Copy report text" aria-label="Copy report text">
+                <i data-lucide="copy"></i>
+              </button>
+              <button class="icon-button primary" id="addWatchReport" type="button" title="Add to watchlist" aria-label="Add to watchlist">
+                <i data-lucide="bookmark-plus"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="decision-row">
+            <article>
+              <span>Score</span>
+              <strong id="reportScore">--</strong>
+            </article>
+            <article>
+              <span>Market Cap</span>
+              <strong id="reportCap">--</strong>
+            </article>
+            <article>
+              <span>10x Cap Needed</span>
+              <strong id="reportTenX">--</strong>
+            </article>
+            <article>
+              <span>Earnings</span>
+              <strong id="reportEarnings">--</strong>
+            </article>
+          </div>
+
+          <div class="score-lens" id="scoreLens"></div>
+
+          <div class="report-split">
+            <section class="subpanel">
+              <h3>Dorsey Five Rules</h3>
+              <div id="dorseyRules" class="rule-list"></div>
+            </section>
+            <section class="subpanel">
+              <h3>Moat & Leader Check</h3>
+              <dl class="leader-list">
+                <dt>Moat</dt>
+                <dd id="moatText">--</dd>
+                <dt>Leader</dt>
+                <dd id="leaderText">--</dd>
+              </dl>
+            </section>
+          </div>
+
+          <section class="markdown-report" id="markdownReport">
+            <p class="empty-state">Use the ticker input above or choose a table row. The report will appear here.</p>
+          </section>
+        </section>
+
+        <aside class="panel watch-panel">
+          <div class="panel-head">
+            <div>
+              <h2>Watchlist</h2>
+              <p>Persistent local list from this dashboard.</p>
+            </div>
+          </div>
+          <div id="watchlistBody" class="watchlist"></div>
+        </aside>
+      </section>
+    </main>
+
+    <div id="toast" class="toast" role="status" aria-live="polite"></div>
+    <script src="data/dashboard-data.js?v=2026060101"></script>
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+    <script src="app.js?v=2026060101"></script>
+  </body>
+</html>
