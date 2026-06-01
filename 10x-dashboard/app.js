@@ -425,12 +425,26 @@ function dorseyRules(row) {
   ];
 }
 
-function loadReport(symbol, forecastOverride = null) {
+function loadReport(symbol) {
   const clean = String(symbol || "").trim().toUpperCase();
   if (!clean) return;
-  if (forecastOverride) applyForecastOverride(clean, forecastOverride);
   const known = state.scores.find((row) => row.Symbol === clean);
   renderReport(known || createStarterRow(clean));
+}
+
+function saveForecastForCurrentTicker() {
+  const symbol = String($("tickerInput").value || state.current?.Symbol || "").trim().toUpperCase();
+  if (!symbol) {
+    toast("Enter a ticker before saving forecast data.");
+    return;
+  }
+  const forecast = forecastInputs();
+  if (!applyForecastOverride(symbol, forecast)) {
+    toast("Enter at least one E*TRADE forecast field first.");
+    return;
+  }
+  loadReport(symbol);
+  toast(`${symbol} E*TRADE forecast saved.`);
 }
 
 function createStarterRow(symbol) {
@@ -638,10 +652,11 @@ function markdownToHtml(markdown) {
 function bindEvents() {
   $("tickerForm").addEventListener("submit", (event) => {
     event.preventDefault();
-    loadReport($("tickerInput").value, forecastInputs());
+    loadReport($("tickerInput").value);
   });
   $("addWatchTop").addEventListener("click", addWatch);
   $("addWatchReport").addEventListener("click", addWatch);
+  $("saveForecastButton").addEventListener("click", saveForecastForCurrentTicker);
   $("clearForecastButton").addEventListener("click", () => {
     const symbol = String($("tickerInput").value || state.current?.Symbol || "").trim().toUpperCase();
     clearForecastInputs();

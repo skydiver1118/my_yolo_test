@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>10x Framework Dashboard</title>
-    <link rel="stylesheet" href="styles.css?v=2026060103">
+    <link rel="stylesheet" href="styles.css?v=2026060104">
   </head>
   <body>
     <main class="app-shell">
@@ -30,7 +30,7 @@
           <div class="forecast-inputs" aria-label="E*TRADE forecast inputs">
             <div class="forecast-input-title">
               <strong>E*TRADE Forecast</strong>
-              <span>Paste consensus forecast fields, then press search to apply them to this ticker.</span>
+              <span>Paste consensus forecast fields, then save them to this ticker.</span>
             </div>
             <label>
               <span>Rev FY+1 %</span>
@@ -67,6 +67,9 @@
                 <option value="Down">Down</option>
               </select>
             </label>
+            <button class="icon-button primary" id="saveForecastButton" type="button" title="Save forecast to current ticker" aria-label="Save forecast to current ticker">
+              <i data-lucide="save"></i>
+            </button>
             <button class="icon-button" id="clearForecastButton" type="button" title="Clear forecast inputs" aria-label="Clear forecast inputs">
               <i data-lucide="eraser"></i>
             </button>
@@ -213,6 +216,6 @@
     <div id="toast" class="toast" role="status" aria-live="polite"></div>
     <script src="data/dashboard-data.js?v=2026060101"></script>
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
-    <script src="app.js?v=2026060103"></script>
+    <script src="app.js?v=2026060104"></script>
   </body>
 </html>
