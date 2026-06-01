@@ -393,10 +393,16 @@ li {
   display: flex;
   flex-direction: column;
   max-height: calc(100vh - 150px);
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 .report-toolbar {
+  background: var(--panel);
   flex: 0 0 auto;
+  position: sticky;
+  top: 0;
+  z-index: 3;
 }
 
 .company-meta {
@@ -845,8 +851,8 @@ li {
 
 .markdown-report {
   border-top: 1px solid var(--line);
-  flex: 1 1 auto;
-  overflow: auto;
+  flex: 0 0 auto;
+  overflow: visible;
   padding: 18px 22px 30px;
 }
 
