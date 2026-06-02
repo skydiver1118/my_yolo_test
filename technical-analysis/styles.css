@@ -687,7 +687,7 @@ input {
   color: var(--muted);
 }
 
-@media (max-width: 1500px) {
+@media (max-width: 1820px) {
   .dashboard-grid {
     grid-template-columns: minmax(260px, 320px) minmax(720px, 1fr);
   }
