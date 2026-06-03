@@ -1,0 +1,199 @@
+{
+  "start": "2026-06-01T21:23:06.555859-04:00",
+  "end": "2026-06-02T21:23:06.555859-04:00",
+  "timezone": "America/New_York",
+  "threads_read": [
+    {
+      "root_id": 85760,
+      "title": "终于找到了市场见顶的信号，哈哈哈",
+      "url": "https://bbs.wenxuecity.com/cfzh/85760.html",
+      "root_author": "三心三意",
+      "body": "Michael Burry 由空转多之日，就是清仓之时：）",
+      "comments": "哈哈；还记得Stanley Druckenmiller吗？1999年一直做空，2000年3月转多：）；哈哈，等着…；他在大盘转向的一个小时之前重仓杀了进去。。；Really？On the same day?；是他自己在采访时说的，一个小时后大盘下跌了；好。今晚就叫Claude写个alert，跟踪Burry的X帖子。一旦他发贴做多，立刻给出红色警报：）；这个好！；他开始做多了？没有听说啊。；他没做多，三心是说如果；他4月下旬买了微软 Adobe PayPal；哈哈哈；他的事迹非常鼓舞人，说明有经验的人也会犯大错。；他的那段访谈我听了很多次，他好像没做空，而是提前了三四个月离场最后觉得自己So Stupid，就又杀了进去，；给我的启发就是，不要低估FOMO对一个Trader心理上的冲击，避免疯狂牛市FOMO的办法；Traders是不管market；他们是PM；我指我这样的小Trader，只Trade 自己的账户；哈哈；看这：by mid-March the 200 million short I had, lost $600M；Then he bought $6B tech stock 1 hr before crash started；他当时可以马上止损啊？ 是不是大资金不容易撤啊？既然他本来有风险意识，真到大盘变风向了他怎么；大资金无法马上止损。没人接盘啊。所以常言道：做顶是个过程；明白了。；3B买了一个可以讲一辈子的故事 ：）；这个做空是在1999年年初，后面他就转做多，所以那年还赚了；ah, 我以为是2000年3月，哈哈哈。 你是对的，做空是1999年3月的事；做多后赚了，但离场早了，看同事还在赚钱他受不了又进去了；机构大资金不容易清仓可以理解，但散户们已经赚得盆满钵满，大盘不好的时候怎么不止盈呢？为什么很多人把赚的又都吐回去了？；dotcom crash, 绝大部份散户血本无归，不是因为没机会跑，而是因为在跑的机会面前舍不得过去的“浮赢”；是不是跑了之后 又回场抄底抄错了？；因为BTFD已经成了习惯，所以95%的散户离场后又在nasdaq下跌10%，20%，30%，50%时买入，甚至加倍买入，；或者砸锅卖铁买入。谁也想不到最后指数跌了80%；抄底也很 fomo的，估计真的很难有人保持冷静；还有ridiculous的掉10% 买1x, 掉20% 买2x, 掉30%买4x, 掉40%买8x的策略了：）"
+    },
+    {
+      "root_id": 85597,
+      "title": "桃源兄， 下次可以考虑这样建仓是否合适",
+      "url": "https://bbs.wenxuecity.com/cfzh/85597.html",
+      "root_author": "三心三意",
+      "body": "比如说你想买入1000股MRVL在200上下，但你不知会不会掉到170。你可以 1:） 买入500正股@200， 卖出5张195 put for $20. 如果股票马上涨， 你hold正股， 然后不断roll up put 2:) 不买正股， 卖出20张或着30张195put for $20. 一般来说， delta是0.3 to 0.4， 可以根据自己的情况决定是2x 还是 3x.",
+      "comments": "非常棒的建议 很适用于前途光明但是目前价格也不低的股票；谢谢三心兄。我仔细琢磨一下。不改进建仓的办法不行了。我已经犯类似错误好多次了。教训惨重。光做了基础研究，操作犯错一样糟糕；好奇 啥错误；大概是还没建完仓标的就飞了；我用的是第一种 200买的正股 195卖的普通 今天roll 没有那么多现金 就又用margin买leap；你的问题是账号不让margin put, 否者用margin power 不需要任何现金；资金太少只能以小搏大 哈哈 买的都是一年后的 慢慢等；我在MU上对应正股的put, 基本是在20 张上下， 如果全买正股， 需要再加1.5米的现金， 而SP不需要我出任何现金：）；which broker is SP?；sell put?；before use TD ameri, I can use margin power to sell puts；Fidelity；卖多远的put? 一个月？ 一个星期？；请教各位大师；请教三心, how far typically you sell or recommend?；Read my earlier post；Could you provide a link? Thanks - learn a lot from you；要不，可不可以自己查查呢？搜索下三心的帖子多学习学习；lazy mm 看不得有人比你更lazy?；哈哈哈，是的呢。我还拿个小本本记记 ^_^；I searched. Did Not find any specific one about time.；这个方法好！；我在MRVL财报前考虑建仓，因为顾虑财报会有大波动不敢进，等财报后小心翼翼地加了小仓位，远未加完就一飞冲天。请教三心；sorry， no one can answer this question but yourself；you can close both MU long position and covered call；I sold MRVL covered calls yesterday；能感受到你的心痛。。。；Thank you my friend. : )"
+    },
+    {
+      "root_id": 85465,
+      "title": "MRVL PE已经100了。 牛X",
+      "url": "https://bbs.wenxuecity.com/cfzh/85465.html",
+      "root_author": "Greenhands53",
+      "body": "很难说这个不是泡泡了",
+      "comments": "Who said MRVL is PE100? It is only 60；这个坛子上怎么总是出这样小学生级别的错误？；TTM 目前97,Forward PE 61 我根据财报自己的计算；Yes, wall street never care about TTM, always use FTM；即使FTM 61 也是很贵的。 MRVL也不一定能deliver；股价的本质就是公司未来盈利现金折算到当前的时刻（然后被各种风险指数调整）；现在MRVL跟LITE forward PE 非常接近。；是的，短期都overvalued, 被情绪面和叙事影响；ER day重仓了MRVL，听皮夹克的，市值不到1T不卖：）；又得要表扬一下老弟。你是一把进去，我是分步走，结果没有完成建仓。现在就麻烦啦。；我主要是注意到MM的控盘令人发指，又是大牛市，真等不得。；我的办法以前可以，一年来，我发现不灵光啦。主要是这个拉升动作太凶猛。根本不给第二次机会。；让我想起了去年的ORCL。 我也是大亏出局的；这样的短线思维更适合大千day trading；去年orcal 是跳到350然后跌倒140；Only 无脑散户才会买在350， 然后硬撑死磕到140；这样的投资活该不能打败大盘；就是我感觉今天不一定要去抢MRVL；Who said to buy MRVL today? Are you even on this forum???；这里大部分人都是在195-210附近建仓的， 甚至更早；嗯， 我也想买的。 只是太快了。；我164（偷笑）"
+    },
+    {
+      "root_id": 85744,
+      "title": "已经有两头疯牛SNDK和MU, 现在又加了一头MRVL, MRVL盘后又涨了28块",
+      "url": "https://bbs.wenxuecity.com/cfzh/85744.html",
+      "root_author": "lionhill",
+      "body": "",
+      "comments": "热钱集中、白热化；我们是如此的幸运，炒股赶上疯狂大牛市，感恩这个时代。 ：）；还有AI时代，有AI agent给我工作，可以炒股工作都不耽误。；我太保守了，只买了正股，没上LEAP CALL ：）；我也很少Leap call，其实是好事；Agreed！ 小心使得万年船：）；你一把就进去买够了，不算“小心”了吧？我是真“小心”，但是，，，，；+1， 碰到大盘回调或者熊市会比较糟糕， 相当于杠杠，要买应该也是在相对低位的时候买，；买和不卖区别很大，正股和leap calls 其实差别不大。 Leap call 也上不了重仓；我买了7万多leaps, 已经180%回报了，不过不算多；股票上量比较容易；无论哪种方法，关键是要上量。我的2千股MU，回报300%，就是因为正股后卖的put敢上量；我看准的股票，sell 2x 或者 3x put 是常态；我完全错过marvell 可惜；我之前买了MRVL，财报出来没有怎么涨，卖了；我看新闻。建议买MRVL and CRDO 那时候便宜。买点；如果真上一万亿，随时买都不晚。呵呵；我挂了＄３２９居然有人买走了我的－：）；Crazy...."
+    },
+    {
+      "root_id": 85524,
+      "title": "MRVL才建立一部分仓位，想等回调后完成建仓，结果，被老黄这一折腾，留下我在风中凌乱。。。。。。",
+      "url": "https://bbs.wenxuecity.com/cfzh/85524.html",
+      "root_author": "桃花源里人家",
+      "body": "",
+      "comments": "别凌乱呀，跟着三心卖put吧；大概只能这样了。先研究一下三心兄和狮山兄今年以来的卖普操作。；桃花是半导体专家，研究下马上就可以上手了的。我觉着比研究半导体还是相对容易些；卖了6/5 的250 put，赚点吃饭去；好股票太多了，钱忙不过来，有没有？；桃源兄，我觉得你应该还是没有信心。否者这几天4次掉到195你都是可以加仓的；现在股价涨了，但如果不涨，而是直接掉到180，没有信心，你也不一定加仓啊；“你买是因为它涨了吧 它不涨你不会买吧” 这句话对我影响很大；那这句话对不对？；是玩家和菜鸟的分水岭；哈哈，经典的灵魂拷问。这句话也特别适用于我；当时觉得分步走加仓，应该等比我第一步买进价再低点啊。哈哈哈。人性啊。；195的时候觉得只比第一步少了几块钱啊。；昨天买入FOTO，今天居然涨10%。不可思议；为什么不可以？ 光通信调整好久了；ETF一天10%应该不多见；FOTO is a \"highly\" concentrated ETF, 这样涨很正常；桃源兄赚的够多了不要期望百发百中！不过我看好的从来一次买入不拖泥带水"
+    },
+    {
+      "root_id": 85478,
+      "title": "Buying back NOW 126.7",
+      "url": "https://bbs.wenxuecity.com/cfzh/85478.html",
+      "root_author": "三心三意",
+      "body": "",
+      "comments": "跟了一单；多謝三心大俠! 跟了, @125.35；为什么NOW今天大跌；搭领导便车，谢谢！；請問三心大俠: NOW這股, 您是長持, 還是短炒? 多謝!!!；Trading ....；多謝及時回復,賣出時, 也請您喊一下,再次感謝!!!；我的进价很低，而且已经赚了一波。所以我会比较激进。你的计划要自己做。；學生明白,但也請大俠計劃出貨時提醒一下,再次深表謝意!!!；我自己准备hold as long as NOW is above 116. 喵着155-160；\"above 116. 喵着155-160\"? 116是否打錯了? 多謝!；不跌破116；明白了,多謝!；守住116(上周放量阳K低点,)，就拿住，上看155一160，破116止损；十分感謝!"
+    },
+    {
+      "root_id": 85667,
+      "title": "当情绪和叙事的高潮结束时，this is what happens, LOL",
+      "url": "https://bbs.wenxuecity.com/cfzh/85667.html",
+      "root_author": "三心三意",
+      "body": "",
+      "comments": "Oklo 和Leu?；是的， 去年的爆涨板块；OKLO 根本没有业绩， LEU 后来季报发现业绩也不行。；LEU 还是有盈利和增速的，但去年被炒到PE180，现在掉下来还有PE60，LOL；LEU 什么时候可以入场？现在还是缺电的吧；当你看到核电产品有明确落地的迹象时，LEU股价就是涨了50%也要追。否者它就是个老龟；Thank you very much! : )；之前看过他的财报，看到Rev YoY只有5%就没有继续看了；这两支我割肉离场了；我打算一点点加些leu，看好它的未来。；为什么微软又被打倒头破血流了呢；今天MSFT build 没有打鸡血；Oklo很有前景，但中短期要懂得交易它"
+    },
+    {
+      "root_id": 85706,
+      "title": "把Marvell当作光通信板块肯定不对",
+      "url": "https://bbs.wenxuecity.com/cfzh/85706.html",
+      "root_author": "fpeking",
+      "body": "但是就算是加上芯片设计也不足以证明其价值。 下面是我摘录的，非常赞同。我建仓当初主要是在break out时期，还没有想这么深入。 “迈威尔的可比公司不能只选光模块公司，也不能只选 ASIC 设计公司。它横跨 AI 网络、光互连、定制硅、CXL/PCIe 和高速连接，因此应该放在 AI 基础设施控制权谱系里排序。这个排序有助于避免两个错误：一是把迈威尔误当英伟达式系统平台，二是把它低估成单点零件供应商。” 这也不是第一次有人拿它和博通比，只有这个体量和tam，可以讨论one trillion。my pov “同业比较里，最关键的是博通。博通已经在 custom ASIC 和网络芯片上建立了高可见度，客户项目更具名，估值更容易被市场接受。迈威尔要追上，不一定要在每个项目上击败博通，而是要证明自己的“光互连 + 交换 + custom + CXL”组合能在客户架构里形成黏性。只要客户不只买一颗 ASIC，而是同时买互连、交换、光学、XPU attach 和接口芯片，迈威尔的议价权就会提高。”",
+      "comments": "it’s too naive to despise Jason’s choice and comment, or?；或者我喜欢用一个词来总结其定位：agnostic；Google 也来找他家了吧；从广义上说，AVGO跟它都是data center connectivity play；我们老说光通，是因为电信号在传统铜线上不能满足AI的需要。未来整个数据中心的网络结构都会变；啊 我光通里面没有包括marvell 失策了；你读帖不仔细啊。；Jumped 7% after market. Crazy!；光通里面一个关键的产品转型就是要把很大一部分光信号处理集成到系统里。；AVGO 和 MRVL 就是这方面的得益者；还有一????小芯片公司Smtc也是；I feel MRVL will be the next leader because a so-so ER still；才ER股票没有涨。（已经涨很多）因为Jason 说要要一万亿， 股票涨了将近 50% （包括盘后) 这个股市没有疯？"
+    },
+    {
+      "root_id": 85702,
+      "title": "现在赌科技公司ER后涨的胜率超过８０％",
+      "url": "https://bbs.wenxuecity.com/cfzh/85702.html",
+      "root_author": "司隶校尉",
+      "body": "即使当天跌了，很多第二天也会涨回来。 太疯狂了。",
+      "comments": "主要是前一段时间跌怕了 不管怎么好的earning 都会跌；的确是。PE 高的跌跌，低的也跌。；现在很简单 -- ride the wave, 不要囤现金， 但在music结束时一定要抽身而去；跟对赛道，随便摸一只股票都是暴涨：）；又连涨9天了！；请教， 希望三心三意展开说一说赛道；这个坛子已经说了有无数个星期了，几乎每个赛道都已经2倍以上的涨幅，你都不读帖？；关于赛道；如果把你的问题丢给Chat GPT，它会给你特别详细的解释。；是的， 答案很好， 谢谢！；就怕music 结束的时候是跳跌。 会不会来不及跑"
+    },
+    {
+      "root_id": 85801,
+      "title": "MRVL现在市值254B, 如果按着老黄的预测涨到1 trillion, 还要涨1000/254= 4倍左右",
+      "url": "https://bbs.wenxuecity.com/cfzh/85801.html",
+      "root_author": "lionhill",
+      "body": "MRVL现在市值254B, 如果按着老黄的预测涨到1 trillion, 还要涨1000/254= 4倍左右，也就是从现在300左右涨到1200，比较crazy但盘子确实不大，it all depends on how AI developing and if MRVL revenue can keep grow exponentially.",
+      "comments": "There is 0 chance for it to reach 1T in next 12 months；Maybe by end of 2028 at most optimistic growth projection；我预测maybe in 5 years；5年有希望；短期over bought了， 逢低可以买；光通板块是下一个市场回调时必须建仓/加仓的板块；不知道LITE还能不能回到800出头了。；Over bought? Not oversold?；哦，对。哈哈；This is now a sentiment + AI infrastructure momentum stock,；In Huang, we trust !"
+    },
+    {
+      "root_id": 85644,
+      "title": "不起眼的果果又创新高",
+      "url": "https://bbs.wenxuecity.com/cfzh/85644.html",
+      "root_author": "三心三意",
+      "body": "",
+      "comments": "这个要感谢水晶美眉；我的一大半持仓都要感谢水晶美眉@bog；很高兴能够帮到您，888~~；7 大轮着涨，现在谷歌Meta价格不错～；GOOGL 盘后有可能到360低点呢 :-)；有可能回踩50日均线。那应该是加仓的好机会；Meta没有好的news。其实从670下来，也就12%；我觉得600 以下价格就不错了。600 一线还是有支撑的；现在叫硬件终端的垄断性卡位的AI 用户入口， 躺赢。；苹果就是躺赢，大重仓完全不担心的那种。今天我的最小小仓lotto股"
+    },
+    {
+      "root_id": 85589,
+      "title": "现在是老革命遇到了新问题啊。以前建仓必须分步走，尽量等个大点坑再追加不能一两把进去。现在这个市场环境，根本不给像样的坑。",
+      "url": "https://bbs.wenxuecity.com/cfzh/85589.html",
+      "root_author": "桃花源里人家",
+      "body": "",
+      "comments": "我看好的从来一把糊不拖泥带水，以后多出来资金不断加；你和jliu 老弟是一样风格。现在这个市场环境，加上技术革命进展太快，市场不给机会等待啦。好几次这样的教训了。；我风格从来没变，一直这样而且永远市价买卖从不设limit；以前我也喜欢设钓鱼价 发现这个牛市不灵；跟牛市熊市没什么关系；哈哈哈，我俩last name和first name initial也一样；哈哈哈！太巧了么。；而且他的ID有6667数字，我66年的；这种行情之下，最难做的就是敢买快买！ 当你习惯了以后，花街又搞不一样的patterns 了 ：）））；我试水买的FOTO一天10%，现在一天涨1%更本不叫涨。直到某一天…."
+    },
+    {
+      "root_id": 85456,
+      "title": "今天先把LITE， MRVL put roll up, 跟着势头走一下",
+      "url": "https://bbs.wenxuecity.com/cfzh/85456.html",
+      "root_author": "三心三意",
+      "body": "",
+      "comments": "谢谢三心的及时更新，你总是最棒的！；我也要roll up，三心老师roll up到多少？；MRVL to 250, LITE to 900；跟；要随时准备roll back down。这种情绪+叙事的拉升完全有可能turn around；LITE 可能应该高到940， but whatever；wow, 今天的LITE, COHR, TSEM, AEHR；Also book half HPE profit at 62.；三心今天又是收获满满的一天"
+    },
+    {
+      "root_id": 85691,
+      "title": "有人欢喜有人愁： NKE@43，10年最低，比COVID3月还低：）",
+      "url": "https://bbs.wenxuecity.com/cfzh/85691.html",
+      "root_author": "三心三意",
+      "body": "",
+      "comments": "什么时候它用AI 机器人，而不是人工做鞋，股价就上去了：）；以后都是机器人做事，一个人只要一双鞋就够了：）；男的是这样。不干活了，鞋子坏不了。；美女还是会拼命买鞋的，可惜NKE没有什么鞋是美女看的上的：）；给机器人做鞋！；年轻人已经不穿耐克了。；ON；中老年人穿HOKA；我去年还买了两个Leap，被大户抛弃了"
+    },
+    {
+      "root_id": 85631,
+      "title": "千年老龟还是爬的太慢，幸好今天62出了一半HPE",
+      "url": "https://bbs.wenxuecity.com/cfzh/85631.html",
+      "root_author": "三心三意",
+      "body": "",
+      "comments": "才62B 的MC，我刚刚加仓了；不买回来了？；我还没来得及研究财报。不过aloevera美眉觉得一般。我要研究后再看是否买回；VSH I mentioned last Thursday, up 24% so far : )；有没有注意过VPG？跟VSH本来是一家分开的。VPG做压力传感器，在数据中心和机器人中都用，最近；有关注physical AI的人在追；Thanks a lot! : )；我早上61 也把昨天买的大部分出了，随后胡乱抓了点NOK, 哈哈"
+    },
+    {
+      "root_id": 85411,
+      "title": "看了一下最近在坛子里发的有关MRVL的贴子",
+      "url": "https://bbs.wenxuecity.com/cfzh/85411.html",
+      "root_author": "lionhill",
+      "body": "＇",
+      "comments": "就赞咱几个版主水晶大神；这是用的什么工具发帖；微信截图，发给亲戚及几个好朋友的，在这也发了；哈哈，求加好友群哈！！我是看了你们喊某一天也买了。；Very limited and highly selective less than 0.1% acceptance；Only 15 people，亲戚和好朋友；非常感谢！"
+    },
+    {
+      "root_id": 85434,
+      "title": "NVIDIA purchased Series A Convertible Preferred Stock of mrv",
+      "url": "https://bbs.wenxuecity.com/cfzh/85434.html",
+      "root_author": "chyang98",
+      "body": "NVIDIA purchased Series A Convertible Preferred Stock (2,000,000 shares) for $2 billion in a private placement. These are initially convertible into up to ~21.78 million shares of Marvell common stock at ~$91.84 per share conversion price — Skynet (@NHLobstah) June 2, 2026",
+      "comments": "老黄是仅次于川普的喊盘手；老黄太努力了，都为他感动了。可惜别的公司股票哗哗涨，他自己公司的涨的倒不多；最佩服的 CEO 之一，技术领先，支持新手，永不言败! 但他不如一龙会讲故事。。。；+1；有点当年苹果的影响力，那时候只要谁被选中APPL供货，股票就爆发了，应该是２０１０年左右；会涨的，中国这个市场关了，但更大的市场浮出水面；是， 完全无需担心。"
+    },
+    {
+      "root_id": 85490,
+      "title": "今天also 直接在357加仓Google",
+      "url": "https://bbs.wenxuecity.com/cfzh/85490.html",
+      "root_author": "三心三意",
+      "body": "",
+      "comments": "I bought GOOG 300K at 356 相对的低点。；Nice！It was gap fill and also Berkshire's price :)；I was kind of surprised the price dropped this low. 这就是送钱啊：）；能加meta 吗？600 以下了；减点meta 换点google可行不？；谢谢。也买了。就是价格比你的高；赞果断。"
+    },
+    {
+      "root_id": 85810,
+      "title": "今天加州州长预选。三个候选人。两个民主党，一个共和党。别忘了投票，事关你的投资效益。",
+      "url": "https://bbs.wenxuecity.com/cfzh/85810.html",
+      "root_author": "QinHwang",
+      "body": "",
+      "comments": "秦王投谁？；只认共和党啊，那还能是谁？川总支持的那位。；Steve Hilton!；yes；你们是不是投了也白投，最后还是民主党上，不过也要投的，万一变了呢？；极有可能Hilton 进入决赛。即便最后选不上，获得选票多了也是对主党的打击。；This is Primary, It will be Steve against whoever from D"
+    },
+    {
+      "root_id": 85407,
+      "title": "MRVL To The Moon! 274, up 55, Crazy",
+      "url": "https://bbs.wenxuecity.com/cfzh/85407.html",
+      "root_author": "lionhill",
+      "body": "",
+      "comments": "我170建仓时候海跌了一点；最近买进的MRVL和HPE都有点晚，确让我惊掉下巴，过热了；MRVL 190以及200左右都买了不少；如果是下一个万亿公司；版大太厉害了 我也买了 不过不多；一犹豫上车就变得很困难，还好留有一半"
+    },
+    {
+      "root_id": 85565,
+      "title": "账户暴涨 我打算今天分批卖出两成仓位 留八成仓",
+      "url": "https://bbs.wenxuecity.com/cfzh/85565.html",
+      "root_author": "--野牛--",
+      "body": "",
+      "comments": "每天都在搬米缸，哈哈哈；感谢有你一路在；账户暴涨，但是不卖~；一大涨我就害怕；我也怕。 又不知道该卖什么。 都是潜力股。怎么卖呢；大跌就兴奋？"
+    },
+    {
+      "root_id": 85428,
+      "title": "AI代理引爆CPU大战：英伟达杀入，英特尔失守，AMD有望拿下半壁江山",
+      "url": "https://bbs.wenxuecity.com/cfzh/85428.html",
+      "root_author": "lionhill",
+      "body": "一场围绕CPU市场的重新洗牌，正在AI智能体浪潮的推动下加速上演。 昨日，黄仁勋在英伟达台北GTC大会上正式确认 Vera CPU 进入量产，公司此前已宣布今年CPU业务营收可见度近 200亿美元 。黄仁勋直接说：“在AI代理时代，CPU已成为制约GPU发挥的瓶颈。” 对于这场CPU的市场争夺战，据追风交易台消息，巴克莱最新半导体行业报告系统梳理了这场CPU大战的市场格局与各方胜算。该行认为， 这是一个正在被重新定价的千亿级市场，AMD是最大赢家，英特尔是最大输家，英伟达是最危险的新进入者。 01 CPU成了香饽饽，2030年的市场比所有人预想的都大 过去几年，半导体市场的焦点始终是GPU。但过去六个月，AI应用正在悄然转向——从模型训练，转向推理和智能体（Agentic AI）。 这个变化直接拉动了CPU需求。原因很简单：GPU擅长大规模矩阵运算，但AI智能体需要执行任务、调用工具、路由子代理流量、追踪任务完成情况，这些都是CPU的活。GPU在\"算\"，CPU在\"管\"。 ARM公司在其\"ARM Everywhere\"活动上给出了一组数据：当前1GW规模的AI数据中心需要约3000万颗CPU核心，未来这一数字将增至1.2亿。按每颗ARM CPU 136个核心换算，每GW数据中心大约需要22.1万颗CPU。 英伟达CEO黄仁勋 估计每GW需要约30万颗Rubin GPU，由此推算出新的CPU与GPU配比约为1:1.4——这与过去GPU主导时代的比例相比，CPU的地位已大幅提升。 各家对CPU市场规模的预测正在快速上修： 英伟达： 预计2026年自身CPU需求达200亿美元，2030年行业TAM达2000亿美元 ARM： 预计2030年 AGI CPU 市场超1000亿美元 AMD： 将服务器CPU市场预测上调至2030年1200亿美元，并预计自身份额超50% 分析师在综合Mercury行业数据和各公司自下而上预测后，给出了更激进的判断： 2030年CPU市场规模将接近2000亿美元 ，超过AMD自己给出的1200亿美元预测。报告指出，\"过去六个月市场预测已经翻倍，可见这个市场变化有多快。\" 02 英伟达：最危险的新变量，但定价方式让人看不透 英伟达的CPU野心已经不是秘密。此前公司CFO Colette Kress在财报电话会上直接说，Vera CPU为英伟达打开了一个\"此前从未涉足\"的、规模高达2000亿美元的潜在市场，今年CPU业务已有近200亿美元的营收可见度，Vera正在\"推动我们成为全球领先的CPU供应商\"。 黄仁勋在GTC大会上进一步定性：\"在AI智能体时代，CPU已成为制约GPU发挥的瓶颈。\" Vera CPU在SQL运算上较x86竞争对手性能提升3倍，数据处理提升6倍，Python、代码分析等常见智能体工具整体性能提升约1.8倍。Anthropic和OpenAI已是早期采用客户。 这个200亿怎么看？ 分析师坦言， 英伟达几乎所有CPU销售都打包在NVL系统（即英伟达机架级超级计算系统）内，没有独立的平均销售价格 (ASP)数据点，只能用200亿反推单价——结果显示英伟达的CPU ASP远高于同行。如果按照与同行相近的ASP来计算，AMD的市场份额将更接近其自己宣称的50%目标。 英伟达的入局改变的不只是份额，还有整个市场的配比逻辑。分析师指出，历史上每卖两颗GPU配一颗CPU，现在这个比例已趋近1:1。 英伟达已推出256颗CPU构成的独立CPU机架，Anthropic和OpenAI是早期客户。 值得注意的是，英伟达的CPU营收在巴克莱的建模中是\"内嵌\"在NVL机架测算里的，并未单独列出——这意味着市场对英伟达CPU体量的定价，可能还没有完全反映。 03 AMD：最大赢家，目标价直接跳涨33% 分析师认为，AMD是这场CPU大战中\"定价最不充分\"的受益者，也就是说市场还没有完全反映其潜力。 AMD的优势在于几个层面同时叠加： 产品端 ，AMD的Venice和Verano系列将率先迁移至2nm制程，性能领先优势有望进一步扩大。其 Chiplet 架构具备高度灵活性，可以用基础核心加IO，搭配25%-30%的差异化变体，针对不同应用场景定制，无需完整的设计周期。AMD已经在出货智能体风格的机架CPU系统。 供给端 ，AMD与 台积电 的深度绑定和Chiplet平台的可替换性，使其可以在晶圆产能上实现弹性调配——将游戏和客户端业务的产能转向数据中心。管理层明确表示，\"供应限制导致近期无法上修\"是一个\"错误叙事\"。AMD还承诺向台湾生态系统投入100亿美元，用于开发EFB（高架扇出桥接）和面板级封装技术，与ASE、SPIL及PTI合作，分散未来封装需求。 市场结构 ，AMD将服务器CPU市场拆解为三块：20%是通用型企业CPU（低核心数）；30%-35%是头节点CPU（高频单线程）；剩余45%-50%是面向智能体AI的高核心数CPU，可能独立成架或单独部署在数据中心。AMD的产品线覆盖全部三个细分场景。 分析师预测，AMD 2027年CPU收入将达约290亿美元。仅CPU业务一项，到2030年就可贡献约19美元每股盈利，相当于公司整体EPS翻倍以上。 基于此，分析师将AMD目标价从500美元上调至665美元，对应2027年EPS 15.14美元的44倍估值（此前为37倍对应13.40美元）。评级维持\"增持\"。 英特尔：被动挨打，目标价上调但逻辑存疑 相比之下，英特尔的处境最为被动。 分析师维持英特尔等权评级，目标价从65美元上调至100美元（主要反映ASP上调带来的估值修复，而非份额改善）。其对英特尔的判断很直白： \"核心市场份额持续流失，收入和盈利能力在结构上受到压制，制造领先地位的回归尚无证据。\" 在2030年CPU市场的EPS贡献测算中，英特尔约为1.5美元，而AMD约为19美元、ARM约为7美元——差距一目了然。 英特尔的问题不是一个产品周期能解决的：x86架构在AI代理工作负载上的效率劣势、制造工艺的持续落后、以及AMD和英伟达双重夹击下的份额压力，共同构成了一个难以快速逆转的结构性困局。 05 ARM：坐收版税，但上行空间有限 ARM的逻辑相对简单：无论谁做CPU，只要用ARM架构，ARM就收版税。英伟达Vera用的是ARM架构，AMD的部分产品也在向ARM迁移。 分析师预测ARM 2030年CPU业务每股盈利贡献约7美元，目标价从250美元上调至360美元，对应2027年EPS 3.13美元的115倍估值（此前为80倍）。评级维持\"增持\"。 上调估值倍数的逻辑是：CPU市场扩容使ARM的版税收入天花板大幅抬升，但ARM本身不直接参与市场份额争夺，受益方式更为稳定。 06 这场仗，谁还没被市场充分定价？ 巴克莱的结论是：AMD的CPU上行空间在三家中最未被充分定价。 理由有三：一，英伟达的CPU营收已部分内嵌在市场对NVL系统的定价中；二，ARM的高估值已反映了较多乐观预期；三，AMD的CPU份额增长、工艺节点领先和供应弹性，目前还没有被充分计入股价。 一场由AI代理触发的CPU市场重构，正在快速改变半导体行业的竞争格局。过去这个市场是英特尔与AMD的双雄争霸，现在英伟达已经入场，而市场的蛋糕本身，也在以前所未有的速度变大。",
+      "comments": "AMD可以逢低加仓长持；英特尔能自己造，另外两家只是设计，制造要在台积电排队。所以一龙要搞自己的芯片厂。；\"英特尔能自己造\", & made in America；同意我昨天说了买英特尔是因为将来会冲击台积电的市场不仅仅CPU；那两家和台积电关系密切，太高阶的也没法让有可能竞争的对手制造呀"
+    },
+    {
+      "root_id": 85431,
+      "title": "写给这里的家长：对小中二代前途不用太担心，30岁开始投资，本金20万美元，千万不是梦",
+      "url": "https://bbs.wenxuecity.com/cfzh/85431.html",
+      "root_author": "lionhill",
+      "body": "投SPY或QQQ指数即可15%每年回报算的高了一点，但大差不差因为没有算入后续本金投入",
+      "comments": "感觉下一代比我们还会投资。 头脑清楚，杀伐果断；赞同赞同。我给我娃推荐的股票他都拿着不撒手，不像我被他批评了；是的。下一代有一点底子。也是能吃苦 能付出的孩子；还能花钱能玩。我们这一代过的有点清苦"
+    },
+    {
+      "root_id": 85416,
+      "title": "Crdo已从昨晚收盘后瀑跌变成目前的小跌",
+      "url": "https://bbs.wenxuecity.com/cfzh/85416.html",
+      "root_author": "ozstart",
+      "body": "",
+      "comments": "记得蛙兄贵大作如斯，请诸君对号入座，莫要踩踏。；195买入 早盘221 同喜；值得收藏；同看好它，特别是它的 PCIe 7.0 和以后。。。从铜，铜/光，到全光数据bus。"
+    }
+  ]
+}
