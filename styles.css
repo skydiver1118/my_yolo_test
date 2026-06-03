@@ -78,28 +78,6 @@ input {
   gap: 10px;
 }
 
-.page-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 40px;
-  padding: 0 14px;
-  border: 1px solid rgba(15, 32, 42, 0.08);
-  border-radius: 8px;
-  background: linear-gradient(135deg, #fff7ea 0%, #eef6f1 100%);
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 12px;
-  font-weight: 900;
-  letter-spacing: 0.02em;
-  box-shadow: 0 8px 22px rgba(15, 32, 42, 0.08);
-}
-
-.page-link:hover {
-  border-color: rgba(38, 98, 217, 0.22);
-  color: var(--blue);
-}
-
 .ticker-runner {
   display: grid;
   grid-template-columns: minmax(150px, 210px) auto auto minmax(120px, 220px);
