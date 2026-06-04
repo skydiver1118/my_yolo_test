@@ -1,14 +1,14 @@
-# TradingAgents Stock Command Center
+﻿# TradingAgents Stock Command Center
 
 Static dashboard for the E*TRADE watchlist and local TradingAgents artifacts.
 
 ## Data Sources
 
-- E*TRADE watchlist: `C:\Users\skydiver1118\Downloads\etrade_26May2026_2040.csv`
-- Local dashboard watchlist: `C:\Users\skydiver1118\Documents\New project\tradingagents_dashboard\watchlist.local.json`
-- Portfolio snapshot: `C:\Users\skydiver1118\Documents\Stock Analysis\TradingAgents\reports\portfolio_decision_snapshots_2026-05-26`
-- Full TradingAgents reports: `C:\Users\skydiver1118\Documents\Stock Analysis\TradingAgents\reports\full_tradingagents_batch_2026-05-26\2026-05-22_ollama_qwen3_1.7b`
-- SMA fallback state: `C:\Users\skydiver1118\Documents\New project\data\owned_stocks_sma50_state.json`
+- E*TRADE watchlist: `C:\Users\skydi\Downloads\etrade_26May2026_2040.csv`
+- Local dashboard watchlist: `C:\Users\skydi\OneDrive\Documents\New project\tradingagents_dashboard\watchlist.local.json`
+- Portfolio snapshot: `C:\Users\skydi\Documents\Stock Analysis\TradingAgents\reports\portfolio_decision_snapshots_2026-05-26`
+- Full TradingAgents reports: `C:\Users\skydi\Documents\Stock Analysis\TradingAgents\reports\full_tradingagents_batch_2026-05-26\2026-05-22_ollama_qwen3_1.7b`
+- SMA fallback state: `C:\Users\skydi\OneDrive\Documents\New project\data\owned_stocks_sma50_state.json`
 
 ## Local Watchlist
 
